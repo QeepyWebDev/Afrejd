@@ -1,0 +1,70 @@
+﻿@inherits LayoutComponentBase
+
+
+<div class="page">
+
+    <NavMenu />
+
+    <main>
+        <article class="content px-4">
+            @Body
+        </article>
+    </main>
+</div>
+
+<div id="blazor-error-ui">
+    An unhandled error has occurred.
+    <a href="" class="reload">Reload</a>
+    <a class="dismiss">🗙</a>
+</div>
+
+  <footer class="footer text-center text-lg-start text-white" style="background-color: #363732">
+    <div class="container p-4 pb-0">
+      <section>
+        <div class="row">
+          <div class="col-md-3 col-lg-3 col-xl-3 mx-auto mt-3">
+            <h6 class="text-uppercase mb-4 font-weight-bold">
+              Afrejd
+            </h6>
+            <p>
+             Hos Afrejd hittar du professionella konsulter med en gedigen erfarenhet inom logistikbranschen. <br />
+             Som oberoende specialister arbetar vi analytiskt och målmedvetet tillsammans med dig.
+            </p>
+          </div>
+
+          <div class="col-md-5 col-lg-4 col-xl-3 mx-auto mt-3">
+            <h6 class="text-uppercase mb-4 font-weight-bold">Kontakta oss</h6>
+            <p><box-icon name='buildings' color='#66c3ff' class="align-middle"></box-icon> Sverigevägen 1, Ort 123 45</p>
+            <p><box-icon name='envelope' color='#66c3ff' class="align-middle"></box-icon> hello@afrejd.com</p>
+            <p><box-icon name='phone-call' color='#66c3ff' class="align-middle"></box-icon> +46 123 45 67 89</p>
+          </div>
+        </div>
+      </section>
+
+      <hr class="my-4">
+
+      <section class="p-3 pt-0">
+        <div class="row d-flex align-items-center">
+          <div class="col-md-7 col-lg-8 text-center text-md-start">
+            <div class="p-3">
+              Utvecklat av Kleopatra Kairaityte
+            </div>
+          </div>
+
+          <div class="col-md-5 col-lg-4 ml-lg-0 text-center text-md-end">
+            <a class="btn btn-outline-light btn-floating m-1" role="button">
+                <box-icon name='facebook-square' type='logo' color='#66c3ff' size="md" class="align-middle"></box-icon>
+            </a>
+
+            <a class="btn btn-outline-light btn-floating m-1" role="button">
+                <box-icon name='linkedin-square' type='logo' color='#66c3ff' size="md" class="align-middle"></box-icon>
+            </a>
+
+            <a class="btn btn-outline-light btn-floating m-1">
+                <box-icon name='instagram-alt' type='logo' flip='vertical' color='#66c3ff' size="md" class="align-middle"></box-icon>
+            </a>
+          </div>
+        </div>
+      </section>
+    </div>
+  </footer>

@@ -1,0 +1,96 @@
+﻿@implements IDisposable
+@rendermode InteractiveServer
+
+@inject AuthenticationStateProvider AuthenticationStateProvider
+@inject NavigationManager NavigationManager
+
+@using Microsoft.AspNetCore.Components.Authorization;
+@using Microsoft.AspNetCore.Components.Server
+@using System.Net
+@using Microsoft.AspNetCore.Identity
+@using Afrejd.Web.Data
+
+<div class="pos-f-t">
+    <nav class="navbar navbar-dark bg-dark">
+        <a class="navbar-brand" href="/">
+            <img src="/AFrejd Logo v2.png" alt="Afrejd company logo" style="max-height: 100px; margin-left: 2em;">
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+            <box-icon name='menu' color='#66c3ff' size="lg"></box-icon>
+        </button>
+    </nav>
+    <div class="collapse" id="navbarToggleExternalContent">
+        <div class="p-4">
+            <AuthorizeView>
+                <Authorized>
+                    <form action="Account/Logout" method="post">
+                        <AntiforgeryToken />
+                        <input type="hidden" name="ReturnUrl" value="@currentUrl" />
+                        <button type="submit" class="btn btn-dark">
+                            <box-icon name='log-out' flip='vertical' color='#66C3FF' class="align-middle"></box-icon> Logga Ut
+                        </button>
+                    </form>
+                    <NavLink class="nav-link" href="Account/Manage"><box-icon name='user-circle' color='#363732' class="align-middle"></box-icon> KONTO</NavLink>
+
+                </Authorized>
+                <NotAuthorized>
+                    <NavLink type="button" class="btn btn-dark" href="Account/Login">
+                        <box-icon name='log-in' flip='vertical' color='#66C3FF' class="align-middle"></box-icon> Logga In
+                    </NavLink>
+                    <NavLink class="nav-link" href="Account/Register"><box-icon name='edit-alt' color='#363732' class="align-middle"></box-icon> REGISTRERA DIG</NavLink>
+                </NotAuthorized>
+            </AuthorizeView>
+            <NavLink class="nav-link" href="/"><box-icon name='cart-alt' color='#363732' class="align-middle"></box-icon> VARUKORG</NavLink>
+            <NavLink class="nav-link" href="/"><box-icon name='group' color='#363732' class="align-middle"></box-icon> OM OSS</NavLink>
+            <NavLink class="nav-link" href="/"><box-icon name='phone-call' color='#363732' class="align-middle"></box-icon> KONTAKT</NavLink>
+            <NavLink class="nav-link" href="/services"><box-icon name='briefcase-alt' color='#363732' class="align-middle"></box-icon> TJÄNSTER</NavLink>
+            <NavLink class="nav-link" href="/"><box-icon name='home-alt-2' color='#363732' class="align-middle"></box-icon> HEM</NavLink>
+
+            <AuthorizeView Roles="Admin">
+                <Authorized>
+                    <NavLink href="/admin" class="nav-link"><box-icon name='receipt' color='#363732' class="align-middle"></box-icon> ADMINISTRATION</NavLink>
+                </Authorized>
+            </AuthorizeView>
+        </div>
+    </div>
+</div>
+
+@code {
+    private string? currentUrl;
+
+
+
+    protected override async Task OnInitializedAsync()
+    {
+
+
+        var authState = await AuthenticationStateProvider.GetAuthenticationStateAsync();
+
+        var user = authState.User;
+        bool isAdmin = user.IsInRole("Admin");
+        foreach (var claim in user.Claims)
+        {
+            Console.WriteLine($"Claim Type: {claim.Type}, Claim Value: {claim.Value}");
+        }
+
+        Console.WriteLine($"Is Admin: {isAdmin}");
+    }
+
+    protected override void OnInitialized()
+    {
+        currentUrl = NavigationManager.ToBaseRelativePath(NavigationManager.Uri);
+        NavigationManager.LocationChanged += OnLocationChanged;
+    }
+
+    private void OnLocationChanged(object? sender, LocationChangedEventArgs e)
+    {
+        currentUrl = NavigationManager.ToBaseRelativePath(e.Location);
+        StateHasChanged();
+    }
+
+    public void Dispose()
+    {
+        NavigationManager.LocationChanged -= OnLocationChanged;
+    }
+}
+

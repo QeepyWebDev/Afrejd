@@ -1,0 +1,55 @@
+﻿@page "/AdminNewProduct"
+@using System.Collections.Generic
+@using Afrejd.Web.Data.Models
+@using Afrejd.Web.Data.Interfaces
+@using Microsoft.AspNetCore.Antiforgery
+@using Afrejd.Web.Components.Layout
+@inject IProductService ProductService
+@attribute [RequireAntiforgeryToken(required: false)]
+@rendermode InteractiveServer
+@layout AdminMenu
+
+<article class="content px-2">
+            <EditForm Model="@NewProduct" OnSubmit="AddNewProduct" FormName="AddProductForm">
+                <DataAnnotationsValidator />
+                <ValidationSummary />
+
+                <div class="form-group" style="margin-top: 1em;">
+                    <label for="name">Namn:</label>
+                    <InputText id="name" class="form-control" @bind-Value="@NewProduct.Name" />
+                </div>
+
+                <div class="form-group" style="margin-top: 1em;">
+                    <label for="categoryId">Kategori ID:</label>
+                    <select id="categoryId" class="form-control" @bind="@NewProduct.CategoryId">
+                        @foreach (var categoryId in CategoryIds)
+                        {
+                            <option value="@categoryId">@categoryId</option>
+                        }
+                    </select>
+                </div>
+
+                <button type="submit" class="btn btn-primary" style="margin-top: 1em;">Lägg till</button>
+            </EditForm>
+    </article>
+
+
+@code {
+    private Product NewProduct { get; set; } = new Product();
+
+    private List<int> CategoryIds { get; set; } = new List<int> { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+
+    private async Task AddNewProduct()
+    {
+        try
+        {
+            await ProductService.AddProduct(NewProduct);
+
+            NewProduct = new Product();
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"An error occurred: {ex.Message}");
+        }
+    }
+}
