@@ -1,0 +1,67 @@
+﻿@page "/Cart"
+
+@using Afrejd.Web.Data.Models
+@using System.Security.Claims
+@using Afrejd.Web.Data.Interfaces
+@rendermode InteractiveServer
+@inject Microsoft.AspNetCore.Http.IHttpContextAccessor httpContextAccessor
+@inject NavigationManager navigationManager
+@inject ICartService CartService
+
+<h3>Valda Tjänster</h3>
+
+@if (CartItems == null || CartItems.Count == 0)
+{
+    <p>Inga produkter i varukorgen.</p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th> </th>
+                <th>Produkt</th>
+                <th> </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var product in CartItems)
+            {
+                <tr>
+                    <td>@product.CartProduct.Name</td>
+                    <td><button class="btn btn-danger" @onclick="@(async () => await RemoveItem(product.ProductId, product.UserId))">Ta bort</button></td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <div>
+        <button type="button" class="btn btn-success" @onclick="GoToCheckout">Till kassan</button>
+    </div>
+}
+
+@code {
+    private List<Cart> CartItems;
+    private decimal TotalPrice;
+
+    protected override async Task OnInitializedAsync()
+    {
+        var userId = httpContextAccessor.HttpContext.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+        if (userId != null)
+        {
+            CartItems = await CartService.GetUserCartItems(userId);
+        }
+    }
+
+    private async Task RemoveItem(int productId, string userId)
+    {
+        await CartService.RemoveItemFromCart(productId, userId);
+
+        CartItems = await CartService.GetUserCartItems(userId);
+    }
+
+    private void GoToCheckout()
+    {
+        navigationManager.NavigateTo("/checkout");
+    }
+}

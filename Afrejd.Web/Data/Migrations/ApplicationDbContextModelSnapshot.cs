@@ -95,6 +95,9 @@ namespace Afrejd.Web.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
+                    b.Property<int?>("CartId")
+                        .HasColumnType("int");
+
                     b.Property<int>("ProductId")
                         .HasColumnType("int");
 
@@ -103,6 +106,10 @@ namespace Afrejd.Web.Migrations
                         .HasColumnType("nvarchar(450)");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("CartId");
+
+                    b.HasIndex("ProductId");
 
                     b.HasIndex("UserId");
 
@@ -221,8 +228,15 @@ namespace Afrejd.Web.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
+                    b.Property<string>("CustomerInfoId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<DateTime>("OrderDate")
                         .HasColumnType("datetime2");
+
+                    b.Property<int>("OrderDetailsId")
+                        .HasColumnType("int");
 
                     b.Property<int>("Ordernumber")
                         .HasColumnType("int");
@@ -242,6 +256,9 @@ namespace Afrejd.Web.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("OrderDetailsId")
+                        .IsUnique();
+
                     b.HasIndex("ProductId");
 
                     b.HasIndex("UserId");
@@ -257,15 +274,10 @@ namespace Afrejd.Web.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int>("OrderId")
-                        .HasColumnType("int");
-
                     b.Property<int>("ProductId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("OrderId");
 
                     b.HasIndex("ProductId");
 
@@ -480,11 +492,23 @@ namespace Afrejd.Web.Migrations
 
             modelBuilder.Entity("Afrejd.Web.Data.Models.Cart", b =>
                 {
+                    b.HasOne("Afrejd.Web.Data.Models.Cart", null)
+                        .WithMany("CartItems")
+                        .HasForeignKey("CartId");
+
+                    b.HasOne("Afrejd.Web.Data.Models.Product", "CartProduct")
+                        .WithMany()
+                        .HasForeignKey("ProductId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("Afrejd.Web.Data.ApplicationUser", "User")
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("CartProduct");
 
                     b.Navigation("User");
                 });
@@ -524,6 +548,12 @@ namespace Afrejd.Web.Migrations
 
             modelBuilder.Entity("Afrejd.Web.Data.Models.Order", b =>
                 {
+                    b.HasOne("Afrejd.Web.Data.Models.OrderDetails", null)
+                        .WithOne("Order")
+                        .HasForeignKey("Afrejd.Web.Data.Models.Order", "OrderDetailsId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("Afrejd.Web.Data.Models.Product", "Product")
                         .WithMany()
                         .HasForeignKey("ProductId")
@@ -543,19 +573,11 @@ namespace Afrejd.Web.Migrations
 
             modelBuilder.Entity("Afrejd.Web.Data.Models.OrderDetails", b =>
                 {
-                    b.HasOne("Afrejd.Web.Data.Models.Order", "Order")
-                        .WithMany()
-                        .HasForeignKey("OrderId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.HasOne("Afrejd.Web.Data.Models.Product", "Product")
                         .WithMany("OrderDetails")
                         .HasForeignKey("ProductId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.Navigation("Order");
 
                     b.Navigation("Product");
                 });
@@ -640,6 +662,17 @@ namespace Afrejd.Web.Migrations
             modelBuilder.Entity("Afrejd.Web.Data.ApplicationUser", b =>
                 {
                     b.Navigation("Roles");
+                });
+
+            modelBuilder.Entity("Afrejd.Web.Data.Models.Cart", b =>
+                {
+                    b.Navigation("CartItems");
+                });
+
+            modelBuilder.Entity("Afrejd.Web.Data.Models.OrderDetails", b =>
+                {
+                    b.Navigation("Order")
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("Afrejd.Web.Data.Models.Product", b =>
