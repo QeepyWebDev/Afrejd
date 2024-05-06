@@ -1,0 +1,108 @@
+﻿@page "/checkout"
+@using Afrejd.Web.Data.Models
+@using Afrejd.Web.Data.Interfaces
+@using System.Security.Claims
+@inject ICartService CartService
+@inject IOrderService OrderService
+@inject NavigationManager navigationManager
+@rendermode InteractiveServer
+@inject Microsoft.AspNetCore.Http.IHttpContextAccessor httpContextAccessor
+
+@if (CartItems != null)
+{
+    <div class="row">
+        <div class="col-md-2">
+            <h3>Orderöversikt</h3>
+            @foreach (var cartItem in CartItems)
+            {
+                <div class="card">
+                    <div class="card-body">
+                        <p class="card-text">@cartItem.CartProduct.Name</p>
+                    </div>
+                </div>
+            }
+        </div>
+
+        <div class="col-md-6">
+            <h3>Fyll i orderinformation</h3>
+            <form @onsubmit="PlaceOrder">
+                <div class="form-group">
+
+                    <label for="name">Förnamn:</label>
+                    <input type="text" class="form-control" id="name" @bind="customerInfo.Name">
+                    <br />
+
+                    <label for="shippingAdress">Gata:</label>
+                    <input type="text" class="form-control" id="shippingAdress" @bind="customerInfo.Address">
+                    <br />
+
+                    <label for="city">Stad:</label>
+                    <input type="text" class="form-control" id="city" @bind="customerInfo.City">
+                    <br />
+
+                    <label for="region">Län:</label>
+                    <input type="text" class="form-control" id="region" @bind="customerInfo.Region">
+                    <br />
+
+                    <label for="postalCode">Postnummer:</label>
+                    <input type="text" class="form-control" id="postalCode" @bind="customerInfo.PostalCode">
+                    <br />
+
+                    <label for="country">Land:</label>
+                    <select class="form-control" id="country" @bind="customerInfo.Country">
+                        <option value="Sweden">Sverige</option>
+                        <option value="Norway">Norge</option>
+                        <option value="Denmark">Danmark</option>
+                    </select>
+
+                    <label for="phoneNumber">Telefonnummer:</label>
+                    <input type="text" class="form-control" id="phoneNumber" @bind="customerInfo.Phone">
+                    <br />
+
+                    <label for="company">Företag:</label>
+                    <input type="text" class="form-control" id="company" @bind="customerInfo.Company">
+                    <br />
+                    <br />
+                    <br />
+                    <br />
+                </div>
+
+                <button type="submit" class="btn btn-primary">Lägg Beställning</button>
+            </form>
+        </div>
+    </div>
+}
+else
+{
+    <h1>Kassa</h1>
+    <p>Inga produkter hittades.</p>
+}
+
+@code {
+    private List<Cart> CartItems;
+    private string userId;
+    private Order order = new Order();
+    private CustomerInfo customerInfo = new CustomerInfo();
+
+    protected override async Task OnInitializedAsync()
+    {
+        userId = httpContextAccessor.HttpContext.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+        if (userId != null)
+        {
+            CartItems = await CartService.GetUserCartItems(userId);
+        }
+    }
+
+    private async Task PlaceOrder()
+    {
+        try
+        {
+            await OrderService.PlaceOrder(customerInfo, userId, CartItems);
+            navigationManager.NavigateTo("/order");
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error placing order: {ex.Message}");
+        }
+    }
+}

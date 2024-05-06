@@ -1,7 +1,101 @@
 ﻿@page "/services"
 
-<h3>Services</h3>
+@rendermode InteractiveServer
+@inject NavigationManager navigationManager
+
+<div class="video-background">
+	<video autoplay loop muted>
+		<source src="/Images/stockvideo1.mp4" type="video/mp4">
+		Your browser does not support the video tag.
+	</video>
+	<div class="text-content">
+		<h1>Vi är specialister inom logistik och inköp</h1>
+		<p>Våra konsulter är specialister på inköp och frakttjänster. Tillsammans granskar vi din nuvarande lösning och utformar en plan för att förbättra ert logistikflöde.</p>
+	</div>
+</div>
+
+<nav class="navbar d-flex flex-sm-row justify-content-sm-center">
+	<NavLink class="navbar-brand" href="#!">Link 1</NavLink>
+	<NavLink class="navbar-brand" href="#!">Link 2</NavLink>
+	<NavLink class="navbar-brand" href="#!">Link 3</NavLink>
+	<NavLink class="navbar-brand" href="#!">Link 4</NavLink>
+	<div class="d-flex flex-row">
+		<input class="form-control mr-sm-2" type="text" placeholder="Search">
+		<button class="btn btn-dark my-2 my-sm-0" type="submit">Search</button>
+	</div>
+</nav>
+
+<article>
+	<div class="d-flex flex-sm-column">
+		<div class="d-flex flex-row align-items-center">
+			<img src="/Images/stock1.jpg"/>
+				<div class="d-flex flex-sm-column">
+				<h2>Lorem ipsum</h2>
+					<p style="margin-left: 2em;">
+						Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis ornare pretium aliquam. Vestibulum pharetra porttitor mi vitae suscipit.
+						Vestibulum cursus ligula malesuada, tincidunt orci a, sollicitudin tortor. Vivamus consequat est vel turpis molestie, iaculis luctus purus hendrerit.
+						Phasellus lobortis nunc id ornare ultrices. Aliquam vel volutpat turpis. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam vestibulum in dolor quis mollis.
+						Interdum et malesuada fames ac ante ipsum primis in faucibus. Phasellus vel sodales velit. Sed elementum lorem tempus nibh pellentesque, nec venenatis nulla placerat.
+						Fusce consequat elit eget magna posuere fermentum. Nam a consectetur nulla, ac cursus ligula. Ut vitae lectus odio. Sed quis mi felis.
+						Aliquam scelerisque, arcu porta malesuada vulputate, lectus justo commodo libero, tincidunt scelerisque augue urna eu felis.
+					</p>
+				<button class="btn btn-dark" @onclick="GoToService">Läs mer</button>
+				</div>
+		</div>
+
+		<div class="d-flex flex-row align-items-center my-3">
+			<img src="/Images/stock2.jpg"/>
+				<div class="d-flex flex-sm-column">
+				<h2>Lorem ipsum</h2>
+					<p style="margin-left: 2em;">
+						Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis ornare pretium aliquam. Vestibulum pharetra porttitor mi vitae suscipit.
+						Vestibulum cursus ligula malesuada, tincidunt orci a, sollicitudin tortor. Vivamus consequat est vel turpis molestie, iaculis luctus purus hendrerit.
+						Phasellus lobortis nunc id ornare ultrices. Aliquam vel volutpat turpis. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam vestibulum in dolor quis mollis.
+						Interdum et malesuada fames ac ante ipsum primis in faucibus. Phasellus vel sodales velit. Sed elementum lorem tempus nibh pellentesque, nec venenatis nulla placerat.
+						Fusce consequat elit eget magna posuere fermentum. Nam a consectetur nulla, ac cursus ligula. Ut vitae lectus odio. Sed quis mi felis.
+						Aliquam scelerisque, arcu porta malesuada vulputate, lectus justo commodo libero, tincidunt scelerisque augue urna eu felis.
+					</p>
+					<button class="btn btn-dark">Läs mer</button>
+				</div>
+		</div>
+
+		<div class="d-flex flex-row align-items-center">
+			<img src="/Images/stock3.jpg"/>
+				<div class="d-flex flex-sm-column">
+				<h2>Lorem ipsum</h2>
+					<p style="margin-left: 2em;">
+						Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis ornare pretium aliquam. Vestibulum pharetra porttitor mi vitae suscipit.
+						Vestibulum cursus ligula malesuada, tincidunt orci a, sollicitudin tortor. Vivamus consequat est vel turpis molestie, iaculis luctus purus hendrerit.
+						Phasellus lobortis nunc id ornare ultrices. Aliquam vel volutpat turpis. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam vestibulum in dolor quis mollis.
+						Interdum et malesuada fames ac ante ipsum primis in faucibus. Phasellus vel sodales velit. Sed elementum lorem tempus nibh pellentesque, nec venenatis nulla placerat.
+						Fusce consequat elit eget magna posuere fermentum. Nam a consectetur nulla, ac cursus ligula. Ut vitae lectus odio. Sed quis mi felis.
+						Aliquam scelerisque, arcu porta malesuada vulputate, lectus justo commodo libero, tincidunt scelerisque augue urna eu felis.
+					</p>
+					<button class="btn btn-dark">Läs mer</button>
+				</div>
+		</div>
+
+		<div class="d-flex flex-row align-items-center my-3">
+			<img src="/Images/stock4.jpg"/>
+				<div class="d-flex flex-sm-column">
+				<h2>Lorem ipsum</h2>
+					<p style="margin-left: 2em;">
+						Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis ornare pretium aliquam. Vestibulum pharetra porttitor mi vitae suscipit.
+						Vestibulum cursus ligula malesuada, tincidunt orci a, sollicitudin tortor. Vivamus consequat est vel turpis molestie, iaculis luctus purus hendrerit.
+						Phasellus lobortis nunc id ornare ultrices. Aliquam vel volutpat turpis. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam vestibulum in dolor quis mollis.
+						Interdum et malesuada fames ac ante ipsum primis in faucibus. Phasellus vel sodales velit. Sed elementum lorem tempus nibh pellentesque, nec venenatis nulla placerat.
+						Fusce consequat elit eget magna posuere fermentum. Nam a consectetur nulla, ac cursus ligula. Ut vitae lectus odio. Sed quis mi felis.
+						Aliquam scelerisque, arcu porta malesuada vulputate, lectus justo commodo libero, tincidunt scelerisque augue urna eu felis.
+					</p>
+					<button class="btn btn-dark">Läs mer</button>
+				</div>
+		</div>
+	</div>
+</article>
 
 @code {
-
+	private void GoToService()
+	{
+		navigationManager.NavigateTo("/TestService");
+	}
 }
