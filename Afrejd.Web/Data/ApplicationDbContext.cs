@@ -24,6 +24,23 @@ namespace Afrejd.Web.Data
 
             modelBuilder.Entity<IdentityUserLogin<string>>()
                 .HasKey(l => new { l.LoginProvider, l.ProviderKey });
+
+            modelBuilder.Entity<CustomerInfo>()
+                .HasOne(c => c.User)
+                .WithMany(u => u.CustomerInfo)
+                .HasForeignKey(c => c.UserId);
+
+            modelBuilder.Entity<ApplicationUser>()
+                .HasMany(u => u.Orders)
+                .WithOne(o => o.User)
+                .HasForeignKey(o => o.UserId)
+                .IsRequired();
+
+            modelBuilder.Entity<Order>()
+                .HasOne(o => o.CustomerInfo)
+                .WithMany(ci => ci.Orders)
+                .HasForeignKey(o => o.CustomerInfoId)
+                .IsRequired();
         }
     }
 }

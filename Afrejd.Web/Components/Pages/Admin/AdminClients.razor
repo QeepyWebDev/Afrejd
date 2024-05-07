@@ -1,5 +1,94 @@
 ﻿@page "/Clients"
 
-@code {
+@using Afrejd.Web.Components.Layout
+@using Afrejd.Web.Data
+@using Afrejd.Web.Data.Interfaces
+@using Afrejd.Web.Data.Models
+@using System.Collections.Generic
+@inject IUserService UserService
+@rendermode InteractiveServer
+@layout AdminMenu
 
+<table class="table">
+    <thead>
+        <tr>
+            <th>Namn</th>
+            <th>Företag</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Customers != null) {
+            @foreach (var customer in Customers)
+            {
+                if (customer.CustomerInfo != null)
+                {
+                    foreach (var customerInfo in customer.CustomerInfo)
+                    {
+                        <tr>
+                            <td>@customerInfo.FirstName @customerInfo.LastName</td>
+                            <td>@customerInfo.Company</td>
+                            <td>
+                                <button class="btn btn-dark" @onclick="() => ToggleCustomerDetails(customer)">Visa mer</button>
+                            </td>
+                        </tr>
+                    }
+                }
+            }
+        }
+        else
+        {
+            <p>Inga kunder hittades.</p>
+        }
+    </tbody>
+</table>
+
+@if (SelectedCustomer != null && SelectedCustomer.CustomerInfo != null && IsDetailsVisible)
+{
+    <div>
+        <h3>Kundinformation</h3>
+        @foreach (var customerInfo in SelectedCustomer.CustomerInfo)
+        {
+            <p><strong>Namn:</strong> @customerInfo.FirstName @customerInfo.LastName</p>
+            <p><strong>Telefonnummer:</strong> @customerInfo.Phone</p>
+            <p><strong>Företag:</strong> @customerInfo.Company</p>
+            <p><strong>Organisationsnummer:</strong> @customerInfo.OrganizationNumber</p>
+            <p><strong>Adress:</strong> @customerInfo.Address</p>
+            <p><strong>Stad:</strong> @customerInfo.City</p>
+            <p><strong>Postnummer:</strong> @customerInfo.PostalCode</p>
+            <p><strong>Län:</strong> @customerInfo.Region</p>
+            <p><strong>Land:</strong> @customerInfo.Country</p>
+            <hr class="hr" />
+        }
+
+        <h3>Ärenden</h3>
+        @if (SelectedCustomer.Orders != null) {
+            @foreach (var order in SelectedCustomer.Orders)
+            {
+                <p><strong>Ärendenummer:</strong> @order.Ordernumber</p>
+                <p><strong>Datum:</strong> @order.OrderDate.ToShortDateString()</p>
+                <p><strong>Status:</strong> @order.Status</p>
+                <p><strong>Prisförslag:</strong> @order.PriceEstimate</p>
+                <hr class="hr" />
+            }
+        }
+    </div>
 }
+
+@code {
+    private ApplicationUser SelectedCustomer;
+    private List<ApplicationUser> Customers;
+    private bool IsDetailsVisible = false;
+
+    protected override async Task OnInitializedAsync()
+    {
+        Customers = await UserService.GetCustomers();
+    }
+
+    private void ToggleCustomerDetails(ApplicationUser customer)
+    {
+        SelectedCustomer = customer;
+        IsDetailsVisible = !IsDetailsVisible;
+    }
+}
+

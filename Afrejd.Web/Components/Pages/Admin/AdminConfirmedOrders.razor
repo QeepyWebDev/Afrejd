@@ -1,5 +1,92 @@
 ﻿@page "/ConfirmedOrders"
 
-@code {
+@using Afrejd.Web.Components.Layout
+@using Afrejd.Web.Data.Models
+@using Afrejd.Web.Data.Interfaces
+@inject IOrderService OrderService
+@inject IJSRuntime JsRuntime
+@rendermode InteractiveServer
+@layout AdminMenu
 
+<table class="table">
+    <thead class="thead-dark">
+        <tr>
+            <th>Ärendenummer</th>
+            <th>Prisförslag</th>
+            <th>Status</th>
+            <th>Ändra Status</th>
+            <th>Åtgärd</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (confirmedOrders != null)
+        {
+            @foreach (var order in confirmedOrders)
+            {
+                <tr>
+                    <td>@order.Ordernumber</td>
+                    <td>@order.PriceEstimate</td>
+                    <td>@order.Status</td>
+                    <td>
+                        <select @bind="@order.Status">
+                            @foreach (var status in Enum.GetValues(typeof(OrderStatus)))
+                            {
+                                <option value="@status">@status</option>
+                            }
+                        </select>
+                    </td>
+                    <td>
+                        <button type="button" class="btn btn-danger btn-sm" @onclick="() => ShowConfirmationDialog(order)">Radera</button>
+                    </td>
+                </tr>
+            }
+        }
+        else
+        {
+            <p>Inga bekräftade ärenden hittades.</p>
+        }
+    </tbody>
+</table>
+
+@code {
+    private List<Order> confirmedOrders;
+
+    protected override async Task OnInitializedAsync()
+    {
+        confirmedOrders = await OrderService.GetConfirmedOrders();
+    }
+
+    public enum OrderStatus
+    {
+        Granskas,
+        Hanteras,
+        Genomfört
+    }
+
+    private async Task ChangeOrderStatus(Order order, string newStatus)
+    {
+        if (Enum.TryParse<Afrejd.Web.Data.Models.Order.OrderStatus>(newStatus, out var status))
+        {
+            await OrderService.ChangeOrderStatus(order.Id, status);
+        }
+        else
+        {
+            Console.WriteLine($"Invalid order status: {newStatus}");
+        }
+    }
+
+    private async Task ShowConfirmationDialog(Order order)
+    {
+        bool confirmed = await JsRuntime.InvokeAsync<bool>("confirm", $"Är du säker på att du vill radera ordern med ordernummer {order.Id}?");
+        if (confirmed)
+        {
+            await DeleteOrder(order);
+        }
+    }
+
+    private async Task DeleteOrder(Order order)
+    {
+        await OrderService.DeleteOrder(order.Id);
+        confirmedOrders.Remove(order);
+    }
 }

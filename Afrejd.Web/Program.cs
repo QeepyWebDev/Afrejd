@@ -24,6 +24,7 @@ builder.Services.AddScoped<HttpClient>();
 builder.Services.AddScoped<IProductService, ProductService>();
 builder.Services.AddScoped<ICartService, CartService>();
 builder.Services.AddScoped<IOrderService, OrderService>();
+builder.Services.AddScoped<IUserService, UserService>();
 
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection") ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
@@ -58,9 +59,9 @@ app.UseHttpsRedirection();
 
 app.UseStaticFiles();
 
-app.UseAntiforgery();
-
 app.UseAuthentication(); // Add authentication middleware
+
+app.UseAntiforgery();
 
 app.UseAuthorization(); // Add authorization middleware
 

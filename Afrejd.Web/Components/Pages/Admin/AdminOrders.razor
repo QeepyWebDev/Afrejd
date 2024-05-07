@@ -1,57 +1,88 @@
 ﻿@page "/ViewOrders"
 
+@using Afrejd.Web.Components.Layout
 @using Afrejd.Web.Data.Models
 @using Afrejd.Web.Data.Interfaces
 @inject IOrderService OrderService
 @inject IJSRuntime JsRuntime
+@rendermode InteractiveServer
+@layout AdminMenu
 
-<table class="table">
-    <thead class="thead-dark">
-        <tr>
-            <th>Order ID</th>
-            <th>Ordernummer</th>
-            <th>Prisförslag</th>
-            <th>Status</th>
-            <th> </th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var order in orders)
-        {
+<div>
+    @if (!string.IsNullOrEmpty(ConfirmOrderMessage))
+    {
+        <div class="alert alert-success" role="alert">
+            @ConfirmOrderMessage
+        </div>
+    }
+</div>
+
+<div>
+    @if (!string.IsNullOrEmpty(UpdatePriceMessage))
+    {
+        <div class="alert alert-success" role="alert">
+            @UpdatePriceMessage
+        </div>
+    }
+</div>
+
+    <table class="table">
+        <thead class="thead-dark">
             <tr>
-                <td>@order.Id</td>
-                <td>@order.Ordernumber</td>
-                <td>@order.PriceEstimate</td>
-                <td>@order.Status</td>
-                <td>
-                    <select @bind="@order.Status">
-                        @foreach (var status in Enum.GetValues(typeof(OrderStatus)))
-                        {
-                            <option value="@status">@status</option>
-                        }
-                    </select>
-                </td>
-                <td>
-                    <button type="button" class="btn btn-danger btn-sm" @onclick="() => ShowConfirmationDialog(order)">Radera</button>
-                </td>
+                <th>Ärendenummer</th>
+                <th>Prisförslag</th>
+                <th>Status</th>
+                <th>Ändra Status</th>
+                <th>Åtgärd</th>
             </tr>
+        </thead>
+        <tbody>
+        @if (orders != null)
+        {
+            @foreach (var order in orders)
+            {
+                <tr>
+                    <td>@order.Ordernumber</td>
+                    <td><input type="number" @bind="@order.PriceEstimate" /></td>
+                    <td>@order.Status</td>
+                    <td>
+                        <select @bind="@order.Status">
+                            @foreach (var status in Enum.GetValues(typeof(OrderStatus)))
+                            {
+                                <option value="@status">@status</option>
+                            }
+                        </select>
+                    </td>
+                    <td>
+                        <button type="button" class="btn btn-danger btn-sm" @onclick="() => ShowConfirmationDialog(order)">Radera</button>
+                        <button type="button" class="btn btn-dark btn-sm" @onclick="() => ChangeOrderPriceEstimate(order)">Uppdatera Prisförslag</button>
+                        <button type="button" class="btn btn-success btn-sm" @onclick="() => ConfirmOrder(order)">Bekräfta Ärende</button>
+                    </td>
+                </tr>
+            }
+        }
+        else
+        {
+            <p>Inga ärenden hittades.</p>
         }
     </tbody>
-</table>
+    </table>
 
 @code {
     private List<Order> orders;
+    private string ConfirmOrderMessage;
+    private string UpdatePriceMessage;
 
-    protected override void OnInitialized()
+    protected override async Task OnInitializedAsync()
     {
-        orders = OrderService.GetAllOrders();
+        orders = await OrderService.GetAllOrders();
     }
 
     public enum OrderStatus
     {
+        Granskas,
         Hanteras,
-        Packas,
-        Skickad
+        Genomfört
     }
 
     private async Task ChangeOrderStatus(Order order, string newStatus)
@@ -79,5 +110,18 @@
     {
         await OrderService.DeleteOrder(order.Id);
         orders.Remove(order);
+    }
+
+    private async Task ConfirmOrder(Order order)
+    {
+        await OrderService.ConfirmOrder(order.Id);
+        orders.Remove(order);
+        ConfirmOrderMessage = "Ärende med nummer " + order.Ordernumber + " har bekräftats!";
+    }
+
+    private async Task ChangeOrderPriceEstimate(Order order)
+    {
+        await OrderService.UpdatePriceEstimate(order.Id, order.PriceEstimate);
+        UpdatePriceMessage = "Prisförslag för ärende med nummer " + order.Ordernumber + " har uppdaterats till " + order.PriceEstimate + " kronor.";
     }
 }

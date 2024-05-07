@@ -13,15 +13,13 @@ namespace Afrejd.Web.Data.Services
             Context = context;
         }
 
-        public List<Order> GetAllOrders()
+        public async Task <List<Order>> GetAllOrders()
         {
             try
             {
-                var query = Context.Orders;
-                var sql = query.ToQueryString();
-                System.Diagnostics.Debug.WriteLine(sql);
-
-                return query.ToList();
+                return await Context.Orders
+                    .Where(o => !o.OrderConfirmed)
+                    .ToListAsync();
             }
             catch (Exception ex)
             {
@@ -71,52 +69,54 @@ namespace Afrejd.Web.Data.Services
             }
         }
 
-        public async Task PlaceOrder(CustomerInfo customerInfo, string userId, List<Cart> CartItems)
+        public async Task PlaceOrder(CustomerInfo customerInfo, string userId, List<Cart> cartItems)
         {
-            foreach (var cartItem in CartItems)
+            List<OrderDetails> orderDetailsList = new List<OrderDetails>();
+
+            foreach (var cartItem in cartItems)
             {
                 var orderDetail = new OrderDetails
                 {
-                    ProductId = 4
+                    ProductId = cartItem.ProductId
                 };
 
-                Context.OrderDetails.Add(orderDetail);
+                orderDetailsList.Add(orderDetail);
             }
 
-            await Context.SaveChangesAsync();
-
-            var existingCustomerInfo = await Context.CustomerInfo.FirstOrDefaultAsync(ci => ci.UserId == customerInfo.UserId);
-            if (existingCustomerInfo != null)
-            {
-                existingCustomerInfo.Name = customerInfo.Name;
-            }
-            else
+            if (customerInfo.Id == 0)
             {
                 customerInfo.UserId = userId;
-                Context.CustomerInfo.Add(customerInfo);
-            }
+                var existingCustomerInfo = await Context.CustomerInfo
+                    .FirstOrDefaultAsync(ci => ci.UserId == userId);
 
-            await Context.SaveChangesAsync();
+                if (existingCustomerInfo != null)
+                {
+                    customerInfo = existingCustomerInfo;
+                }
+                else
+                {
+                    Context.CustomerInfo.Add(customerInfo);
+                    await Context.SaveChangesAsync();
+                }
+            }
 
             var order = new Order
             {
                 Ordernumber = GenerateOrderNumber(),
                 PriceEstimate = 0,
                 OrderDate = DateTime.Now,
+                CustomerInfoId = customerInfo.Id,
                 UserId = userId,
-                CustomerInfoId = userId
+
+                OrderDetails = orderDetailsList
             };
 
             Context.Orders.Add(order);
+
             await Context.SaveChangesAsync();
 
-
             var userCartItems = await Context.Carts.Where(ci => ci.UserId == userId).ToListAsync();
-
-            foreach (var cartItem in userCartItems)
-            {
-                Context.Carts.Remove(cartItem);
-            }
+            Context.Carts.RemoveRange(userCartItems);
 
             await Context.SaveChangesAsync();
         }
@@ -127,5 +127,38 @@ namespace Afrejd.Web.Data.Services
             return random.Next(100000, 999999);
         }
 
+        public async Task ConfirmOrder(int orderId)
+        {
+            var order = await Context.Orders.FindAsync(orderId);
+            if (order != null)
+            {
+                order.OrderConfirmed = true;
+                await Context.SaveChangesAsync();
+            }
+        }
+
+        public async Task<List<Order>> GetConfirmedOrders()
+        {
+            try
+            {
+                return await Context.Orders
+                    .Where(o => o.OrderConfirmed)
+                    .ToListAsync();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"An error occurred while fetching orders: {ex.Message}");
+                return null;
+            }
+        }
+        public async Task UpdatePriceEstimate(int orderId, decimal? newPriceEstimate)
+        {
+            var order = await Context.Orders.FindAsync(orderId);
+            if (order != null && newPriceEstimate.HasValue)
+            {
+                order.PriceEstimate = newPriceEstimate.Value;
+                await Context.SaveChangesAsync();
+            }
+        }
     }
 }

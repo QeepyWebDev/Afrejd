@@ -6,15 +6,15 @@
         public int Ordernumber { get; set; }
         public decimal ? PriceEstimate { get; set; }
         public DateTime OrderDate { get; set; } = DateTime.Now;
-        public OrderStatus Status { get; set; }
+        public OrderStatus Status { get; set; } = OrderStatus.Granskas;
         public string UserId { get; set; }
-        public int OrderDetailsId { get; set; }
-        public string CustomerInfoId { get; set; }
+        public int CustomerInfoId { get; set; }
+        public bool OrderConfirmed { get; set; } = false;
 
         public ApplicationUser User { get; set; }
-        public Product Product { get; set; }
+        public CustomerInfo CustomerInfo { get; set; }
 
-        public ICollection<OrderDetails> OrderDetails;
+        public ICollection<OrderDetails> OrderDetails { get; set; }
 
 
 

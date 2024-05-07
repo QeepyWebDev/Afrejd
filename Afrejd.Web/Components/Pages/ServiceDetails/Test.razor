@@ -31,7 +31,7 @@
         {
             var userId = await CartService.GetUserId();
             await CartService.AddItemToCart(ProductId, userId); 
-            SuccessMessage = "Produkten har lagts till i varukorgen!";
+            SuccessMessage = "Tjänsten har lagts till i varukorgen!";
         }
         catch (ArgumentException ex)
         {

@@ -4,6 +4,7 @@ using Afrejd.Web.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Afrejd.Web.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240507082341_AddOrderIdColumn")]
+    partial class AddOrderIdColumn
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -113,7 +116,7 @@ namespace Afrejd.Web.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Carts", (string)null);
+                    b.ToTable("Carts");
                 });
 
             modelBuilder.Entity("Afrejd.Web.Data.Models.ConfirmedOrder", b =>
@@ -134,7 +137,7 @@ namespace Afrejd.Web.Migrations
 
                     b.HasIndex("OrderId");
 
-                    b.ToTable("ConfirmedOrders", (string)null);
+                    b.ToTable("ConfirmedOrders");
                 });
 
             modelBuilder.Entity("Afrejd.Web.Data.Models.CustomerInfo", b =>
@@ -161,15 +164,7 @@ namespace Afrejd.Web.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("FirstName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("LastName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("OrganizationNumber")
+                    b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -191,7 +186,7 @@ namespace Afrejd.Web.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("CustomerInfo", (string)null);
+                    b.ToTable("CustomerInfo");
                 });
 
             modelBuilder.Entity("Afrejd.Web.Data.Models.Documents", b =>
@@ -225,7 +220,7 @@ namespace Afrejd.Web.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Documents", (string)null);
+                    b.ToTable("Documents");
                 });
 
             modelBuilder.Entity("Afrejd.Web.Data.Models.Order", b =>
@@ -244,6 +239,9 @@ namespace Afrejd.Web.Migrations
 
                     b.Property<DateTime>("OrderDate")
                         .HasColumnType("datetime2");
+
+                    b.Property<int>("OrderDetailsId")
+                        .HasColumnType("int");
 
                     b.Property<int>("Ordernumber")
                         .HasColumnType("int");
@@ -264,7 +262,7 @@ namespace Afrejd.Web.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Orders", (string)null);
+                    b.ToTable("Orders");
                 });
 
             modelBuilder.Entity("Afrejd.Web.Data.Models.OrderDetails", b =>
@@ -287,7 +285,7 @@ namespace Afrejd.Web.Migrations
 
                     b.HasIndex("ProductId");
 
-                    b.ToTable("OrderDetails", (string)null);
+                    b.ToTable("OrderDetails");
                 });
 
             modelBuilder.Entity("Afrejd.Web.Data.Models.Product", b =>
@@ -309,7 +307,7 @@ namespace Afrejd.Web.Migrations
 
                     b.HasIndex("CategoryId");
 
-                    b.ToTable("Products", (string)null);
+                    b.ToTable("Products");
                 });
 
             modelBuilder.Entity("Afrejd.Web.Data.Models.ProductCategory", b =>
@@ -326,7 +324,7 @@ namespace Afrejd.Web.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("ProductCategories", (string)null);
+                    b.ToTable("ProductCategories");
                 });
 
             modelBuilder.Entity("Afrejd.Web.Data.Models.Review", b =>
@@ -355,7 +353,7 @@ namespace Afrejd.Web.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Reviews", (string)null);
+                    b.ToTable("Reviews");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
