@@ -2,6 +2,7 @@
 
 @rendermode InteractiveServer
 @inject NavigationManager navigationManager
+@using Afrejd.Web.Data.Models
 
 <div class="video-background">
 	<video autoplay loop muted>
@@ -9,8 +10,9 @@
 		Your browser does not support the video tag.
 	</video>
 	<div class="text-content">
-		<h1>Vi är specialister inom logistik och inköp</h1>
-		<p>Våra konsulter är specialister på inköp och frakttjänster. Tillsammans granskar vi din nuvarande lösning och utformar en plan för att förbättra ert logistikflöde.</p>
+		<h1>Våra tjänster</h1>
+		<p>Upptäck Afrejd — ett teknik- och logistikföretag som hjälper dig att driva lönsamhet, tillväxt och hållbara lösningar. 
+			Vi förenklar och effektiviserar det komplicerade och levererar 360-graders sömlös logistikglädje för våra kunder.</p>
 	</div>
 </div>
 
@@ -19,83 +21,210 @@
 	<NavLink class="navbar-brand" href="#!">Link 2</NavLink>
 	<NavLink class="navbar-brand" href="#!">Link 3</NavLink>
 	<NavLink class="navbar-brand" href="#!">Link 4</NavLink>
-	<div class="d-flex flex-row">
-		<input class="form-control mr-sm-2" type="text" placeholder="Search">
-		<button class="btn btn-dark my-2 my-sm-0" type="submit">Search</button>
-	</div>
 </nav>
 
 <article>
-	<div class="d-flex flex-sm-column">
-		<div class="d-flex flex-row align-items-center">
-			<img src="/Images/stock1.jpg"/>
+	<div id="serviceList" class="list-container">
+		<div class="list-item">
+			<div class="d-flex flex-row align-items-center">
+				<img src="/Images/stock1.jpg" />
 				<div class="d-flex flex-sm-column">
-				<h2>Lorem ipsum</h2>
+					<h2>Rådgivning & Försäljning</h2>
 					<p style="margin-left: 2em;">
-						Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis ornare pretium aliquam. Vestibulum pharetra porttitor mi vitae suscipit.
-						Vestibulum cursus ligula malesuada, tincidunt orci a, sollicitudin tortor. Vivamus consequat est vel turpis molestie, iaculis luctus purus hendrerit.
-						Phasellus lobortis nunc id ornare ultrices. Aliquam vel volutpat turpis. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam vestibulum in dolor quis mollis.
-						Interdum et malesuada fames ac ante ipsum primis in faucibus. Phasellus vel sodales velit. Sed elementum lorem tempus nibh pellentesque, nec venenatis nulla placerat.
-						Fusce consequat elit eget magna posuere fermentum. Nam a consectetur nulla, ac cursus ligula. Ut vitae lectus odio. Sed quis mi felis.
-						Aliquam scelerisque, arcu porta malesuada vulputate, lectus justo commodo libero, tincidunt scelerisque augue urna eu felis.
+						Vissa logistikföretag nöjer sig med att vara den föredragna leverantören av varuförpackning, lagring eller distribution —
+						vi vill vara en solid strategisk partner som hjälper till att driva utveckling, tillväxt och lönsamhet för våra kunder.
 					</p>
-				<button class="btn btn-dark" @onclick="GoToService">Läs mer</button>
+					<button class="btn btn-dark">
+						<NavLink href="/Rådgivning&Försäljning" class="nav-link">
+							<span style="text-decoration: none; color: white;">Läs mer</span>
+						</NavLink>
+					</button>
 				</div>
+			</div>
 		</div>
 
-		<div class="d-flex flex-row align-items-center my-3">
-			<img src="/Images/stock2.jpg"/>
+		<div class="list-item">
+			<div class="d-flex flex-row align-items-center my-3">
+				<img src="/Images/stock2.jpg" />
 				<div class="d-flex flex-sm-column">
-				<h2>Lorem ipsum</h2>
+					<h2>Varulager</h2>
 					<p style="margin-left: 2em;">
-						Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis ornare pretium aliquam. Vestibulum pharetra porttitor mi vitae suscipit.
-						Vestibulum cursus ligula malesuada, tincidunt orci a, sollicitudin tortor. Vivamus consequat est vel turpis molestie, iaculis luctus purus hendrerit.
-						Phasellus lobortis nunc id ornare ultrices. Aliquam vel volutpat turpis. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam vestibulum in dolor quis mollis.
-						Interdum et malesuada fames ac ante ipsum primis in faucibus. Phasellus vel sodales velit. Sed elementum lorem tempus nibh pellentesque, nec venenatis nulla placerat.
-						Fusce consequat elit eget magna posuere fermentum. Nam a consectetur nulla, ac cursus ligula. Ut vitae lectus odio. Sed quis mi felis.
-						Aliquam scelerisque, arcu porta malesuada vulputate, lectus justo commodo libero, tincidunt scelerisque augue urna eu felis.
+						Du kan spara stora kostnader relaterade till lagerutrymme, system, maskiner, personal och transport genom att lägga varorna till oss som din 3PL-partner.
+						Afrejd är ett 360-graders logistikhus — med allt du behöver på ett ställe.
 					</p>
-					<button class="btn btn-dark">Läs mer</button>
+					<button class="btn btn-dark">
+						<NavLink href="/Varulager" class="nav-link">
+							<span style="text-decoration: none; color: white;">Läs mer</span>
+						</NavLink>
+					</button>
 				</div>
+			</div>
 		</div>
 
-		<div class="d-flex flex-row align-items-center">
-			<img src="/Images/stock3.jpg"/>
+		<div class="list-item">
+			<div class="d-flex flex-row align-items-center">
+				<img src="/Images/stock3.jpg" />
 				<div class="d-flex flex-sm-column">
-				<h2>Lorem ipsum</h2>
+					<h2>IT & Tech</h2>
 					<p style="margin-left: 2em;">
-						Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis ornare pretium aliquam. Vestibulum pharetra porttitor mi vitae suscipit.
-						Vestibulum cursus ligula malesuada, tincidunt orci a, sollicitudin tortor. Vivamus consequat est vel turpis molestie, iaculis luctus purus hendrerit.
-						Phasellus lobortis nunc id ornare ultrices. Aliquam vel volutpat turpis. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam vestibulum in dolor quis mollis.
-						Interdum et malesuada fames ac ante ipsum primis in faucibus. Phasellus vel sodales velit. Sed elementum lorem tempus nibh pellentesque, nec venenatis nulla placerat.
-						Fusce consequat elit eget magna posuere fermentum. Nam a consectetur nulla, ac cursus ligula. Ut vitae lectus odio. Sed quis mi felis.
-						Aliquam scelerisque, arcu porta malesuada vulputate, lectus justo commodo libero, tincidunt scelerisque augue urna eu felis.
+						Afrejd är ett IT- och logistikhus med egna teknikavdelningar som skräddarsyr e-handelslösningar —
+						givetvis med integrationer med de allra flesta plattformar, olika beställningssystem och betalningsleverantörer. Låt oss hjälpa dig med smarta lösningar.
 					</p>
-					<button class="btn btn-dark">Läs mer</button>
+					<button class="btn btn-dark">
+						<NavLink href="/IT&Tech" class="nav-link">
+							<span style="text-decoration: none; color: white;">Läs mer</span>
+						</NavLink>
+					</button>
 				</div>
+			</div>
 		</div>
 
-		<div class="d-flex flex-row align-items-center my-3">
-			<img src="/Images/stock4.jpg"/>
+		<div class="list-item">
+			<div class="d-flex flex-row align-items-center my-3">
+				<img src="/Images/stock4.jpg" />
 				<div class="d-flex flex-sm-column">
-				<h2>Lorem ipsum</h2>
+					<h2>Webbutik och prenumeration</h2>
 					<p style="margin-left: 2em;">
-						Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis ornare pretium aliquam. Vestibulum pharetra porttitor mi vitae suscipit.
-						Vestibulum cursus ligula malesuada, tincidunt orci a, sollicitudin tortor. Vivamus consequat est vel turpis molestie, iaculis luctus purus hendrerit.
-						Phasellus lobortis nunc id ornare ultrices. Aliquam vel volutpat turpis. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam vestibulum in dolor quis mollis.
-						Interdum et malesuada fames ac ante ipsum primis in faucibus. Phasellus vel sodales velit. Sed elementum lorem tempus nibh pellentesque, nec venenatis nulla placerat.
-						Fusce consequat elit eget magna posuere fermentum. Nam a consectetur nulla, ac cursus ligula. Ut vitae lectus odio. Sed quis mi felis.
-						Aliquam scelerisque, arcu porta malesuada vulputate, lectus justo commodo libero, tincidunt scelerisque augue urna eu felis.
+						Afrejd har lång erfarenhet av onlinebutiker och prenumerationslösningar. Låt oss hjälpa dig att uppgradera din befintliga webbutik eller prenumerationslösning,
+						eller bygga en helt ny så att du är utrustad för morgondagens e-handel och prenumerationer.
 					</p>
-					<button class="btn btn-dark">Läs mer</button>
+					<button class="btn btn-dark">
+						<NavLink href="/Webbutik&Prenumeration" class="nav-link">
+							<span style="text-decoration: none; color: white;">Läs mer</span>
+						</NavLink>
+					</button>
 				</div>
+			</div>
+		</div>
+
+		<div class="list-item">
+			<div class="d-flex flex-row align-items-center my-3">
+				<img src="/Images/stock5.jpg" />
+				<div class="d-flex flex-sm-column">
+					<h2>Förpackning av varor</h2>
+					<p style="margin-left: 2em;">
+						Afrejd är en av Nordens största privata aktörer inom området för varor och reklamförpackningar för onlinebutiker och detaljhandelskedjor.
+						Vi erbjuder toppmodern utrustning och system som hjälper varumärken att driva lönsamhet och tillväxt.
+					</p>
+					<button class="btn btn-dark">
+						<NavLink href="/Förpackning" class="nav-link">
+							<span style="text-decoration: none; color: white;">Läs mer</span>
+						</NavLink>
+					</button>
+				</div>
+			</div>
+		</div>
+
+		<div class="list-item">
+			<div class="d-flex flex-row align-items-center my-3">
+				<img src="/Images/stock6.jpg" />
+				<div class="d-flex flex-sm-column">
+					<h2>Lagerhanterings-system</h2>
+					<p style="margin-left: 2em;">
+						Ett bra lagerhanteringssystem är absolut nödvändigt för att ha full kontroll över den dagliga verksamheten och för att skapa lönsamhet och tillväxt.
+						Vi tror att vi har det bästa systemet i Norden, och kanske Europa, — skräddarsytt för dig med höga logistikkrav.
+					</p>
+					<button class="btn btn-dark">
+						<NavLink href="/Lagerhanterings-system" class="nav-link">
+							<span style="text-decoration: none; color: white;">Läs mer</span>
+						</NavLink>
+					</button>
+				</div>
+			</div>
+		</div>
+
+		<div class="list-item">
+			<div class="d-flex flex-row align-items-center my-3">
+				<img src="/Images/stock7.jpeg" />
+				<div class="d-flex flex-sm-column">
+					<h2>Kundtjänst</h2>
+					<p style="margin-left: 2em;">
+						Att utföra kundservice kräver mycket resurser och system. Låt våra professionella kundchefer göra jobbet och du kan spendera din tid på att skapa ännu bättre lönsamhet och tillväxt.
+					</p>
+					<button class="btn btn-dark">
+						<NavLink href="/Kundtjänst" class="nav-link">
+							<span style="text-decoration: none; color: white;">Läs mer</span>
+						</NavLink>
+					</button>
+				</div>
+			</div>
+		</div>
+
+		<div class="list-item">
+			<div class="d-flex flex-row align-items-center my-3">
+				<img src="/Images/stock8.jpg" />
+				<div class="d-flex flex-sm-column">
+					<h2>Retur av varor</h2>
+					<p style="margin-left: 2em;">
+						Om du ska säkerställa nöjda kunder och god tillväxt i din butik är det viktigt att ha smidiga och flexibla returer.
+						Bra retursystem ökar intäkterna, minskar kostnaderna och skapar nöjda kunder. Vårt lagerhanteringssystem är skräddarsytt för just det.
+					</p>
+					<button class="btn btn-dark">
+						<NavLink href="/Retur" class="nav-link">
+							<span style="text-decoration: none; color: white;">Läs mer</span>
+						</NavLink>
+					</button>
+				</div>
+			</div>
+		</div>
+
+		<div class="list-item">
+			<div class="d-flex flex-row align-items-center my-3">
+				<img src="/Images/stock9.jpg" />
+				<div class="d-flex flex-sm-column">
+					<h2>Kampanjförpackning</h2>
+					<p style="margin-left: 2em;">
+						Vi har en toppmodern maskinpark anpassad till marknadens behov och krav och hjälper dig med allt från kuvert, broschyrer, vykort, marknadsundersökningar till avancerade DM-kampanjer.
+					</p>
+					<button class="btn btn-dark">
+						<NavLink href="/Kampanjförpackning" class="nav-link">
+							<span style="text-decoration: none; color: white;">Läs mer</span>
+						</NavLink>
+					</button>
+				</div>
+			</div>
+		</div>
+
+		<div class="list-item">
+			<div class="d-flex flex-row align-items-center my-3">
+				<img src="/Images/stock10.jpg" />
+				<div class="d-flex flex-sm-column">
+					<h2>Distribution</h2>
+					<p style="margin-left: 2em;">
+						Distribution är ofta den största kostnaden i samband med din försändelse. Låt oss hjälpa dig att optimera din distribution på bästa möjliga sätt,
+						vilket sparar både tid och pengar. Vi hjälper även svenska varumärken som vill flytta vidare till Europa.
+					</p>
+					<button class="btn btn-dark">
+						<NavLink href="/Distribution" class="nav-link">
+							<span style="text-decoration: none; color: white;">Läs mer</span>
+						</NavLink>
+					</button>
+				</div>
+			</div>
 		</div>
 	</div>
 </article>
 
 @code {
-	private void GoToService()
+	private List<Product> products;
+
+
+	private string searchQuery = string.Empty;
+
+	private List<Product> filteredServices
 	{
-		navigationManager.NavigateTo("/TestService");
+		get
+		{
+			if (string.IsNullOrWhiteSpace(searchQuery))
+			{
+				return new List<Product>();
+			}
+			else
+			{
+				return products
+					.Where(service => service.Name.ToLower().Contains(searchQuery.ToLower()))
+					.ToList();
+			}
+		}
 	}
 }

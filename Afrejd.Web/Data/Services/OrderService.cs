@@ -18,7 +18,9 @@ namespace Afrejd.Web.Data.Services
             try
             {
                 return await Context.Orders
-                    .Where(o => !o.OrderConfirmed)
+                    .Where(o => !o.OrderConfirmed && !o.OrderDeclined)
+                    .Include(o => o.OrderDetails)
+                    .ThenInclude(od => od.Product)
                     .ToListAsync();
             }
             catch (Exception ex)
@@ -133,6 +135,20 @@ namespace Afrejd.Web.Data.Services
             if (order != null)
             {
                 order.OrderConfirmed = true;
+                order.OrderDeclined = false;
+                await Context.SaveChangesAsync();
+            }
+        }
+
+        public async Task DeclineOrder(int orderId)
+        {
+            var order = await Context.Orders.FindAsync(orderId);
+            if (order != null)
+            {
+                order.OrderDeclined = true;
+                order.OrderConfirmed = false;
+                order.Status = Order.OrderStatus.Avslagen;
+
                 await Context.SaveChangesAsync();
             }
         }
@@ -143,6 +159,8 @@ namespace Afrejd.Web.Data.Services
             {
                 return await Context.Orders
                     .Where(o => o.OrderConfirmed)
+                    .Include(o => o.OrderDetails)
+                    .ThenInclude(od => od.Product)
                     .ToListAsync();
             }
             catch (Exception ex)
@@ -151,6 +169,24 @@ namespace Afrejd.Web.Data.Services
                 return null;
             }
         }
+
+        public async Task<List<Order>> GetDeclinedOrders()
+        {
+            try
+            {
+                return await Context.Orders
+                    .Where(o => o.OrderDeclined)
+                    .Include(o => o.OrderDetails)
+                    .ThenInclude(od => od.Product)
+                    .ToListAsync();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"An error occurred while fetching orders: {ex.Message}");
+                return null;
+            }
+        }
+
         public async Task UpdatePriceEstimate(int orderId, decimal? newPriceEstimate)
         {
             var order = await Context.Orders.FindAsync(orderId);

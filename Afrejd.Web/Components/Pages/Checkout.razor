@@ -2,6 +2,7 @@
 @using Afrejd.Web.Data.Models
 @using Afrejd.Web.Data.Interfaces
 @using System.Security.Claims
+@inject IUserService UserService
 @inject ICartService CartService
 @inject IOrderService OrderService
 @inject NavigationManager navigationManager
@@ -98,6 +99,8 @@ else
         {
             CartItems = await CartService.GetUserCartItems(userId);
         }
+
+        customerInfo = await UserService.GetUserInfo(userId);
     }
 
     private async Task PlaceOrder()

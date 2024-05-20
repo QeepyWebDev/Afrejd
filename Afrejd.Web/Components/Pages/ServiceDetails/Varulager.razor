@@ -1,0 +1,83 @@
+﻿@page "/Varulager"
+
+@using Afrejd.Web.Data.Interfaces
+@using Afrejd.Web.Data.Models
+@inject ICartService CartService
+@rendermode InteractiveServer
+
+<article>
+    <MudContainer MaxWidth="MaxWidth.ExtraLarge" Class=" py-6">
+        <MudPaper Outlined="true" Class="d-flex flex-column">
+            <MudPaper Elevation="0" Width="100%" Class="d-flex justify-space-between pa-6">
+                <MudStack Class="d-flex justify-start">
+                    <h1 class="display-1">
+                        Varulager
+                    </h1>
+
+                    <MudButton Variant="Variant.Filled" Size="Size.Medium" Style="background-color: #363732; color: white; width:fit-content;" @onclick="AddItemToCart">
+                        Lägg i Varukorg
+                    </MudButton>
+
+                    <div>
+                        @if (!string.IsNullOrEmpty(SuccessMessage))
+                        {
+                            <div class="alert alert-success" role="alert">
+                                @SuccessMessage
+                            </div>
+                        }
+                    </div>
+                </MudStack>
+                <MudPaper Elevation=0 Class="d-flex justify-content-end">
+                    <MudImage Fluid="true" Class="rounded-xl" Src="/Images/stock18.jpg"></MudImage>
+                </MudPaper>
+            </MudPaper>
+            <MudDivider DividerType="DividerType.Middle" Class="my-6" />
+
+            <MudPaper Width="75%" Elevation=0 Style="margin:auto;">
+                <MudText Class="mb-6">
+                    Vi tar hand om dina varor - med sann kärlek. Genom att lägga bort ditt lager och logistik till en modern 3PL-partner som Afrejd, med toppmoderna lager, uppnår ditt företag skalfördelar. 
+                    Kostnader relaterade till system, lagerutrymme, porto, frakt, utrustning och anställda fördelas och delas mellan många företag som liknar ditt. 
+                    Det är vad vi kallar sann logistikglädje - till glädje för dig, oss och planeten.
+                </MudText>
+
+                <MudText Class="mb-6">
+                    Du minskar inte bara din egen tid på förpackning, lagring och logistik, utan du minskar också dina totala lager- och förpackningskostnader eftersom de delas med andra - 
+                    vilket ofta är mer hållbart än att driva produktion och förpackning på egen hand eller använda flera leverantörer. 
+                    Hos oss kan du enkelt skala din butik utan att behöva göra nya, stora investeringar.
+                </MudText>
+
+                <h3>God logistik säkerställer ett bra flöde av varor</h3>
+                <MudText Class="mb-6">
+                    Vår specialitet är logistik och bearbetning av de varor vi har i lager. Vi erbjuder skräddarsydda, säkra och effektiva logistiklösningar för ditt företag. 
+                    Vi packar om, omdistribuerar, monterar kampanjer med flera artiklar eller skickar ut produkter på beställning - beroende på dina behov. 
+                    Afrejd är en av få totala logistiktjänsteleverantörer där du får allt på ett ställe.
+                </MudText>
+            </MudPaper>
+        </MudPaper>
+    </MudContainer>
+</article>
+
+
+@code {
+    private string SuccessMessage;
+    private string ErrorMessage;
+    private int ProductId = 6;
+
+    private async Task AddItemToCart()
+    {
+        try
+        {
+            var userId = await CartService.GetUserId();
+            await CartService.AddItemToCart(ProductId, userId);
+            SuccessMessage = "Tjänsten har lagts till i varukorgen!";
+        }
+        catch (ArgumentException ex)
+        {
+            ErrorMessage = ex.Message;
+        }
+        catch (Exception ex)
+        {
+            ErrorMessage = $"An error occurred while adding the product to the cart: {ex.Message}";
+        }
+    }
+}

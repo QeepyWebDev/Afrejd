@@ -10,7 +10,9 @@ namespace Afrejd.Web.Data.Interfaces
         Task<List<ApplicationUser>> GetUsers();
         Task PlaceOrder(CustomerInfo customerInfo, string userId, List<Cart> CartItems);
         Task ConfirmOrder(int orderId);
+        Task DeclineOrder(int orderId);
         Task<List<Order>> GetConfirmedOrders();
+        Task<List<Order>> GetDeclinedOrders();
         Task UpdatePriceEstimate(int orderId, decimal? newPriceEstimate);
     }
 }

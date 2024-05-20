@@ -6,6 +6,8 @@ namespace Afrejd.Web.Data.Interfaces
     {
         Task AddProduct(Product product);
         Task<List<Product>> GetProducts();
+        Task<Product> GetProduct(int productId);
         Task DeleteProduct(int productId);
+        Task UpdateProduct(Product product);
     }
 }

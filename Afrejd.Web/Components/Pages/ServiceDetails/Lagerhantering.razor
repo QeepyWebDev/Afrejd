@@ -1,0 +1,137 @@
+﻿@page "/Lagerhanterings-system"
+
+@using Afrejd.Web.Data.Interfaces
+@using Afrejd.Web.Data.Models
+@inject ICartService CartService
+@rendermode InteractiveServer
+
+<article>
+    <MudContainer MaxWidth="MaxWidth.ExtraLarge" Class=" py-6">
+        <MudPaper Outlined="true" Class="d-flex flex-column">
+            <MudPaper Elevation="0" Width="100%" Class="d-flex justify-space-between pa-6">
+                <MudStack Class="d-flex justify-start">
+                    <h1 class="display-1">
+                        Lagerhanterings-system
+                    </h1>
+
+                    <MudButton Variant="Variant.Filled" Size="Size.Medium" Style="background-color: #363732; color: white; width:fit-content;" @onclick="AddItemToCart">
+                        Lägg i Varukorg
+                    </MudButton>
+
+                    <div>
+                        @if (!string.IsNullOrEmpty(SuccessMessage))
+                        {
+                            <div class="alert alert-success" role="alert">
+                                @SuccessMessage
+                            </div>
+                        }
+                    </div>
+                </MudStack>
+                <MudPaper Elevation=0 Class="d-flex justify-content-end">
+                    <MudImage Fluid="true" Class="rounded-xl" Src="/Images/stock14.jpg"></MudImage>
+                </MudPaper>
+            </MudPaper>
+            <MudDivider DividerType="DividerType.Middle" Class="my-6" />
+
+            <MudPaper Width="75%" Elevation=0 Style="margin:auto;">
+                <MudText Class="mb-6">
+                    Vi ger dig tillgång till marknadens bästa lagersystem, med våra egna skräddarsydda lösningar anpassade efter dina behov. 
+                    Ett bra WMS (Warehouse Management System eller lagerhanteringssystem) är absolut nödvändigt för att ha full kontroll över lagerets dagliga verksamhet. 
+                    WMS-programvaran ersätter många av de manuella jobb som normalt skulle ha utförts av personal i lagret och är säker, kostnadseffektiv och flexibel.
+                </MudText>
+
+                <h3>Ett bra lagerhanteringssystem säkerställer full kontroll</h3>
+                <MudText Class="mb-6">
+                    Vi på Afrejd använder den svenska WMS-tjänsten Ongoing Warehouse för att säkerställa dig som kund säkra, pålitliga och effektiva logistiklösningar för ditt företag. 
+                    Vår WMS är speciellt utformad för varuhotell, lagersystem och återförsäljare med höga krav på logistikkänslig verksamhet. 
+                    I de fall där API:er inte längre finns eller äldre integrationer inte fungerar, gör vi mycket för att säkerställa att hela kund- och varucykeln är helt automatiserad. 
+                    Med Ongoing Warehouse kan vi bygga skräddarsydda lösningar för alla våra kunder, där de sparar tid och pengar och får en mycket bättre lageröversikt.
+                </MudText>
+
+                <MudText Class="mb-9">
+                    Kunden ska alltid få notiser vid behov, liksom kontinuerlig tillgång till information och rapporter i kundens egen arbetsyta. 
+                    Med Ongoing Warehouse integrerat med vår egen teknikavdelning kan vi utveckla våra egna dashboards där kunden kan följa flödet av varor och beställningar i realtid genom hela värdekedjan — 
+                    från att slutkunden lägger varan i kundvagnen, slutför beställningen och har varan i handen.
+                </MudText>
+
+                <h3>Hur fungerar Ongoing Warehouse på Afrejd?</h3>
+                <ul style="list-style-type: circle;">
+                    <li>
+                        <MudText Class="mb-4">Dina artiklar anländer till vår lastningsramp, och registreras omedelbart i det pågående lagret.</MudText>
+                    </li>
+                    <li>
+                        <MudText Class="mb-4">För optimal godshantering registreras inköpsorder i systemet av kunden. Vi publicerar vad som faktiskt har mottagits.</MudText>
+                    </li>
+                    <li>
+                        <MudText Class="mb-4">Varorna placeras i vårt lager — redan nu är de fullt tillgängliga i det molnbaserade systemet så att du som kund har full överblick.</MudText>
+                    </li>
+                    <li>
+                        <MudText Class="mb-4">När dina kunder gör ett köp i din webbutik informeras vi omedelbart om detta - lagerhanteringssystemet är helt integrerat med din webbutik och ger dig lageröversikt i realtid.</MudText>
+                    </li>
+                    <li>
+                        <MudText Class="mb-4">Vi vidtar åtgärder plocka, packa och förbereda dina varor för upphämtning av speditör — du har en fullständig översikt över status för upphämtning i Ongoing Warehouse.</MudText>
+                    </li>
+                    <li>
+                        <MudText Class="mb-4">Följaktligen kan försändelsen spåras hela vägen, och mottagaren meddelas om sändningens status.</MudText>
+                    </li>
+                    <li>
+                        <MudText Class="mb-4">Skulle din kund ångra köpet registrerar vi en returorder, förbereder en upphämtning och avbryter beställningen.</MudText>
+                    </li>
+                    <li>
+                        <MudText Class="mb-9">Så snart som paketet har returnerats, objektet kontrolleras och sätts tillbaka i omlopp för vidare försäljning.</MudText>
+                    </li>
+                </ul>
+
+                <h3>Vilka är fördelarna med en bra WMS?</h3>
+                <ul style="list-style-type: circle;">
+                    <li>
+                        <MudText Class="mb-4">Lägre kostnader för godshantering</MudText>
+                    </li>
+                    <li>
+                        <MudText Class="mb-4">Fullständig inventeringsöversikt</MudText>
+                    </li>
+                    <li>
+                        <MudText Class="mb-4">Ökad produktivitet och kundservice</MudText>
+                    </li>
+                    <li>
+                        <MudText Class="mb-4">Bättre utnyttjande av lagerutrymme, lager och automatiserad utrustning</MudText>
+                    </li>
+                    <li>
+                        <MudText Class="mb-4">Färre reklamationer och returer</MudText>
+                    </li>
+                    <li>
+                        <MudText Class="mb-4">Minskad felplockning och mänskligt misslyckande</MudText>
+                    </li>
+                    <li>
+                        <MudText Class="mb-4">100% implementering i din befintliga webbutik</MudText>
+                    </li>
+                </ul>
+            </MudPaper>
+        </MudPaper>
+    </MudContainer>
+</article>
+
+
+@code {
+    private string SuccessMessage;
+    private string ErrorMessage;
+    private int ProductId = 10;
+
+    private async Task AddItemToCart()
+    {
+        try
+        {
+            var userId = await CartService.GetUserId();
+            await CartService.AddItemToCart(ProductId, userId);
+            SuccessMessage = "Tjänsten har lagts till i varukorgen!";
+        }
+        catch (ArgumentException ex)
+        {
+            ErrorMessage = ex.Message;
+        }
+        catch (Exception ex)
+        {
+            ErrorMessage = $"An error occurred while adding the product to the cart: {ex.Message}";
+        }
+    }
+}

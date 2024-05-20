@@ -1,0 +1,43 @@
+﻿@page "/EditProduct/{ProductId:int}"
+
+@using Afrejd.Web.Components.Layout
+@using Afrejd.Web.Data.Models
+@using Afrejd.Web.Data.Interfaces
+@inject IProductService ProductService
+@rendermode InteractiveServer
+@layout AdminMenu
+
+<EditForm Model="@product" OnValidSubmit="@UpdateProduct" FormName="editProductForm">
+    @if (product != null)
+    {
+        <label for="productName">Tjänst:</label>
+        <input type="text" id="productName" @bind="product.Name" required>
+
+        <label for="productPrice">Kategori:</label>
+        <input type="number" id="productPrice" @bind="product.CategoryId" required>
+
+        <button type="submit">Uppdatera Produkt</button>
+    }
+
+    else
+    {
+        <p>Hämtar...</p>
+    }
+</EditForm>
+
+@code {
+    [Parameter]
+    public int ProductId { get; set; }
+
+    private Product product = new Product();
+
+    protected override async Task OnInitializedAsync()
+    {
+        product = await ProductService.GetProduct(ProductId);
+    }
+
+    private async Task UpdateProduct()
+    {
+        await ProductService.UpdateProduct(product);
+    }
+}

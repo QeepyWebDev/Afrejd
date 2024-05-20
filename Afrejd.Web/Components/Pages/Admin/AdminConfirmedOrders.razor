@@ -8,10 +8,13 @@
 @rendermode InteractiveServer
 @layout AdminMenu
 
-<table class="table">
+<input class="form-control mr-sm-2" aria-label="Search" type="text" id="orderSearch" onkeyup="searchOrders()" placeholder="Sök Ärendenummer...">
+<table class="table" id="orderTable">
     <thead class="thead-dark">
         <tr>
             <th>Ärendenummer</th>
+            <th>Datum</th>
+            <th>Tjänster</th>
             <th>Prisförslag</th>
             <th>Status</th>
             <th>Ändra Status</th>
@@ -25,6 +28,14 @@
             {
                 <tr>
                     <td>@order.Ordernumber</td>
+                    <td>@order.OrderDate.ToString("yyyy-MM-dd")</td>
+                    <td>
+                        @foreach (var detail in order.OrderDetails)
+                        {
+                            <span>@detail.Product.Name</span>
+                            <br />
+                        }
+                    </td>
                     <td>@order.PriceEstimate</td>
                     <td>@order.Status</td>
                     <td>
@@ -47,6 +58,30 @@
         }
     </tbody>
 </table>
+
+<script>
+    function searchOrders() {
+        var input, filter, table, tr, td, i, txtValue;
+        input = document.getElementById("orderSearch");
+        filter = input.value.trim();
+
+        table = document.getElementById("orderTable");
+        tr = table.getElementsByTagName("tr");
+
+        for (i = 0; i < tr.length; i++) {
+            td = tr[i].getElementsByTagName("td")[0];
+            if (td) {
+                txtValue = td.textContent || td.innerText;
+
+                if (!isNaN(filter) && txtValue.startsWith(filter)) {
+                    tr[i].style.display = "";
+                } else {
+                    tr[i].style.display = "none";
+                }
+            }
+        }
+    }
+</script>
 
 @code {
     private List<Order> confirmedOrders;

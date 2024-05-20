@@ -1,0 +1,117 @@
+﻿@page "/Rådgivning&Försäljning"
+
+@using Afrejd.Web.Data.Interfaces
+@using Afrejd.Web.Data.Models
+@inject ICartService CartService
+@rendermode InteractiveServer
+
+<article>
+    <MudContainer MaxWidth="MaxWidth.ExtraLarge" Class=" py-6">
+        <MudPaper Outlined="true" Class="d-flex flex-column">
+            <MudPaper Elevation="0" Width="100%" Class="d-flex justify-space-between pa-6">
+                <MudStack Class="d-flex justify-start">
+                    <h1 class="display-1">
+                        Rådgivning &
+                        <br />
+                        Försäljning
+                    </h1>
+
+                    <MudButton Variant="Variant.Filled" Size="Size.Medium" Style="background-color: #363732; color: white; width:fit-content;" @onclick="AddItemToCart">
+                        Lägg i Varukorg
+                    </MudButton>
+
+                    <div>
+                        @if (!string.IsNullOrEmpty(SuccessMessage))
+                        {
+                            <div class="alert alert-success" role="alert">
+                                @SuccessMessage
+                            </div>
+                        }
+                    </div>
+                </MudStack>
+                <MudPaper Elevation=0 Class="d-flex justify-content-end">
+                    <MudImage Fluid="true" Class="rounded-xl" Src="/Images/stock11.jpg"></MudImage>
+                </MudPaper>
+            </MudPaper>
+            <MudDivider DividerType="DividerType.Middle" Class="my-6" />
+
+            <MudPaper Width="75%" Elevation=0 Style="margin:auto;">
+                <MudText Class="mb-6">
+                    Nyckeln till framgång och ekonomi för dig är att ha en logistikpartner med all infrastruktur på plats och som ger dig bra och smarta råd och vägledning.
+                    Vi har lång erfarenhet av att bistå e-handelsoperatörer, detaljhandelskedjor och andra logistikkänsliga företag med rådgivning för att driva god lönsamhet och tillväxt.
+                </MudText>
+
+                <MudText Class="mb-4">
+                    Afrejd är mycket anpassningsbara och flexibla och kan modellera vår verksamhet kring olika affärsmodeller. Vi vill vara mer än bara en vanlig leverantör av e-handelslogistik eller reklamförpackningar -
+                    vi vill vara en solid strategisk partner som är där för att hjälpa våra kunder med bästa service, bästa råd, de bästa IT-lösningarna, och hjälpa till att driva utveckling, tillväxt och lönsamhet för våra kunder.
+                </MudText>
+
+                <MudText class="fst-italic mb-4">
+                    ‍En partner du kan lita på — vi kallar det logistikglädje!                   ‍
+                </MudText>
+
+                <MudText class="mb-6">
+                    Som kund hos oss får du tillgång till uppdateringar i realtid via en instrumentpanelslösning och löpande rapportering om lager, försäljning och logistik.
+                    När du ingår ett strategiskt partnerskap med oss effektiviserar du hela varuflödet och ökar lönsamheten utan stora kostnader. Vi har en långsiktig syn på alla våra samarbeten och kräver därför inga startkostnader för att komma igång.
+                </MudText>
+
+                <h3>Stordriftsfördelar</h3>
+
+                <MudText class="mb-4">
+                    Genom att lägga bort lagertjänster, logistik och reklamförpackningar till en 3PL-partner Som Afrejd uppnår din butik eller organisation stordriftsfördelar genom att kostnader relaterade till system,
+                    lagerutrymme, porto och frakt, utrustning och anställda distribueras och delas mellan många företag som liknar ditt.
+                </MudText>
+
+                <MudText class="mb-6">
+                    Således minskar du inte bara din egen tid som spenderas på lagring och logistik, utan du minskar också dina totala lager- och kampanjkostnader eftersom de delas med andra - 
+                    vilket ofta är mer hållbart än att driva produktion och varuförpackningar på egen hand. Du minskar dina omkostnader avsevärt genom ett partnerskap med oss.
+                </MudText>
+
+                <h3>Förutsägbar kostnadsbild</h3>
+
+                <MudText class="mb-4">
+                    Afrejd har en mycket konkurrenskraftig kostnadsmodell. Det ska vara förståeligt och förutsägbart för dig att ha en fullständig översikt över alla dina kostnader, intäkter och utgifter — 
+                    oavsett om du är en liten, medelstor eller stor kommersiell aktör, eller en organisation med betydande volym.
+                </MudText>
+
+                <MudText class="mb-4">
+                    För att kunna erbjuda våra kunder mer förutsägbarhet på kostnader har vi valt att arbeta med fasta priser på olika tjänster. Priserna inkluderar all hantering, förpackning och returhantering.
+                </MudText>
+
+                <MudText class="mb-4">
+                    Vi har också några av de bästa frakt- och portoerbjudandena på marknaden. Du väljer själv om vi ska använda ditt kundnummer hos den aktuella speditören eller om du vill dra nytta av våra stordriftsfördelar. 
+                    Vår erfarenhet är att många butiker och organisationer kan spara stora kostnader på detta sätt.
+                </MudText>
+
+                <MudText class="fst-italic mb-4">
+                    Framför allt — det ska vara enkelt, effektivt och lönsamt att använda oss som en framtidsorienterad logistikpartner du kan lita på. Hos oss kallar vi det äkta logistikglädje.
+                </MudText>
+            </MudPaper>
+        </MudPaper>
+    </MudContainer>
+</article>
+
+
+@code {
+    private string SuccessMessage;
+    private string ErrorMessage;
+    private int ProductId = 4;
+
+    private async Task AddItemToCart()
+    {
+        try
+        {
+            var userId = await CartService.GetUserId();
+            await CartService.AddItemToCart(ProductId, userId); 
+            SuccessMessage = "Tjänsten har lagts till i varukorgen!";
+        }
+        catch (ArgumentException ex)
+        {
+            ErrorMessage = ex.Message;
+        }
+        catch (Exception ex)
+        {
+            ErrorMessage = $"An error occurred while adding the product to the cart: {ex.Message}";
+        }
+    }
+}

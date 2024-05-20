@@ -1,0 +1,92 @@
+﻿@page "/Förpackning"
+
+@using Afrejd.Web.Data.Interfaces
+@using Afrejd.Web.Data.Models
+@inject ICartService CartService
+@rendermode InteractiveServer
+
+<article>
+    <MudContainer MaxWidth="MaxWidth.ExtraLarge" Class=" py-6">
+        <MudPaper Outlined="true" Class="d-flex flex-column">
+            <MudPaper Elevation="0" Width="100%" Class="d-flex justify-space-between pa-6">
+                <MudStack Class="d-flex justify-start">
+                    <h1 class="display-1">
+                        Förpackning av varor
+                    </h1>
+
+                    <MudButton Variant="Variant.Filled" Size="Size.Medium" Style="background-color: #363732; color: white; width:fit-content;" @onclick="AddItemToCart">
+                        Lägg i Varukorg
+                    </MudButton>
+
+                    <div>
+                        @if (!string.IsNullOrEmpty(SuccessMessage))
+                        {
+                            <div class="alert alert-success" role="alert">
+                                @SuccessMessage
+                            </div>
+                        }
+                    </div>
+                </MudStack>
+                <MudPaper Elevation=0 Class="d-flex justify-content-end">
+                    <MudImage Fluid="true" Class="rounded-xl" Src="/Images/stock13.jpg"></MudImage>
+                </MudPaper>
+            </MudPaper>
+            <MudDivider DividerType="DividerType.Middle" Class="my-6" />
+
+            <MudPaper Width="75%" Elevation=0 Style="margin:auto;">
+                <MudText Class="mb-6">
+                    Vi är en av Nordens största aktörer inom förpackning och utskick för onlinebutiker och detaljhandelskedjor. 
+                    Med tre stora logistikhus i Karlstad, Oslo och Arendal, vår plattform och våra tekniska lösningar kan vi hjälpa svenska varumärken med transporter både inom och utanför Sverige — till en större marknad i EU. 
+                    Vår breda erfarenhet gör oss därför till en bra partner inom förpackning, porto, cross docking och förpackning för att sänka dina kostnader.
+                </MudText>
+
+                <h3>Undvik dyra förseningar</h3>
+                <MudText Class="mb-6">
+                    Våra medarbetare är uppdaterade med alla lagar och förordningar och ser alltid till att förpackningen uppfyller mottagarens krav, oavsett om det är förpackningar för den norska eller utländska marknaden. 
+                    Så här undviker du förseningar och extra kostnader. 
+                    Vi kan också ta emot stora leveranser av varor: direkt från tryckerier, eller från en varutillverkare i Sverige eller utomlands, för eventuell ompackning enligt svenska eller utländska normer och krav.
+                </MudText>
+
+                <h3>Automation och maskinförpackning</h3>
+                <MudText Class="mb-6">
+                    Vi erbjuder olika typer av mekaniska förpackningsmaskiner för att automatisera så mycket som möjligt. 
+                    Våra avancerade maskiner ger dig alternativ för selektiv och intelligent förpackning, där bilagorna förpackas individuellt på basis av en streckkod på ett brevblad eller faktura.
+                    Miljövänlig plast som ytterförpackning skyddar och profilerar försändelser i posten. Detta har en låg vikt och säkerställer därför låga portopriser. 
+                    Vi putsar bland annat tidskrifter, tidningar, DM-kampanjer och försändelser med prover och gimmickprodukter. Naturligtvis använder vi miljövänliga plastsorter.
+                </MudText>
+
+                <h3>Manuell varuförpackning</h3>
+                <MudText Class="mb-6">
+                    Inte alla uppdrag kan och bör köras med maskin, varför våra anställda packar allt ur manuella uppgifter utöver maskinhantering. 
+                    Vår manuella förpackningslinje är smidig och snabb, och vi garanterar en problemfri leverans. Beroende på produkt, form och format är manuell förpackning snarare än maskinautomation ofta mer kostnadseffektiv och hållbar. 
+                    Låt dig inte luras av leverantörer som säljer automatisering som mer kostnadseffektiv än manuell förpackning - det är inte alltid fallet.
+                </MudText>
+            </MudPaper>
+        </MudPaper>
+    </MudContainer>
+</article>
+
+
+@code {
+    private string SuccessMessage;
+    private string ErrorMessage;
+    private int ProductId = 9;
+
+    private async Task AddItemToCart()
+    {
+        try
+        {
+            var userId = await CartService.GetUserId();
+            await CartService.AddItemToCart(ProductId, userId);
+            SuccessMessage = "Tjänsten har lagts till i varukorgen!";
+        }
+        catch (ArgumentException ex)
+        {
+            ErrorMessage = ex.Message;
+        }
+        catch (Exception ex)
+        {
+            ErrorMessage = $"An error occurred while adding the product to the cart: {ex.Message}";
+        }
+    }
+}

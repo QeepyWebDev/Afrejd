@@ -1,17 +1,21 @@
 ﻿@page "/Account/Manage"
 
 @using System.ComponentModel.DataAnnotations
+@using Microsoft.AspNetCore.Http
 @using Microsoft.AspNetCore.Identity
 @using Afrejd.Web.Data
-
+@using Data.Interfaces
+@using System.Security.Claims
+@inject IUserService UserService
 @inject UserManager<ApplicationUser> UserManager
 @inject SignInManager<ApplicationUser> SignInManager
 @inject IdentityUserAccessor UserAccessor
 @inject IdentityRedirectManager RedirectManager
+@inject Microsoft.AspNetCore.Http.IHttpContextAccessor httpContextAccessor
 
-<PageTitle>Profile</PageTitle>
 
-<h3>Profile</h3>
+<PageTitle>Konto</PageTitle>
+
 <StatusMessage />
 
 <div class="row">

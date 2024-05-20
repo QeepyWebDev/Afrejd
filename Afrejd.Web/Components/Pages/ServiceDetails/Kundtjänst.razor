@@ -1,0 +1,81 @@
+﻿@page "/Kundtjänst"
+
+@using Afrejd.Web.Data.Interfaces
+@using Afrejd.Web.Data.Models
+@inject ICartService CartService
+@rendermode InteractiveServer
+
+<article>
+    <MudContainer MaxWidth="MaxWidth.ExtraLarge" Class=" py-6">
+        <MudPaper Outlined="true" Class="d-flex flex-column">
+            <MudPaper Elevation="0" Width="100%" Class="d-flex justify-space-between pa-6">
+                <MudStack Class="d-flex justify-start">
+                    <h1 class="display-1">
+                        Kundtjänst
+                    </h1>
+
+                    <MudButton Variant="Variant.Filled" Size="Size.Medium" Style="background-color: #363732; color: white; width:fit-content;" @onclick="AddItemToCart">
+                        Lägg i Varukorg
+                    </MudButton>
+
+                    <div>
+                        @if (!string.IsNullOrEmpty(SuccessMessage))
+                        {
+                            <div class="alert alert-success" role="alert">
+                                @SuccessMessage
+                            </div>
+                        }
+                    </div>
+                </MudStack>
+                <MudPaper Elevation=0 Class="d-flex justify-content-end">
+                    <MudImage Fluid="true" Class="rounded-xl" Src="/Images/stock15.jpg"></MudImage>
+                </MudPaper>
+            </MudPaper>
+            <MudDivider DividerType="DividerType.Middle" Class="my-6" />
+
+            <MudPaper Width="75%" Elevation=0 Style="margin:auto;">
+                <MudText Class="mb-6">
+                    Att ha ett välfungerande kundtjänstteam med professionella kundchefer är en viktig faktor för framgång och för att behålla kunder. 
+                    Varumärken spenderar mycket resurser på att hitta och vinna kunder. Det är därför viktigt att använda professionella resurser för att behålla eller vinna tillbaka dina kunder.
+                </MudText>
+
+                <MudText Class="mb-6">
+                    Om du till exempel driver ett enmansföretag, ett nystartat företag eller en medelstor webbutik kan det snabbt bli alltidskrävande att svara på kundförfrågningar via e-post och telefon. 
+                    Speciellt när du verkligen borde spendera dina resurser på att få din egen butik att växa.
+                </MudText>
+
+                <h3>Outsourca din kundtjänst</h3>
+                <MudText Class="mb-6">
+                    På Afrejd kan du outsourca all din kundservice. Vi har medarbetare med många års erfarenhet av callcenter och kundservice, och vet vad som krävs för att driva en bra och effektiv kundvård. 
+                    Vi har ett avancerat och pålitligt telefonisystem med intelligent köhantering, övervakning och utmärkta rapporteringsverktyg. 
+                    Våra kundchefer integreras i din företagskultur och hanterar kunder som du vill — och har utmärkta metoder för att säkerställa en hög win-back-grad.
+                </MudText>
+            </MudPaper>
+        </MudPaper>
+    </MudContainer>
+</article>
+
+
+@code {
+    private string SuccessMessage;
+    private string ErrorMessage;
+    private int ProductId = 11;
+
+    private async Task AddItemToCart()
+    {
+        try
+        {
+            var userId = await CartService.GetUserId();
+            await CartService.AddItemToCart(ProductId, userId);
+            SuccessMessage = "Tjänsten har lagts till i varukorgen!";
+        }
+        catch (ArgumentException ex)
+        {
+            ErrorMessage = ex.Message;
+        }
+        catch (Exception ex)
+        {
+            ErrorMessage = $"An error occurred while adding the product to the cart: {ex.Message}";
+        }
+    }
+}

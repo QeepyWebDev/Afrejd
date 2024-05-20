@@ -1,0 +1,23 @@
+﻿.bg-dark {
+    background-color: #DCE1E9 !important;
+}
+
+::deep .nav-link {
+    font-family: "Archivo", sans-serif;
+    font-weight: bold;
+    color: #363732;
+    font-size: 1.2em;
+    margin-left: 0.7em;
+}
+
+button {
+    font-family: "Archivo", sans-serif;
+    font-weight: bold;
+    color: #363732;
+    font-size: 1.2em;
+    margin-left: 0 !important;
+}
+
+.row {
+    display: flex;
+}

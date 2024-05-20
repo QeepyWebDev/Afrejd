@@ -1,5 +1,13 @@
+
+@font-face {
+    font-family: 'Roboto Condensed';
+    src: url('fonts/robotocondensed-variablefont_wght.ttf') format('truetype');
+    src: url('fonts/RobotoCondensed-Regular.woff') format('woff'),
+    url('fonts/RobotoCondensed-Regular.woff2') format('woff2')
+}
+
 html, body {
-    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-family: 'Roboto Condensed', Helvetica, Arial, sans-serif;
 }
 
 a, .btn-link {

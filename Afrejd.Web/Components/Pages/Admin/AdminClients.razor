@@ -9,6 +9,7 @@
 @rendermode InteractiveServer
 @layout AdminMenu
 
+<input class="form-control mr-sm-2" type="text" value="@searchString" aria-label="Search" @oninput="SearchCustomers" placeholder="Sök namn eller företag...">
 <table class="table">
     <thead>
         <tr>
@@ -18,8 +19,9 @@
         </tr>
     </thead>
     <tbody>
-        @if (Customers != null) {
-            @foreach (var customer in Customers)
+        @if (FilteredCustomers.Any())
+        {
+            @foreach (var customer in FilteredCustomers)
             {
                 if (customer.CustomerInfo != null)
                 {
@@ -38,10 +40,13 @@
         }
         else
         {
-            <p>Inga kunder hittades.</p>
+            <tr>
+                <td colspan="3">Inga kunder hittades.</td>
+            </tr>
         }
     </tbody>
 </table>
+
 
 @if (SelectedCustomer != null && SelectedCustomer.CustomerInfo != null && IsDetailsVisible)
 {
@@ -77,12 +82,33 @@
 
 @code {
     private ApplicationUser SelectedCustomer;
-    private List<ApplicationUser> Customers;
+
     private bool IsDetailsVisible = false;
+
+    private string searchString = "";
+    private IEnumerable<ApplicationUser> Customers = new List<ApplicationUser>(); // Initialize with your data
+    private IEnumerable<ApplicationUser> FilteredCustomers => FilterCustomers();
 
     protected override async Task OnInitializedAsync()
     {
         Customers = await UserService.GetCustomers();
+    }
+
+    private IEnumerable<ApplicationUser> FilterCustomers()
+    {
+        if (string.IsNullOrWhiteSpace(searchString))
+            return Customers;
+
+        return Customers.Where(customer =>
+            customer.CustomerInfo.Any(customerInfo =>
+                customerInfo.FirstName.Contains(searchString, StringComparison.OrdinalIgnoreCase) ||
+                customerInfo.LastName.Contains(searchString, StringComparison.OrdinalIgnoreCase) ||
+                customerInfo.Company.Contains(searchString, StringComparison.OrdinalIgnoreCase)));
+    }
+
+    private void SearchCustomers(ChangeEventArgs e)
+    {
+        searchString = e.Value.ToString();
     }
 
     private void ToggleCustomerDetails(ApplicationUser customer)

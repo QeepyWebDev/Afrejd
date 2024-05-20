@@ -10,6 +10,7 @@
         public string UserId { get; set; }
         public int CustomerInfoId { get; set; }
         public bool OrderConfirmed { get; set; } = false;
+        public bool OrderDeclined { get; set; } = false;
 
         public ApplicationUser User { get; set; }
         public CustomerInfo CustomerInfo { get; set; }
@@ -22,7 +23,8 @@
         {
             Granskas,
             Hanteras,
-            Genomfört
+            Genomfört,
+            Avslagen
         }
 
         public Order()

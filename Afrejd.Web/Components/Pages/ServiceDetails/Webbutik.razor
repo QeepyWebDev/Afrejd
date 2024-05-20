@@ -1,0 +1,132 @@
+﻿@page "/Webbutik&Prenumeration"
+
+@using Afrejd.Web.Data.Interfaces
+@using Afrejd.Web.Data.Models
+@inject ICartService CartService
+@rendermode InteractiveServer
+
+<article>
+    <MudContainer MaxWidth="MaxWidth.ExtraLarge" Class=" py-6">
+        <MudPaper Outlined="true" Class="d-flex flex-column">
+            <MudPaper Elevation="0" Width="100%" Class="d-flex justify-space-between pa-6">
+                <MudStack Class="d-flex justify-start">
+                    <h1 class="display-1">
+                        Webbutik & <br />
+                        Prenumeration
+                    </h1>
+
+                    <MudButton Variant="Variant.Filled" Size="Size.Medium" Style="background-color: #363732; color: white; width:fit-content;" @onclick="AddItemToCart">
+                        Lägg i Varukorg
+                    </MudButton>
+
+                    <div>
+                        @if (!string.IsNullOrEmpty(SuccessMessage))
+                        {
+                            <div class="alert alert-success" role="alert">
+                                @SuccessMessage
+                            </div>
+                        }
+                    </div>
+                </MudStack>
+                <MudPaper Elevation=0 Class="d-flex justify-content-end">
+                    <MudImage Fluid="true" Class="rounded-xl" Src="/Images/stock19.jpg"></MudImage>
+                </MudPaper>
+            </MudPaper>
+            <MudDivider DividerType="DividerType.Middle" Class="my-6" />
+
+            <MudPaper Width="75%" Elevation=0 Style="margin:auto;">
+                <MudText Class="mb-6">
+                    Med Afrejd kan du som e-handelsbutik få allt du behöver på ett ställe. Afrejd Gruppen är ett av få företag i Sverige som kan hjälpa dig med en 360-graders värdekedja i din webbutik — 
+                    vi erbjuder strategi, rådgivning, lager, orderhantering, pick and pack, logistik, integrationer, IT-lösningar, operativ support, frakt, returhantering, tullnav och kundservice.
+                </MudText>
+
+                <MudText Class="mb-6">
+                    Afrejd specialiserar sig på tredjepartslogistik för onlinebutiker och prenumerationskunder inom B2C- och D2C-segmentet i Norden. 
+                    Framtidens affärsmodell är online-detaljhandel och prenumeration. Afrejd har lång erfarenhet från e-handels- och prenumerationsbranschen och erbjuder lösningar och plattformar som mycket få andra leverantörer kan.
+                </MudText>
+
+                <h3>Bygga helt ny webbutik?</h3>
+                <MudText Class="mb-6">
+                    Afrejd kan hjälpa dig att bygga en ny webbutik, med allt från back-end-programmering till UX-design, samt profil och identitet. 
+                    Våra program kan integreras med de allra flesta onlinebutiker och inköpssystem i Sverige. Normalt integreras detta utan extra kostnad för våra kunder. 
+                    Afrejd har en stark IT- och teknikavdelning i Norge, och ett separat utvecklingsteam i Polen, som kan ge full drift och support.
+                </MudText>
+
+                <MudText Class="mb-6">
+                    Vi kan också hjälpa dig med en ansiktslyftning av dagens online-detaljhandelslösning, så att din webbutik är utrustad för dagens och morgondagens e-handel. 
+                    Vi erbjuder även rådgivning kring affärssystem och olika betalningslösningar.
+                </MudText>
+
+                <h3>Skala din webbutik i eller utanför Sverige</h3>
+                <MudText Class="mb-6">
+                    Vi är en tredjepartslogistikpartner med erfarenhet av att hjälpa svenska e-handelsbutiker expandera till Europa — till en större marknad med nya skalningsmöjligheter. 
+                    När försäljningen ökar kan vi enkelt skala verksamheten för att möta din tillväxt, utan att påverka ledtiderna i samband med orderhantering.
+                </MudText>
+
+                <MudText Class="mb-6">
+                    Oavsett om din webbutik behöver växa, oavsett om det är i Sverige eller internationellt, har Afrejd tjänster och lösningar som hjälper dig att skala effektivt. 
+                    Vi har pallförvaring, plockhyllor och effektiv lagerhantering, välja vad som är mest lämpligt baserat på typen av varor. Vi har fast anställda med etablerade rutiner och tillgång till nya årsarbeten vid behov.
+                </MudText>
+
+                <MudText Class="mb-6">
+                    Vi lägger hög prioritet på säkerhet med säkerhet 24 timmar om dygnet, 365 dagar om året. 
+                    Vi har tre stora handelshotell och logistikhus med strategiska lägen i Karlstad, Oslo och Arendal, där vi effektiviserar dina varor och levererar till hela Europa.
+                </MudText>
+
+                <h3>Prenumeration är framtidens affärsmodell‍</h3>
+                <MudText Class="mb-6">
+                    Visste du att vi svenskar i genomsnitt har 18 olika prenumerationer? Nu prenumererar man på allt från TV-kanaler och streamingtjänster, mat och kläder, parkdräkter och böcker, till bilar och cyklar. 
+                    Detta är en trend som inte kommer att sluta här, eftersom prenumeration är en framåtblickande och hållbar affärsmodell.
+                </MudText>
+
+                <MudText Class="mb-6">
+                    Afrejd specialiserar sig på abonnemangslogistik och utveckling av prenumerationslösningar och system. Vi har ett skräddarsytt handelshotell för förpackning av alla typer av prenumerationsprodukter, vare sig det är B2B eller B2C. 
+                    Förutom att säkerställa att alla leveranser går smidigt får våra prenumerationskunder också de nödvändiga siffrorna på nyförsäljning, prenumerationsförsäljning och avlämningsstatistik. 
+                    Det är viktig information att hålla reda på i försäljnings- och marknadsföringsprocessen för ditt företag. Oavsett om kunder slutar eller säger upp sin prenumeration kan vårt callcenter hjälpa till med win-back-lösningar för att vinna tillbaka kunden.
+                </MudText>
+
+                <h3>Vad är ett prenumerationssystem?</h3>
+                <MudText Class="mb-6">
+                    Ett prenumerationssystem är ett upprepande ordersystem. Det kan vara lika ordning, eller lika med variation. 
+                    Vårt prenumerationssystem är extremt flexibelt och stöder de flesta av de online-detaljhandelslösningar som finns tillgängliga idag. 
+                    Många av våra kunder är inom hälsokost och kosmetika, men det behöver inte nödvändigtvis vara en traditionell prenumerationsprodukt. Det kan vara så att du har en huvudprodukt, men med ytterligare tillbehör som ett abonnemang.
+                </MudText>
+
+                <MudText Class="mb-6">
+                    Låt oss säga att du säljer simbassänger, till exempel. Kanske vill din kund prenumerera på städutrustning? Eller att varje kvartal eller sex månader behöver du ett filter för ventilationssystemet hemma - det kan också vara ett abonnemang. 
+                    Då tar systemet hand om när du ska ha skickat ett SMS eller e-post, och när du ska ha produkten.
+                </MudText>
+
+                <MudText Class="mb-6">
+                    Kanske är det variation från kund till kund. Någon som säljer rakhyvlar kommer att kunna ha några kunder som rakar sig varje dag, medan andra gör det en gång i veckan. 
+                    Dessa kommer att ha olika behov när de ska få nya rakblad levererade. Vårt abonnemangssystem underlättar varje enskild kunds behov.
+                </MudText>
+            </MudPaper>
+        </MudPaper>
+    </MudContainer>
+</article>
+
+
+@code {
+    private string SuccessMessage;
+    private string ErrorMessage;
+    private int ProductId = 7;
+
+    private async Task AddItemToCart()
+    {
+        try
+        {
+            var userId = await CartService.GetUserId();
+            await CartService.AddItemToCart(ProductId, userId);
+            SuccessMessage = "Tjänsten har lagts till i varukorgen!";
+        }
+        catch (ArgumentException ex)
+        {
+            ErrorMessage = ex.Message;
+        }
+        catch (Exception ex)
+        {
+            ErrorMessage = $"An error occurred while adding the product to the cart: {ex.Message}";
+        }
+    }
+}
