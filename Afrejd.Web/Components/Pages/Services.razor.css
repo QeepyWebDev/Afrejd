@@ -1,4 +1,11 @@
-﻿h2 {
+﻿article {
+    background-color: #dce1e9;
+    border-style: solid;
+    border-block-width: thick;
+    border-color: #363732;
+}
+
+h2 {
     -webkit-box-shadow: -11px 11px 0px 0px rgba(102, 195, 255, 1);
     -moz-box-shadow: -11px 11px 0px 0px rgba(102, 195, 255, 1);
     box-shadow: -11px 11px 0px 0px rgba(102, 195, 255, 1);
@@ -11,29 +18,34 @@
 }
 
 img {
-    width: 800px;
+    max-width: 40%;
+    min-width: 500px;
     height: auto;
+    margin-right: 20px;
+    margin-bottom: 10px;
+    border-radius: 30px;
 }
 
 .btn {
     margin-top: 1em;
     width: 150px;
     margin-left: 2em;
+    background-color: #363732;
+    border-style: none;
 }
 
 .video-background {
     position: relative;
-    width: 100%;
-    height: 70vh;
+    width: auto;
+    height: 600px;
     overflow: hidden;
 }
 
 .video-background video {
-    position: absolute;
     top: 0;
     left: 0;
     width: 100%;
-    height: 75%;
+    height: 100%;
     object-fit: cover;
 }
 
@@ -47,6 +59,7 @@ img {
     background-color: rgba(54, 55, 50, 0.6);
     padding: 1em;
     border-radius: 1em;
+    min-width: 90vw;
 }
 
 .text-content p {
@@ -54,7 +67,7 @@ img {
 }
 
 article {
-    margin: 0em 10em 0em 10em;
+    margin: 0em 10vw 0em 10vw;
 }
 
 nav {
@@ -64,4 +77,16 @@ nav {
 
 .d-flex .flex-sm-column p {
     font-size: 1.6em;
+}
+
+.service-content p {
+    font-size: 1.7em;
+}
+
+@media (max-width: 767px) {
+    img {
+        max-width: 100%;
+        min-width: 100px; 
+        margin-right: 20px;
+    }
 }

@@ -20,7 +20,7 @@
         </button>
     </nav>
     <div class="collapse" id="navbarToggleExternalContent">
-        <div class="p-4">
+        <div class="p-4 d-flex flex-column flex-md-row-reverse">
             <AuthorizeView>
                 <Authorized>
                     <form action="Account/Logout" method="post">
@@ -48,7 +48,7 @@
 
             <AuthorizeView Roles="Admin">
                 <Authorized>
-                    <NavLink href="/admin" class="nav-link"><box-icon name='receipt' color='#363732' class="align-middle"></box-icon> ADMINISTRATION</NavLink>
+                    <NavLink href="/ViewOrders" class="nav-link"><box-icon name='receipt' color='#363732' class="align-middle"></box-icon> ADMINISTRATION</NavLink>
                 </Authorized>
             </AuthorizeView>
         </div>

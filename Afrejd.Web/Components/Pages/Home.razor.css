@@ -1,0 +1,30 @@
+﻿@media (max-width: 991.98px) {
+    ::deep .responsive-width {
+        width: 100%;
+    }
+}
+
+@media (min-width: 992px) {
+    ::deep .responsive-width {
+        width: 40%;
+    }
+}
+
+::deep .product-buttons {
+    outline: solid;
+    color: #66c3ff;
+    font-weight: bold;
+    padding: 20px;
+    flex: 1 1 calc(50% - 8px);
+}
+
+::deep .products-button {
+    background-color: #66c3ff;
+    color: #363732;
+    width: fit-content;
+    font-weight: bold;
+}
+
+::deep .products-button:hover {
+    background-color: #66c3ff;
+}

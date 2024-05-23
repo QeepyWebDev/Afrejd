@@ -8,7 +8,7 @@
 <article>
     <MudContainer MaxWidth="MaxWidth.ExtraLarge" Class=" py-6">
         <MudPaper Outlined="true" Class="d-flex flex-column">
-            <MudPaper Elevation="0" Width="100%" Class="d-flex justify-space-between pa-6">
+            <MudPaper Elevation="0" Width="100%" Class="d-flex flex-column flex-md-row justify-space-between pa-6">
                 <MudStack Class="d-flex justify-start">
                     <h1 class="display-1">
                         Varulager
@@ -34,7 +34,7 @@
             <MudDivider DividerType="DividerType.Middle" Class="my-6" />
 
             <MudPaper Width="75%" Elevation=0 Style="margin:auto;">
-                <MudText Class="mb-6">
+                <MudText Class="mb-15" Style="font-size: 2em;">
                     Vi tar hand om dina varor - med sann kärlek. Genom att lägga bort ditt lager och logistik till en modern 3PL-partner som Afrejd, med toppmoderna lager, uppnår ditt företag skalfördelar. 
                     Kostnader relaterade till system, lagerutrymme, porto, frakt, utrustning och anställda fördelas och delas mellan många företag som liknar ditt. 
                     Det är vad vi kallar sann logistikglädje - till glädje för dig, oss och planeten.
@@ -55,6 +55,32 @@
             </MudPaper>
         </MudPaper>
     </MudContainer>
+
+    <MudPaper Elevation="0" Width="100%" Height="auto" Outlined="false" Class="d-flex flex-column flex-md-row align-items-center justify-content-center pa-6 gap-4" style="background-color: #363732;">
+
+        <MudStack Class="ma-6 text-center align-items-center justify-content-center">
+            <MudText Style="font-size: 2em; color: white;">
+                Vi kan hjälpa dig med alla aspekter av logistik.
+            </MudText>
+
+            <MudButton Variant="Variant.Filled" Size="Size.Medium" Class="products-button">
+                Våra tjänster
+            </MudButton>
+        </MudStack>
+
+        <MudStack Class="d-flex flex-wrap justify-content-center gap-2" Style="width: 100%; max-width: 600px;">
+            <MudButton Variant="Variant.Text" Class="product-buttons" Href="/Rådgivning&Försäljning">Rådgivning & Försäljning</MudButton>
+            <MudButton Variant="Variant.Text" Class="product-buttons" Href="/IT&Tech">IT & Tech</MudButton>
+            <MudButton Variant="Variant.Text" Class="product-buttons" Href="/Webbutik&Prenumeration">Webbutik & Prenumeration</MudButton>
+            <MudButton Variant="Variant.Text" Class="product-buttons" Href="/Varulager">Varulager</MudButton>
+            <MudButton Variant="Variant.Text" Class="product-buttons" Href="/Förpackning">Förpackning av varor</MudButton>
+            <MudButton Variant="Variant.Text" Class="product-buttons" Href="/Lagerhanterings-system">Lagerhanterings-system</MudButton>
+            <MudButton Variant="Variant.Text" Class="product-buttons" Href="/Kundtjänst">Kundtjänst</MudButton>
+            <MudButton Variant="Variant.Text" Class="product-buttons" Href="/Retur">Retur av varor</MudButton>
+            <MudButton Variant="Variant.Text" Class="product-buttons" Href="/Kampanjförpackning">Kampanjförpackning</MudButton>
+            <MudButton Variant="Variant.Text" Class="product-buttons" Href="/Distribution">Distribution</MudButton>
+        </MudStack>
+    </MudPaper>
 </article>
 
 

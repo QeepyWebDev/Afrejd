@@ -24,6 +24,13 @@
 
 @media (max-width: 991.98px) {
     .display-1 {
+        font-size: 5em;
+        font-weight: 400;
+    }
+}
+
+@media (min-width: 992px) and (max-width: 1580px) {
+    .display-1 {
         font-size: 6em;
         font-weight: 400;
     }
