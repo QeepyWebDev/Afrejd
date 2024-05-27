@@ -1,0 +1,7 @@
+﻿::deep label {
+    font-size: 1.5em;
+}
+
+::deep .card-text {
+    font-size: 1.5em;
+}

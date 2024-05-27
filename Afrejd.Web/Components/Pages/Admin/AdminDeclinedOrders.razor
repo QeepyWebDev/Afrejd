@@ -8,47 +8,52 @@
 @rendermode InteractiveServer
 @layout AdminMenu
 
-<input class="form-control mr-sm-2" aria-label="Search" type="text" id="orderSearch" onkeyup="searchOrders()" placeholder="Sök Ärendenummer...">
-<table class="table" id="orderTable">
-    <thead class="thead-dark">
-        <tr>
-            <th>Ärendenummer</th>
-            <th>Datum</th>
-            <th>Tjänster</th>
-            <th>Prisförslag</th>
-            <th>Status</th>
-            <th>Åtgärd</th>
-        </tr>
-    </thead>
-    <tbody>
-        @if (declinedOrders != null)
-        {
-            @foreach (var order in declinedOrders)
-            {
+<MudContainer Class="my-5">
+    <input class="form-control mr-sm-2" aria-label="Search" type="text" id="orderSearch" onkeyup="searchOrders()" placeholder="Sök Ärendenummer...">
+
+    <div class="table-responsive">
+        <table class="table table-striped table-bordered" id="orderTable">
+            <thead class="thead-dark">
                 <tr>
-                    <td>@order.Ordernumber</td>
-                    <td>@order.OrderDate.ToString("yyyy-MM-dd")</td>
-                    <td>
-                        @foreach (var detail in order.OrderDetails)
-                        {
-                            <span>@detail.Product.Name</span>
-                            <br />
-                        }
-                    </td>
-                    <td>@order.PriceEstimate</td>
-                    <td>@order.Status</td>
-                    <td>
-                        <button type="button" class="btn btn-danger btn-sm" @onclick="() => ShowConfirmationDialog(order)">Radera</button>
-                    </td>
+                    <th>Ärendenummer</th>
+                    <th>Datum</th>
+                    <th>Tjänster</th>
+                    <th>Prisförslag</th>
+                    <th>Status</th>
+                    <th>Åtgärd</th>
                 </tr>
-            }
-        }
-        else
-        {
-            <p>Inga bekräftade ärenden hittades.</p>
-        }
-    </tbody>
-</table>
+            </thead>
+            <tbody>
+                @if (declinedOrders != null)
+                {
+                    @foreach (var order in declinedOrders)
+                    {
+                        <tr>
+                            <td>@order.Ordernumber</td>
+                            <td>@order.OrderDate.ToString("yyyy-MM-dd")</td>
+                            <td>
+                                @foreach (var detail in order.OrderDetails)
+                                {
+                                    <span>@detail.Product.Name</span>
+                                    <br />
+                                }
+                            </td>
+                            <td>@order.PriceEstimate</td>
+                            <td>@order.Status</td>
+                            <td>
+                                <button type="button" class="btn btn-danger btn-sm" @onclick="() => ShowConfirmationDialog(order)">Radera</button>
+                            </td>
+                        </tr>
+                    }
+                }
+                else
+                {
+                    <p>Inga bekräftade ärenden hittades.</p>
+                }
+            </tbody>
+        </table>
+    </div>
+</MudContainer>
 
 <script>
     function searchOrders() {

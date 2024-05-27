@@ -3,6 +3,8 @@
 @using Afrejd.Web.Data.Interfaces
 @using Afrejd.Web.Data.Models
 @inject ICartService CartService
+@inject AuthenticationStateProvider AuthenticationStateProvider
+@inject NavigationManager NavigationManager
 @rendermode InteractiveServer
 
 <article>
@@ -61,7 +63,7 @@
                 Vi kan hjälpa dig med alla aspekter av logistik.
             </MudText>
 
-            <MudButton Variant="Variant.Filled" Size="Size.Medium" Class="products-button">
+            <MudButton Variant="Variant.Filled" Size="Size.Medium" Class="products-button" Href="/services">
                 Våra tjänster
             </MudButton>
         </MudStack>
@@ -91,9 +93,19 @@
     {
         try
         {
-            var userId = await CartService.GetUserId();
-            await CartService.AddItemToCart(ProductId, userId);
-            SuccessMessage = "Tjänsten har lagts till i varukorgen!";
+            var authState = await AuthenticationStateProvider.GetAuthenticationStateAsync();
+            var user = authState.User;
+
+            if (user.Identity.IsAuthenticated)
+            {
+                var userId = await CartService.GetUserId();
+                await CartService.AddItemToCart(ProductId, userId);
+                SuccessMessage = "Tjänsten har lagts till i varukorgen!";
+            }
+            else
+            {
+                NavigationManager.NavigateTo("Account/Register");
+            }
         }
         catch (ArgumentException ex)
         {

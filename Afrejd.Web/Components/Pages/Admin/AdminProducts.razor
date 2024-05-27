@@ -9,26 +9,28 @@
 @inject NavigationManager NavigationManager
 @inject IJSRuntime JsRuntime
 
-<table class="table">
-    <thead>
-        <tr>
-            <th>Tjänst</th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var product in Products)
-        {
+<MudContainer Class="my-5">
+    <table class="table">
+        <thead>
             <tr>
-                <td>@product.Name</td>
-                <td>
-                    <button type="button" class="btn btn-dark btn-sm" @onclick="() => EditProduct(product.Id)">Redigera</button>
-                    <button type="button" class="btn btn-danger btn-sm" @onclick="() => ShowConfirmationDialog(product)">Radera</button>
-                </td>
+                <th>Tjänst</th>
+                <th></th>
             </tr>
-        }
-    </tbody>
-</table>
+        </thead>
+        <tbody>
+            @foreach (var product in Products)
+            {
+                <tr>
+                    <td>@product.Name</td>
+                    <td>
+                        <button type="button" class="btn btn-dark btn-sm" @onclick="() => EditProduct(product.Id)">Redigera</button>
+                        <button type="button" class="btn btn-danger btn-sm" @onclick="() => ShowConfirmationDialog(product)">Radera</button>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</MudContainer>
 
 @code {
     private List<Product> Products { get; set; } = new List<Product>();

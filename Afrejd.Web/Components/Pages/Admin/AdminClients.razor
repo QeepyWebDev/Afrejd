@@ -9,76 +9,78 @@
 @rendermode InteractiveServer
 @layout AdminMenu
 
-<input class="form-control mr-sm-2" type="text" value="@searchString" aria-label="Search" @oninput="SearchCustomers" placeholder="Sök namn eller företag...">
-<table class="table">
-    <thead>
-        <tr>
-            <th>Namn</th>
-            <th>Företag</th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        @if (FilteredCustomers.Any())
-        {
-            @foreach (var customer in FilteredCustomers)
+<MudContainer Class="my-5">
+    <input class="form-control mr-sm-2" type="text" value="@searchString" aria-label="Search" @oninput="SearchCustomers" placeholder="Sök namn eller företag...">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Namn</th>
+                <th>Företag</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (FilteredCustomers.Any())
             {
-                if (customer.CustomerInfo != null)
+                @foreach (var customer in FilteredCustomers)
                 {
-                    foreach (var customerInfo in customer.CustomerInfo)
+                    if (customer.CustomerInfo != null)
                     {
-                        <tr>
-                            <td>@customerInfo.FirstName @customerInfo.LastName</td>
-                            <td>@customerInfo.Company</td>
-                            <td>
-                                <button class="btn btn-dark" @onclick="() => ToggleCustomerDetails(customer)">Visa mer</button>
-                            </td>
-                        </tr>
+                        foreach (var customerInfo in customer.CustomerInfo)
+                        {
+                            <tr>
+                                <td>@customerInfo.FirstName @customerInfo.LastName</td>
+                                <td>@customerInfo.Company</td>
+                                <td>
+                                    <button class="btn btn-dark" @onclick="() => ToggleCustomerDetails(customer)">Visa mer</button>
+                                </td>
+                            </tr>
+                        }
                     }
                 }
             }
-        }
-        else
-        {
-            <tr>
-                <td colspan="3">Inga kunder hittades.</td>
-            </tr>
-        }
-    </tbody>
-</table>
-
-
-@if (SelectedCustomer != null && SelectedCustomer.CustomerInfo != null && IsDetailsVisible)
-{
-    <div>
-        <h3>Kundinformation</h3>
-        @foreach (var customerInfo in SelectedCustomer.CustomerInfo)
-        {
-            <p><strong>Namn:</strong> @customerInfo.FirstName @customerInfo.LastName</p>
-            <p><strong>Telefonnummer:</strong> @customerInfo.Phone</p>
-            <p><strong>Företag:</strong> @customerInfo.Company</p>
-            <p><strong>Organisationsnummer:</strong> @customerInfo.OrganizationNumber</p>
-            <p><strong>Adress:</strong> @customerInfo.Address</p>
-            <p><strong>Stad:</strong> @customerInfo.City</p>
-            <p><strong>Postnummer:</strong> @customerInfo.PostalCode</p>
-            <p><strong>Län:</strong> @customerInfo.Region</p>
-            <p><strong>Land:</strong> @customerInfo.Country</p>
-            <hr class="hr" />
-        }
-
-        <h3>Ärenden</h3>
-        @if (SelectedCustomer.Orders != null) {
-            @foreach (var order in SelectedCustomer.Orders)
+            else
             {
-                <p><strong>Ärendenummer:</strong> @order.Ordernumber</p>
-                <p><strong>Datum:</strong> @order.OrderDate.ToShortDateString()</p>
-                <p><strong>Status:</strong> @order.Status</p>
-                <p><strong>Prisförslag:</strong> @order.PriceEstimate</p>
+                <tr>
+                    <td colspan="3">Inga kunder hittades.</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    @if (SelectedCustomer != null && SelectedCustomer.CustomerInfo != null && IsDetailsVisible)
+    {
+        <div>
+            <h3>Kundinformation</h3>
+            @foreach (var customerInfo in SelectedCustomer.CustomerInfo)
+            {
+                <p><strong>Namn:</strong> @customerInfo.FirstName @customerInfo.LastName</p>
+                <p><strong>Telefonnummer:</strong> @customerInfo.Phone</p>
+                <p><strong>Företag:</strong> @customerInfo.Company</p>
+                <p><strong>Organisationsnummer:</strong> @customerInfo.OrganizationNumber</p>
+                <p><strong>Adress:</strong> @customerInfo.Address</p>
+                <p><strong>Stad:</strong> @customerInfo.City</p>
+                <p><strong>Postnummer:</strong> @customerInfo.PostalCode</p>
+                <p><strong>Län:</strong> @customerInfo.Region</p>
+                <p><strong>Land:</strong> @customerInfo.Country</p>
                 <hr class="hr" />
             }
-        }
-    </div>
-}
+
+            <h3>Ärenden</h3>
+            @if (SelectedCustomer.Orders != null)
+            {
+                @foreach (var order in SelectedCustomer.Orders)
+                {
+                    <p><strong>Ärendenummer:</strong> @order.Ordernumber</p>
+                    <p><strong>Datum:</strong> @order.OrderDate.ToShortDateString()</p>
+                    <p><strong>Status:</strong> @order.Status</p>
+                    <p><strong>Prisförslag:</strong> @order.PriceEstimate</p>
+                    <hr class="hr" />
+                }
+            }
+        </div>
+    }
+</MudContainer>
 
 @code {
     private ApplicationUser SelectedCustomer;

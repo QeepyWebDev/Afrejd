@@ -9,82 +9,88 @@
 @rendermode InteractiveServer
 @layout AdminMenu
 
-<div>
-    @if (!string.IsNullOrEmpty(ConfirmOrderMessage))
-    {
-        <div class="alert alert-success" role="alert">
-            @ConfirmOrderMessage
-        </div>
-    }
-
-    @if (!string.IsNullOrEmpty(DeclineOrderMessage))
-    {
-        <div class="alert alert-success" role="alert">
-            @DeclineOrderMessage
-        </div>
-    }
-
-    @if (!string.IsNullOrEmpty(UpdatePriceMessage))
-    {
-        <div class="alert alert-success" role="alert">
-            @UpdatePriceMessage
-        </div>
-    }
-</div>
-
-<input class="form-control mr-sm-2" aria-label="Search" type="text" id="orderSearch" onkeyup="searchOrders()" placeholder="Sök Ärendenummer...">
-    <table class="table" id="orderTable">
-        <thead class="thead-dark">
-            <tr>
-                <th>Ärendenummer</th>
-                <th>Datum</th>
-                <th>Tjänster</th>
-                <th>Prisförslag</th>
-                <th>Status</th>
-                <th>Ändra Status</th>
-                <th>Åtgärd</th>
-            </tr>
-        </thead>
-        <tbody>
-        @if (orders != null)
+<MudContainer Class="my-5">
+    <div>
+        @if (!string.IsNullOrEmpty(ConfirmOrderMessage))
         {
-            @foreach (var order in orders)
-            {
+            <div class="alert alert-success" role="alert">
+                @ConfirmOrderMessage
+            </div>
+        }
+
+        @if (!string.IsNullOrEmpty(DeclineOrderMessage))
+        {
+            <div class="alert alert-success" role="alert">
+                @DeclineOrderMessage
+            </div>
+        }
+
+        @if (!string.IsNullOrEmpty(UpdatePriceMessage))
+        {
+            <div class="alert alert-success" role="alert">
+                @UpdatePriceMessage
+            </div>
+        }
+    </div>
+
+    <input class="form-control mr-sm-2" aria-label="Search" type="text" id="orderSearch" onkeyup="searchOrders()" placeholder="Sök Ärendenummer...">
+
+    <div class="table-responsive">
+        <table class="table table-striped table-bordered" id="orderTable">
+            <thead class="thead-dark">
                 <tr>
-                    <td>@order.Ordernumber</td>
-                    <td>@order.OrderDate.ToString("yyyy-MM-dd")</td>
-                    <td>
-                        @foreach (var detail in order.OrderDetails)
-                        {
-                            <span>@detail.Product.Name</span>
-                            <br />
-                        }
-                    </td>
-                    <td><input type="number" @bind="@order.PriceEstimate" /></td>
-                    <td>@order.Status</td>
-                    <td>
-                        <select @bind="@order.Status">
-                            @foreach (var status in Enum.GetValues(typeof(OrderStatus)))
-                            {
-                                <option value="@status">@status</option>
-                            }
-                        </select>
-                    </td>
-                    <td>
-                        <button type="button" class="btn btn-danger btn-sm" @onclick="() => ShowConfirmationDialog(order)">Radera</button>
-                        <button type="button" class="btn btn-dark btn-sm" @onclick="() => ChangeOrderPriceEstimate(order)">Uppdatera Prisförslag</button>
-                        <button type="button" class="btn btn-danger btn-sm" @onclick="() => DeclineOrder(order)">Avslå Ärende</button>
-                        <button type="button" class="btn btn-success btn-sm" @onclick="() => ConfirmOrder(order)">Bekräfta Ärende</button>
-                    </td>
+                    <th>Ärendenummer</th>
+                    <th>Datum</th>
+                    <th>Tjänster</th>
+                    <th>Prisförslag</th>
+                    <th>Status</th>
+                    <th>Ändra Status</th>
+                    <th>Åtgärd</th>
                 </tr>
-            }
-        }
-        else
-        {
-            <p>Inga ärenden hittades.</p>
-        }
-    </tbody>
-    </table>
+            </thead>
+            <tbody>
+                @if (orders != null)
+                {
+                    @foreach (var order in orders)
+                    {
+                        <tr>
+                            <td>@order.Ordernumber</td>
+                            <td>@order.OrderDate.ToString("yyyy-MM-dd")</td>
+                            <td>
+                                @foreach (var detail in order.OrderDetails)
+                                {
+                                    <span>@detail.Product.Name</span>
+                                    <br />
+                                }
+                            </td>
+                            <td><input type="number" @bind="@order.PriceEstimate" class="form-control form-control-sm" /></td>
+                            <td>@order.Status</td>
+                            <td>
+                                <select @bind="@order.Status" class="form-control form-control-sm">
+                                    @foreach (var status in Enum.GetValues(typeof(OrderStatus)))
+                                    {
+                                        <option value="@status">@status</option>
+                                    }
+                                </select>
+                            </td>
+                            <td>
+                                <button type="button" class="btn btn-danger btn-sm" @onclick="() => ShowConfirmationDialog(order)">Radera</button>
+                                <button type="button" class="btn btn-dark btn-sm" @onclick="() => ChangeOrderPriceEstimate(order)">Uppdatera Prisförslag</button>
+                                <button type="button" class="btn btn-danger btn-sm" @onclick="() => DeclineOrder(order)">Avslå Ärende</button>
+                                <button type="button" class="btn btn-success btn-sm" @onclick="() => ConfirmOrder(order)">Bekräfta Ärende</button>
+                            </td>
+                        </tr>
+                    }
+                }
+                else
+                {
+                    <p>Inga ärenden hittades.</p>
+                }
+            </tbody>
+        </table>
+    </div>
+</MudContainer>
+
 
 <script>
     function searchOrders() {

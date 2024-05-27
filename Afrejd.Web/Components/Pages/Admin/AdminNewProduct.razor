@@ -9,30 +9,31 @@
 @rendermode InteractiveServer
 @layout AdminMenu
 
-<article class="content px-2">
-            <EditForm Model="@NewProduct" OnSubmit="AddNewProduct" FormName="AddProductForm">
-                <DataAnnotationsValidator />
-                <ValidationSummary />
+<MudContainer Class="my-5">
+    <article class="content px-2">
+        <EditForm Model="@NewProduct" OnSubmit="AddNewProduct" FormName="AddProductForm">
+            <DataAnnotationsValidator />
+            <ValidationSummary />
 
-                <div class="form-group" style="margin-top: 1em;">
-                    <label for="name">Namn:</label>
-                    <InputText id="name" class="form-control" @bind-Value="@NewProduct.Name" />
-                </div>
+            <div class="form-group" style="margin-top: 1em;">
+                <label for="name">Namn:</label>
+                <InputText id="name" class="form-control" @bind-Value="@NewProduct.Name" />
+            </div>
 
-                <div class="form-group" style="margin-top: 1em;">
-                    <label for="categoryId">Kategori ID:</label>
-                    <select id="categoryId" class="form-control" @bind="@NewProduct.CategoryId">
-                        @foreach (var categoryId in CategoryIds)
-                        {
-                            <option value="@categoryId">@categoryId</option>
-                        }
-                    </select>
-                </div>
+            <div class="form-group" style="margin-top: 1em;">
+                <label for="categoryId">Kategori ID:</label>
+                <select id="categoryId" class="form-control" @bind="@NewProduct.CategoryId">
+                    @foreach (var categoryId in CategoryIds)
+                    {
+                        <option value="@categoryId">@categoryId</option>
+                    }
+                </select>
+            </div>
 
-                <button type="submit" class="btn btn-primary" style="margin-top: 1em;">Lägg till</button>
-            </EditForm>
+            <button type="submit" class="btn btn-primary" style="margin-top: 1em;">Lägg till</button>
+        </EditForm>
     </article>
-
+</MudContainer>
 
 @code {
     private Product NewProduct { get; set; } = new Product();

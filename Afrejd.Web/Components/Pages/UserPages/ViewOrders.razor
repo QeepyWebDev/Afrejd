@@ -7,34 +7,36 @@
 @rendermode InteractiveServer
 @layout UserMenu
 
-<table class="table">
-    <thead class="thead-dark">
-        <tr>
-            <th>Ärendenummer</th>
-            <th>Datum</th>
-            <th>Prisförslag</th>
-            <th>Status</th>
-        </tr>
-    </thead>
-    <tbody>
-        @if (userOrders != null)
-        {
-            @foreach (var order in userOrders)
+<MudContainer Class="my-5">
+    <table class="table">
+        <thead class="thead-dark">
+            <tr>
+                <th>Ärendenummer</th>
+                <th>Datum</th>
+                <th>Prisförslag</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (userOrders != null)
             {
-                <tr>
-                    <td>@order.Ordernumber</td>
-                    <td>@order.OrderDate.ToString("yyyy-MM-dd")</td>
-                    <td>@order.PriceEstimate</td>
-                    <td>@order.Status</td>
-                </tr>
+                @foreach (var order in userOrders)
+                {
+                    <tr>
+                        <td>@order.Ordernumber</td>
+                        <td>@order.OrderDate.ToString("yyyy-MM-dd")</td>
+                        <td>@order.PriceEstimate</td>
+                        <td>@order.Status</td>
+                    </tr>
+                }
             }
-        }
-        else
-        {
-            <p>Inga ärenden hittades.</p>
-        }
-    </tbody>
-</table>
+            else
+            {
+                <p>Inga ärenden hittades.</p>
+            }
+        </tbody>
+    </table>
+</MudContainer>
 
 @code {
     private List<Order> userOrders;

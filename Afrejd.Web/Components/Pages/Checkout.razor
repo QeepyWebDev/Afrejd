@@ -11,78 +11,79 @@
 
 @if (CartItems != null)
 {
-    <div class="row">
-        <div class="col-md-2">
-            <h3>Orderöversikt</h3>
-            @foreach (var cartItem in CartItems)
-            {
-                <div class="card">
-                    <div class="card-body">
-                        <p class="card-text">@cartItem.CartProduct.Name</p>
+    <MudContainer>
+        <div class="row my-5 justify-content-center">
+            <div class="col-md-3">
+                <h3>Valda tjänster</h3>
+                @foreach (var cartItem in CartItems)
+                {
+                    <div class="card">
+                        <div class="card-body">
+                            <p class="card-text">@cartItem.CartProduct.Name</p>
+                        </div>
                     </div>
-                </div>
-            }
+                }
+            </div>
+
+            <div class="col-md-6">
+                <h3>Fyll i ansökan</h3>
+                <form @onsubmit="PlaceOrder">
+                    <div class="form-group">
+
+                        <label for="name">Förnamn:</label>
+                        <input type="text" class="form-control" id="name" @bind="customerInfo.FirstName">
+                        <br />
+
+                        <label for="name">Efternamn:</label>
+                        <input type="text" class="form-control" id="name" @bind="customerInfo.LastName">
+                        <br />
+
+                        <label for="shippingAdress">Gata:</label>
+                        <input type="text" class="form-control" id="shippingAdress" @bind="customerInfo.Address">
+                        <br />
+
+                        <label for="city">Stad:</label>
+                        <input type="text" class="form-control" id="city" @bind="customerInfo.City">
+                        <br />
+
+                        <label for="region">Län:</label>
+                        <input type="text" class="form-control" id="region" @bind="customerInfo.Region">
+                        <br />
+
+                        <label for="postalCode">Postnummer:</label>
+                        <input type="text" class="form-control" id="postalCode" @bind="customerInfo.PostalCode">
+                        <br />
+
+                        <label for="country">Land:</label>
+                        <select class="form-control" id="country" @bind="customerInfo.Country">
+                            <option value="Sweden">Sverige</option>
+                            <option value="Norway">Norge</option>
+                            <option value="Denmark">Danmark</option>
+                            <option value="Finland">Finland</option>
+                        </select>
+                        <br />
+
+                        <label for="phoneNumber">Telefonnummer:</label>
+                        <input type="text" class="form-control" id="phoneNumber" @bind="customerInfo.Phone">
+                        <br />
+
+                        <label for="company">Företag:</label>
+                        <input type="text" class="form-control" id="company" @bind="customerInfo.Company">
+                        <br />
+
+                        <label for="company">Organisationsnummer:</label>
+                        <input type="text" class="form-control" id="company" @bind="customerInfo.OrganizationNumber">
+                        <br />
+                    </div>
+
+                    <button type="submit" class="btn btn-primary">Skicka ansökan</button>
+                </form>
+            </div>
         </div>
-
-        <div class="col-md-6">
-            <h3>Fyll i ansökan</h3>
-            <form @onsubmit="PlaceOrder">
-                <div class="form-group">
-
-                    <label for="name">Förnamn:</label>
-                    <input type="text" class="form-control" id="name" @bind="customerInfo.FirstName">
-                    <br />
-
-                    <label for="name">Efternamn:</label>
-                    <input type="text" class="form-control" id="name" @bind="customerInfo.LastName">
-                    <br />
-
-                    <label for="shippingAdress">Gata:</label>
-                    <input type="text" class="form-control" id="shippingAdress" @bind="customerInfo.Address">
-                    <br />
-
-                    <label for="city">Stad:</label>
-                    <input type="text" class="form-control" id="city" @bind="customerInfo.City">
-                    <br />
-
-                    <label for="region">Län:</label>
-                    <input type="text" class="form-control" id="region" @bind="customerInfo.Region">
-                    <br />
-
-                    <label for="postalCode">Postnummer:</label>
-                    <input type="text" class="form-control" id="postalCode" @bind="customerInfo.PostalCode">
-                    <br />
-
-                    <label for="country">Land:</label>
-                    <select class="form-control" id="country" @bind="customerInfo.Country">
-                        <option value="Sweden">Sverige</option>
-                        <option value="Norway">Norge</option>
-                        <option value="Denmark">Danmark</option>
-                        <option value="Finland">Finland</option>
-                    </select>
-                    <br />
-
-                    <label for="phoneNumber">Telefonnummer:</label>
-                    <input type="text" class="form-control" id="phoneNumber" @bind="customerInfo.Phone">
-                    <br />
-
-                    <label for="company">Företag:</label>
-                    <input type="text" class="form-control" id="company" @bind="customerInfo.Company">
-                    <br />
-
-                    <label for="company">Organisationsnummer:</label>
-                    <input type="text" class="form-control" id="company" @bind="customerInfo.OrganizationNumber">
-                    <br />
-                </div>
-
-                <button type="submit" class="btn btn-primary">Skicka ansökan</button>
-            </form>
-        </div>
-    </div>
+    </MudContainer>
 }
 else
 {
-    <h1>Kassa</h1>
     <p>Inga tjänster hittades.</p>
 }
 

@@ -3,47 +3,55 @@
 
 <NavMenu />
 
-
-
-<div class="container-fluid">
-    <div class="row flex-nowrap">
-        <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-dark">
-            <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100">
-
-                <div class="nav flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start" id="menu">
-                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#dropdown" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
-                        <box-icon name='briefcase-alt' color='#363732' class="align-middle"></box-icon> Tjänster
-                    </button>
-                    <div class="collapse" aria-labelledby="navbarDropdownMenuLink" id="dropdown">
-                        <NavLink class="nav-link" href="/productlist">Visa Tjänster</NavLink>
-                        <NavLink class="nav-link" href="/AdminNewProduct">Lägg till Tjänst</NavLink>
-                    </div>
-
-                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#dropdown2" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
-                        <box-icon name='cabinet' color='#363732' class="align-middle"></box-icon> Ärenden
-                    </button>
-                    <div class="collapse" aria-labelledby="navbarDropdownMenuLink" id="dropdown2">
-                        <NavLink class="nav-link" href="/ViewOrders">Visa Ärenden</NavLink>
-                        <NavLink class="nav-link" href="/ConfirmedOrders">Bekräftade Ärenden</NavLink>
-                        <NavLink class="nav-link" href="/DeclinedOrders">Avslagna Ärenden</NavLink>
-                    </div>
-
-                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#dropdown3" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
-                        <box-icon name='contact' type='solid' color='#363732' class="align-middle"></box-icon> Kunder
-                    </button>
-                    <div class="collapse" aria-labelledby="navbarDropdownMenuLink" id="dropdown3">
-                        <NavLink class="nav-link" href="/Clients">Visa Kunder</NavLink>
-                        <NavLink class="nav-link" href="/ClientInvoices">Fakturor</NavLink>
-                    </div>
-                </div>
+<div class="container-fluid px-0">
+    <nav class="navbar navbar-expand-md navbar-light bg-dark ma-0">
+        <div class="container-fluid">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                <ul class="navbar-nav">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" id="servicesDropdown" role="button" data-toggle="dropdown" aria-expanded="false">
+                            <box-icon name='briefcase-alt' color='#363732' class="align-middle"></box-icon> Tjänster
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="servicesDropdown">
+                            <li><NavLink class="dropdown-item" href="/productlist">Visa Tjänster</NavLink></li>
+                            <li><NavLink class="dropdown-item" href="/AdminNewProduct">Lägg till Tjänst</NavLink></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" id="ordersDropdown" role="button" data-toggle="dropdown" aria-expanded="false">
+                            <box-icon name='cabinet' color='#363732' class="align-middle"></box-icon> Ärenden
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="ordersDropdown">
+                            <li><NavLink class="dropdown-item" href="/ViewOrders">Visa Ärenden</NavLink></li>
+                            <li><NavLink class="dropdown-item" href="/ConfirmedOrders">Bekräftade Ärenden</NavLink></li>
+                            <li><NavLink class="dropdown-item" href="/DeclinedOrders">Avslagna Ärenden</NavLink></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" id="clientsDropdown" role="button" data-toggle="dropdown" aria-expanded="false">
+                            <box-icon name='contact' type='solid' color='#363732' class="align-middle"></box-icon> Kunder
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="clientsDropdown">
+                            <li><NavLink class="dropdown-item" href="/Clients">Visa Kunder</NavLink></li>
+                            <li><NavLink class="dropdown-item" href="/ClientInvoices">Fakturor</NavLink></li>
+                        </ul>
+                    </li>
+                </ul>
             </div>
         </div>
+    </nav>
 
-        <div class="col" style="background-color: lightgray;">
+    <div class="row mx-0" style="background-color: lightgray; min-height: 35vw">
+        <div class="col">
             @Body
         </div>
     </div>
 </div>
+
+
 
 <footer class="footer text-center text-lg-start text-white" style="background-color: #363732">
     <div class="container p-4 pb-0">

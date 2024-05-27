@@ -1,0 +1,104 @@
+﻿@page "/om-oss"
+
+@using System.Text.RegularExpressions
+@using System.ComponentModel.DataAnnotations
+
+<article>
+	<MudContainer Class="d-flex flex-column">
+		<h1 class="display-1">
+			Varför Afrejd?
+		</h1>
+
+		<MudImage Src="Images/stock20.jpg" Class="mb-5"></MudImage>
+
+		<MudDivider></MudDivider>
+
+		<h3 class="display-6">
+
+			Afrejd är något mer än en vanlig logistikleverantör som erbjuder förvaringsutrymme eller packning av varor. 
+			Afrejd är ett 360-graders framåtblickande och toppmodernt teknik- och logistikföretag. 
+			Vi hjälper varumärken att skapa lönsamhet och tillväxt, både i Sverige och utomlands.
+		</h3>
+
+		<MudText Class="mb-5">
+			Vi är ett internationellt företag med strategiska platser i Oslo, Arendal, Sandefjord, Fredrikstad och Karlstad. 
+			Dessutom har vi teknikavdelningar i Norge och Polen, vilket ger våra kunder stora konkurrensfördelar. 
+			Vi förenklar och effektiviserar det komplicerade och levererar vad vi kallar verklig logistikglädje.
+		</MudText>
+
+		<MudDivider></MudDivider>
+
+		<h1 class="display-1">
+			Träffa teamet
+		</h1>
+
+		<MudPaper Elevation=0 Class="d-flex flex-column flex-md-row gap-4 justify-content-center mb-5">
+			<MudCard Class="my-md-5">
+			<MudCardMedia Image="Images/employee1.jpg" Height="400" />
+				<MudCardContent>
+					<MudText Typo="Typo.h5"><b>Sofia Nilsson</b></MudText>
+					<MudText Typo="Typo.h4">Verkställande direktör</MudText>
+					<MudText Typo="Typo.body2">sofia.nilsson@afrejd.com</MudText>
+					<MudText Typo="Typo.body2">+46 709 87 652</MudText>
+				</MudCardContent>
+			</MudCard>
+
+			<MudCard Class="my-md-5">
+				<MudCardMedia Image="Images/employee2.jpg" Height="400" />
+				<MudCardContent>
+					<MudText Typo="Typo.h5"><b>Lars Andersson</b></MudText>
+					<MudText Typo="Typo.h4">Klientrådgivare</MudText>
+					<MudText Typo="Typo.body2">lars.andersson@afrejd.com</MudText>
+					<MudText Typo="Typo.body2">+46 611 90 003</MudText>
+				</MudCardContent>
+			</MudCard>
+
+			<MudCard Class="my-md-5">
+				<MudCardMedia Image="Images/employee3.jpg" Height="400" />
+				<MudCardContent>
+					<MudText Typo="Typo.h5"><b>Maria Santos</b></MudText>
+					<MudText Typo="Typo.h4">Klientrådgivare</MudText>
+					<MudText Typo="Typo.body2">maria.santos@afrejd.com</MudText>
+					<MudText Typo="Typo.body2">+46 522 11 891</MudText>
+				</MudCardContent>
+			</MudCard>
+
+			<MudCard Class="my-md-5">
+				<MudCardMedia Image="Images/employee4.jpg" Height="400" />
+				<MudCardContent>
+					<MudText Typo="Typo.h5"><b>Erik Johansson</b></MudText>
+					<MudText Typo="Typo.h4">Klientrådgivare</MudText>
+					<MudText Typo="Typo.body2">erik.johansson@afrejd.com</MudText>
+					<MudText Typo="Typo.body2">+46 202 78 144</MudText>
+				</MudCardContent>
+			</MudCard>
+		</MudPaper>
+
+		<MudDivider></MudDivider>
+
+		<MudPaper Class="d-flex flex-column flex-md-row mb-3 justify-content-center">
+			<div class="ma-3" Style="max-width: 600px">
+				<h3 class="display-6">
+					Har du funderingar?
+				</h3>
+				<MudText>
+					Våra medarbetare har lång erfarenhet och hjälper dig gärna med dina logistikutmaningar. 
+					Om du har några frågor om oss och våra tjänster - tveka inte att kontakta oss idag för en lönsam konversation.
+				</MudText>
+			</div>
+
+			<MudForm @ref="form" Class="ma-5" Style="min-width: 400px">
+				<MudTextField T="string" Label="Namn" />
+				<MudTextField T="string" Label="Email" />
+				<MudTextField T="string" Label="Meddelande" Variant="Variant.Outlined" Lines="5" />
+				<MudButton Variant="Variant.Filled" Size="Size.Medium" Style="background-color: #363732; color: white; width:fit-content;" Class="my-2">
+					Skicka
+				</MudButton>
+			</MudForm>
+		</MudPaper>
+	</MudContainer>
+</article>
+
+@code {
+	MudForm form;
+}
