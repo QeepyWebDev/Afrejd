@@ -1,12 +1,16 @@
-﻿@page "/ConfirmedOrders"
+﻿@page "/Admin-bekräftade-ärenden"
 
 @using Afrejd.Web.Components.Layout
 @using Afrejd.Web.Data.Models
 @using Afrejd.Web.Data.Interfaces
+@using Microsoft.AspNetCore.Authorization
 @inject IOrderService OrderService
 @inject IJSRuntime JsRuntime
 @rendermode InteractiveServer
 @layout AdminMenu
+@attribute [Authorize(Policy = "AdminOnly")]
+
+<PageTitle>Bekräftade ärenden</PageTitle>
 
 <MudContainer Class="my-5">
     <input class="form-control mr-sm-2" aria-label="Search" type="text" id="orderSearch" onkeyup="searchOrders()" placeholder="Sök Ärendenummer...">

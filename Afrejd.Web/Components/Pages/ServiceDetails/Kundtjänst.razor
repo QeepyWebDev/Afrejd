@@ -2,10 +2,13 @@
 
 @using Afrejd.Web.Data.Interfaces
 @using Afrejd.Web.Data.Models
+@using Afrejd.Web.Components.Layout
 @inject ICartService CartService
 @inject AuthenticationStateProvider AuthenticationStateProvider
 @inject NavigationManager NavigationManager
 @rendermode InteractiveServer
+
+<PageTitle>Kundtjänst</PageTitle>
 
 <article>
     <MudContainer MaxWidth="MaxWidth.ExtraLarge" Class=" py-6">
@@ -37,50 +40,35 @@
 
             <MudPaper Width="75%" Elevation=0 Style="margin:auto;">
                 <MudText Class="mb-15" Style="font-size: 2em;">
-                    Att ha ett välfungerande kundtjänstteam med professionella kundchefer är en viktig faktor för framgång och för att behålla kunder. 
-                    Varumärken spenderar mycket resurser på att hitta och vinna kunder. Det är därför viktigt att använda professionella resurser för att behålla eller vinna tillbaka dina kunder.
+                    Att ha en effektiv och professionell kundtjänst är avgörande för att behålla och locka kunder till ditt företag. 
+                    Varumärken investerar mycket tid och resurser för att locka kunder, och det är lika viktigt att ha resurserna för att bibehålla dem.
                 </MudText>
 
                 <MudText Class="mb-6">
-                    Om du till exempel driver ett enmansföretag, ett nystartat företag eller en medelstor webbutik kan det snabbt bli alltidskrävande att svara på kundförfrågningar via e-post och telefon. 
-                    Speciellt när du verkligen borde spendera dina resurser på att få din egen butik att växa.
+                    Om du driver ett mindre eller medelstort företag kan det vara utmanande att hantera kundförfrågningar samtidigt som du fokuserar på tillväxt och utveckling. 
+                    Att outsourca din kundtjänst kan vara ett smart sätt att frigöra tid och resurser för att driva din verksamhet framåt.
                 </MudText>
 
                 <h3>Outsourca din kundtjänst</h3>
                 <MudText Class="mb-6">
-                    På Afrejd kan du outsourca all din kundservice. Vi har medarbetare med många års erfarenhet av callcenter och kundservice, och vet vad som krävs för att driva en bra och effektiv kundvård. 
-                    Vi har ett avancerat och pålitligt telefonisystem med intelligent köhantering, övervakning och utmärkta rapporteringsverktyg. 
-                    Våra kundchefer integreras i din företagskultur och hanterar kunder som du vill — och har utmärkta metoder för att säkerställa en hög win-back-grad.
+                    På Afrejd erbjuder vi en professionell kundtjänstlösning där erfarna medarbetare tar hand om dina kunders behov med omsorg och precision. 
+                    Vi förstår vikten av att upprätthålla en stark relation med dina kunder och arbetar aktivt för att säkerställa deras tillfredsställelse.
+                </MudText>
+
+                <MudText Class="mb-6">
+                    Vi tillhandahåller avancerade telefonilösningar med intelligent köhantering och övervakning för att säkerställa en smidig och effektiv kundinteraktion. 
+                    Våra kundchefer integreras sömlöst i din företagskultur och strävar efter att upprätthålla och förbättra varje kunds upplevelse.
+                </MudText>
+
+                <MudText Class="mb-6">
+                    Genom att outsourca din kundtjänst till oss kan du fokusera på att driva din verksamhet framåt medan vi tar hand om dina kunders behov på ett 
+                    professionellt och effektivt sätt. 
                 </MudText>
             </MudPaper>
         </MudPaper>
     </MudContainer>
 
-    <MudPaper Elevation="0" Width="100%" Height="auto" Outlined="false" Class="d-flex flex-column flex-md-row align-items-center justify-content-center pa-6 gap-4" style="background-color: #363732;">
-
-        <MudStack Class="ma-6 text-center align-items-center justify-content-center">
-            <MudText Style="font-size: 2em; color: white;">
-                Vi kan hjälpa dig med alla aspekter av logistik.
-            </MudText>
-
-            <MudButton Variant="Variant.Filled" Size="Size.Medium" Class="products-button" Href="/services">
-                Våra tjänster
-            </MudButton>
-        </MudStack>
-
-        <MudStack Class="d-flex flex-wrap justify-content-center gap-2" Style="width: 100%; max-width: 600px;">
-            <MudButton Variant="Variant.Text" Class="product-buttons" Href="/Rådgivning&Försäljning">Rådgivning & Försäljning</MudButton>
-            <MudButton Variant="Variant.Text" Class="product-buttons" Href="/IT&Tech">IT & Tech</MudButton>
-            <MudButton Variant="Variant.Text" Class="product-buttons" Href="/Webbutik&Prenumeration">Webbutik & Prenumeration</MudButton>
-            <MudButton Variant="Variant.Text" Class="product-buttons" Href="/Varulager">Varulager</MudButton>
-            <MudButton Variant="Variant.Text" Class="product-buttons" Href="/Förpackning">Förpackning av varor</MudButton>
-            <MudButton Variant="Variant.Text" Class="product-buttons" Href="/Lagerhanterings-system">Lagerhanterings-system</MudButton>
-            <MudButton Variant="Variant.Text" Class="product-buttons" Href="/Kundtjänst">Kundtjänst</MudButton>
-            <MudButton Variant="Variant.Text" Class="product-buttons" Href="/Retur">Retur av varor</MudButton>
-            <MudButton Variant="Variant.Text" Class="product-buttons" Href="/Kampanjförpackning">Kampanjförpackning</MudButton>
-            <MudButton Variant="Variant.Text" Class="product-buttons" Href="/Distribution">Distribution</MudButton>
-        </MudStack>
-    </MudPaper>
+    <ServicesPanel />
 </article>
 
 

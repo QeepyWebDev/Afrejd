@@ -2,10 +2,13 @@
 
 @using Afrejd.Web.Data.Interfaces
 @using Afrejd.Web.Data.Models
+@using Afrejd.Web.Components.Layout
 @inject ICartService CartService
 @inject AuthenticationStateProvider AuthenticationStateProvider
 @inject NavigationManager NavigationManager
 @rendermode InteractiveServer
+
+<PageTitle>Varulager</PageTitle>
 
 <article>
     <MudContainer MaxWidth="MaxWidth.ExtraLarge" Class=" py-6">
@@ -37,52 +40,30 @@
 
             <MudPaper Width="75%" Elevation=0 Style="margin:auto;">
                 <MudText Class="mb-15" Style="font-size: 2em;">
-                    Vi tar hand om dina varor - med sann kärlek. Genom att lägga bort ditt lager och logistik till en modern 3PL-partner som Afrejd, med toppmoderna lager, uppnår ditt företag skalfördelar. 
-                    Kostnader relaterade till system, lagerutrymme, porto, frakt, utrustning och anställda fördelas och delas mellan många företag som liknar ditt. 
-                    Det är vad vi kallar sann logistikglädje - till glädje för dig, oss och planeten.
+                    Vi på Afrejd tar hand om dina varor med en äkta känsla av omsorg och engagemang. Genom att outsourca ditt lager och logistik till en modern 3PL-partner 
+                    som Afrejd, med toppmoderna lager, kan ditt företag dra nytta av skalfördelar. Genom att dela kostnader relaterade till system, lagerutrymme, porto, frakt,
+                    utrustning och personal med liknande företag kan vi erbjuda en kostnadseffektiv och hållbar logistiklösning. Det är vad vi kallar äkta logistikglädje - 
+                    till gagn för dig, oss och planeten.
                 </MudText>
 
                 <MudText Class="mb-6">
-                    Du minskar inte bara din egen tid på förpackning, lagring och logistik, utan du minskar också dina totala lager- och förpackningskostnader eftersom de delas med andra - 
-                    vilket ofta är mer hållbart än att driva produktion och förpackning på egen hand eller använda flera leverantörer. 
-                    Hos oss kan du enkelt skala din butik utan att behöva göra nya, stora investeringar.
+                    Genom att låta oss sköta förpackning, lagring och logistik minskar du inte bara din egen tidsåtgång, utan också dina totala lager- och 
+                    förpackningskostnader eftersom de delas med andra. Detta är ofta en mer hållbar lösning än att driva produktion och förpackning på egen hand eller att 
+                    använda flera leverantörer. Hos oss kan du enkelt skala upp din verksamhet utan att behöva göra stora nya investeringar.
                 </MudText>
 
-                <h3>God logistik säkerställer ett bra flöde av varor</h3>
+                <h3>Optimerat Flöde av Varor Genom Effektiv Logistik</h3>
                 <MudText Class="mb-6">
-                    Vår specialitet är logistik och bearbetning av de varor vi har i lager. Vi erbjuder skräddarsydda, säkra och effektiva logistiklösningar för ditt företag. 
-                    Vi packar om, omdistribuerar, monterar kampanjer med flera artiklar eller skickar ut produkter på beställning - beroende på dina behov. 
-                    Afrejd är en av få totala logistiktjänsteleverantörer där du får allt på ett ställe.
+                    Vår expertis ligger inom logistik och hantering av de varor som vi har i vårt lager. Vi erbjuder skräddarsydda, säkra och effektiva logistiklösningar för 
+                    ditt företag. Oavsett om det handlar om ompackning, omdistribution, montering av kampanjer med flera artiklar eller leverans av produkter på beställning, 
+                    anpassar vi oss efter dina behov. Afrejd är en av de få logistikleverantörerna som erbjuder en komplett lösning, allt från förvaring till distribution, på 
+                    ett och samma ställe.
                 </MudText>
             </MudPaper>
         </MudPaper>
     </MudContainer>
 
-    <MudPaper Elevation="0" Width="100%" Height="auto" Outlined="false" Class="d-flex flex-column flex-md-row align-items-center justify-content-center pa-6 gap-4" style="background-color: #363732;">
-
-        <MudStack Class="ma-6 text-center align-items-center justify-content-center">
-            <MudText Style="font-size: 2em; color: white;">
-                Vi kan hjälpa dig med alla aspekter av logistik.
-            </MudText>
-
-            <MudButton Variant="Variant.Filled" Size="Size.Medium" Class="products-button" Href="/services">
-                Våra tjänster
-            </MudButton>
-        </MudStack>
-
-        <MudStack Class="d-flex flex-wrap justify-content-center gap-2" Style="width: 100%; max-width: 600px;">
-            <MudButton Variant="Variant.Text" Class="product-buttons" Href="/Rådgivning&Försäljning">Rådgivning & Försäljning</MudButton>
-            <MudButton Variant="Variant.Text" Class="product-buttons" Href="/IT&Tech">IT & Tech</MudButton>
-            <MudButton Variant="Variant.Text" Class="product-buttons" Href="/Webbutik&Prenumeration">Webbutik & Prenumeration</MudButton>
-            <MudButton Variant="Variant.Text" Class="product-buttons" Href="/Varulager">Varulager</MudButton>
-            <MudButton Variant="Variant.Text" Class="product-buttons" Href="/Förpackning">Förpackning av varor</MudButton>
-            <MudButton Variant="Variant.Text" Class="product-buttons" Href="/Lagerhanterings-system">Lagerhanterings-system</MudButton>
-            <MudButton Variant="Variant.Text" Class="product-buttons" Href="/Kundtjänst">Kundtjänst</MudButton>
-            <MudButton Variant="Variant.Text" Class="product-buttons" Href="/Retur">Retur av varor</MudButton>
-            <MudButton Variant="Variant.Text" Class="product-buttons" Href="/Kampanjförpackning">Kampanjförpackning</MudButton>
-            <MudButton Variant="Variant.Text" Class="product-buttons" Href="/Distribution">Distribution</MudButton>
-        </MudStack>
-    </MudPaper>
+    <ServicesPanel />
 </article>
 
 

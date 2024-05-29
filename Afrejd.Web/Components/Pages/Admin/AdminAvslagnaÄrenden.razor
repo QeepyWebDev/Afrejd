@@ -1,38 +1,18 @@
-﻿@page "/ViewOrders"
+﻿@page "/Admin-avslagna-ärenden"
 
 @using Afrejd.Web.Components.Layout
 @using Afrejd.Web.Data.Models
 @using Afrejd.Web.Data.Interfaces
-@inject HttpClient httpClient
+@using Microsoft.AspNetCore.Authorization
 @inject IOrderService OrderService
 @inject IJSRuntime JsRuntime
 @rendermode InteractiveServer
 @layout AdminMenu
+@attribute [Authorize(Policy = "AdminOnly")]
+
+<PageTitle>Avslagna ärenden</PageTitle>
 
 <MudContainer Class="my-5">
-    <div>
-        @if (!string.IsNullOrEmpty(ConfirmOrderMessage))
-        {
-            <div class="alert alert-success" role="alert">
-                @ConfirmOrderMessage
-            </div>
-        }
-
-        @if (!string.IsNullOrEmpty(DeclineOrderMessage))
-        {
-            <div class="alert alert-success" role="alert">
-                @DeclineOrderMessage
-            </div>
-        }
-
-        @if (!string.IsNullOrEmpty(UpdatePriceMessage))
-        {
-            <div class="alert alert-success" role="alert">
-                @UpdatePriceMessage
-            </div>
-        }
-    </div>
-
     <input class="form-control mr-sm-2" aria-label="Search" type="text" id="orderSearch" onkeyup="searchOrders()" placeholder="Sök Ärendenummer...">
 
     <div class="table-responsive">
@@ -44,14 +24,13 @@
                     <th>Tjänster</th>
                     <th>Prisförslag</th>
                     <th>Status</th>
-                    <th>Ändra Status</th>
                     <th>Åtgärd</th>
                 </tr>
             </thead>
             <tbody>
-                @if (orders != null)
+                @if (declinedOrders != null)
                 {
-                    @foreach (var order in orders)
+                    @foreach (var order in declinedOrders)
                     {
                         <tr>
                             <td>@order.Ordernumber</td>
@@ -63,34 +42,22 @@
                                     <br />
                                 }
                             </td>
-                            <td><input type="number" @bind="@order.PriceEstimate" class="form-control form-control-sm" /></td>
+                            <td>@order.PriceEstimate</td>
                             <td>@order.Status</td>
                             <td>
-                                <select @bind="@order.Status" class="form-control form-control-sm">
-                                    @foreach (var status in Enum.GetValues(typeof(OrderStatus)))
-                                    {
-                                        <option value="@status">@status</option>
-                                    }
-                                </select>
-                            </td>
-                            <td>
                                 <button type="button" class="btn btn-danger btn-sm" @onclick="() => ShowConfirmationDialog(order)">Radera</button>
-                                <button type="button" class="btn btn-dark btn-sm" @onclick="() => ChangeOrderPriceEstimate(order)">Uppdatera Prisförslag</button>
-                                <button type="button" class="btn btn-danger btn-sm" @onclick="() => DeclineOrder(order)">Avslå Ärende</button>
-                                <button type="button" class="btn btn-success btn-sm" @onclick="() => ConfirmOrder(order)">Bekräfta Ärende</button>
                             </td>
                         </tr>
                     }
                 }
                 else
                 {
-                    <p>Inga ärenden hittades.</p>
+                    <p>Inga bekräftade ärenden hittades.</p>
                 }
             </tbody>
         </table>
     </div>
 </MudContainer>
-
 
 <script>
     function searchOrders() {
@@ -117,14 +84,11 @@
 </script>
 
 @code {
-    private List<Order> orders;
-    private string ConfirmOrderMessage;
-    private string DeclineOrderMessage;
-    private string UpdatePriceMessage;
+    private List<Order> declinedOrders;
 
     protected override async Task OnInitializedAsync()
     {
-        orders = await OrderService.GetAllOrders();
+        declinedOrders = await OrderService.GetDeclinedOrders();
     }
 
     public enum OrderStatus
@@ -158,26 +122,6 @@
     private async Task DeleteOrder(Order order)
     {
         await OrderService.DeleteOrder(order.Id);
-        orders.Remove(order);
-    }
-
-    private async Task ConfirmOrder(Order order)
-    {
-        await OrderService.ConfirmOrder(order.Id);
-        orders.Remove(order);
-        ConfirmOrderMessage = "Ärende med nummer " + order.Ordernumber + " har bekräftats!";
-    }
-
-    private async Task DeclineOrder(Order order)
-    {
-        await OrderService.DeclineOrder(order.Id);
-        orders.Remove(order);
-        DeclineOrderMessage = "Ärende med nummer " + order.Ordernumber + " har avslagits!";
-    }
-
-    private async Task ChangeOrderPriceEstimate(Order order)
-    {
-        await OrderService.UpdatePriceEstimate(order.Id, order.PriceEstimate);
-        UpdatePriceMessage = "Prisförslag för ärende med nummer " + order.Ordernumber + " har uppdaterats till " + order.PriceEstimate + " kronor.";
+        declinedOrders.Remove(order);
     }
 }

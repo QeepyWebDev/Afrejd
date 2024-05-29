@@ -1,13 +1,17 @@
 ﻿@using Afrejd.Web.Components.Layout
 @using Afrejd.Web.Data.Interfaces
 @using Afrejd.Web.Data.Models
+@using Microsoft.AspNetCore.Authorization
 
-@page "/productlist"
+@page "/Admin-tjänster"
 @layout AdminMenu
 @rendermode InteractiveServer
 @inject IProductService ProductService
 @inject NavigationManager NavigationManager
 @inject IJSRuntime JsRuntime
+@attribute [Authorize(Policy = "AdminOnly")]
+
+<PageTitle>Tjänster</PageTitle>
 
 <MudContainer Class="my-5">
     <table class="table">

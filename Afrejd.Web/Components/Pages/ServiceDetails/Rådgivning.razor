@@ -2,10 +2,13 @@
 
 @using Afrejd.Web.Data.Interfaces
 @using Afrejd.Web.Data.Models
+@using Afrejd.Web.Components.Layout
 @inject ICartService CartService
 @inject AuthenticationStateProvider AuthenticationStateProvider
 @inject NavigationManager NavigationManager
 @rendermode InteractiveServer
+
+<PageTitle>Rådgivning & Försäljning</PageTitle>
 
 <article>
     <MudContainer MaxWidth="MaxWidth.ExtraLarge" Class=" py-6">
@@ -38,85 +41,44 @@
             <MudDivider DividerType="DividerType.Middle" Class="my-6" />
 
             <MudPaper Width="75%" Elevation=0 Style="margin:auto;">
-                <MudText Class="mb-15" Style="font-size: 2em;">
-                    Nyckeln till framgång och ekonomi för dig är att ha en logistikpartner med all infrastruktur på plats och som ger dig bra och smarta råd och vägledning.
-                    Vi har lång erfarenhet av att bistå e-handelsoperatörer, detaljhandelskedjor och andra logistikkänsliga företag med rådgivning för att driva god lönsamhet och tillväxt.
+                <h3>Optimera Din Verksamhet Med En Pålitlig Logistikpartner</h3>
+                <MudText Class="mb-6">
+                    För att uppnå framgång och ekonomisk hållbarhet är det avgörande att ha en logistikpartner som kan erbjuda en komplett infrastruktur samt ge kvalificerade 
+                    råd och vägledning. På Afrejd har vi lång erfarenhet av att stödja e-handelsföretag, detaljhandelskedjor och andra företag med logistikbehov, och vi 
+                    strävar efter att vara mer än bara en leverantör av logistiktjänster — vi vill vara din strategiska partner som bidrar till din tillväxt och lönsamhet.
                 </MudText>
 
-                <MudText Class="mb-4">
-                    Afrejd är mycket anpassningsbara och flexibla och kan modellera vår verksamhet kring olika affärsmodeller. Vi vill vara mer än bara en vanlig leverantör av e-handelslogistik eller reklamförpackningar -
-                    vi vill vara en solid strategisk partner som är där för att hjälpa våra kunder med bästa service, bästa råd, de bästa IT-lösningarna, och hjälpa till att driva utveckling, tillväxt och lönsamhet för våra kunder.
+                <MudText Class="mb-6">
+                Vi på Afrejd är flexibla och anpassningsbara för att möta olika affärsmodeller och behov. Vi strävar efter att erbjuda bästa möjliga service, rådgivning 
+                och IT-lösningar för att hjälpa dig att driva utveckling och tillväxt i din verksamhet. Genom att inleda ett strategiskt partnerskap med oss kan du 
+                effektivisera ditt varuflöde och öka din lönsamhet utan att behöva göra stora investeringar. Vi har en långsiktig syn på våra samarbeten och erbjuder 
+                därför inga startkostnader för att komma igång.
                 </MudText>
 
-                <MudText class="fst-italic mb-4">
-                    ‍En partner du kan lita på — vi kallar det logistikglädje!                   ‍
+                <h3>Få Fördelar Av Stordrift</h3>
+                <MudText Class="mb-6">
+                Genom att outsourca lagerhantering, logistik och reklamförpackningar till en 3PL-partner som Afrejd kan din organisation dra nytta av stordriftsfördelar. 
+                Kostnader relaterade till system, lagerutrymme, porto, frakt och personal kan delas och fördelas mellan flera företag med liknande behov. Detta minskar inte 
+                bara dina egna arbetsinsatser för lagring och logistik utan även dina totala kostnader eftersom de delas med andra.
                 </MudText>
 
-                <MudText class="mb-6">
-                    Som kund hos oss får du tillgång till uppdateringar i realtid via en instrumentpanelslösning och löpande rapportering om lager, försäljning och logistik.
-                    När du ingår ett strategiskt partnerskap med oss effektiviserar du hela varuflödet och ökar lönsamheten utan stora kostnader. Vi har en långsiktig syn på alla våra samarbeten och kräver därför inga startkostnader för att komma igång.
+                <h3>Enkel och Förutsägbar Kostnadsbild</h3>
+                <MudText Class="mb-6">
+                Afrejd erbjuder en konkurrenskraftig kostnadsmodell som är enkel och förutsägbar för våra kunder. Vi strävar efter att ge dig full insyn i dina kostnader, 
+                intäkter och utgifter oavsett din företagsstorlek eller volym. För att öka förutsägbarheten har vi fasta priser på olika tjänster som inkluderar all hantering,
+                förpackning och returhantering. Dessutom erbjuder vi förmånliga frakt- och portoerbjudanden som kan resultera i betydande kostnadsbesparingar för din 
+                organisation.
                 </MudText>
 
-                <h3>Stordriftsfördelar</h3>
-
-                <MudText class="mb-4">
-                    Genom att lägga bort lagertjänster, logistik och reklamförpackningar till en 3PL-partner Som Afrejd uppnår din butik eller organisation stordriftsfördelar genom att kostnader relaterade till system,
-                    lagerutrymme, porto och frakt, utrustning och anställda distribueras och delas mellan många företag som liknar ditt.
-                </MudText>
-
-                <MudText class="mb-6">
-                    Således minskar du inte bara din egen tid som spenderas på lagring och logistik, utan du minskar också dina totala lager- och kampanjkostnader eftersom de delas med andra - 
-                    vilket ofta är mer hållbart än att driva produktion och varuförpackningar på egen hand. Du minskar dina omkostnader avsevärt genom ett partnerskap med oss.
-                </MudText>
-
-                <h3>Förutsägbar kostnadsbild</h3>
-
-                <MudText class="mb-4">
-                    Afrejd har en mycket konkurrenskraftig kostnadsmodell. Det ska vara förståeligt och förutsägbart för dig att ha en fullständig översikt över alla dina kostnader, intäkter och utgifter — 
-                    oavsett om du är en liten, medelstor eller stor kommersiell aktör, eller en organisation med betydande volym.
-                </MudText>
-
-                <MudText class="mb-4">
-                    För att kunna erbjuda våra kunder mer förutsägbarhet på kostnader har vi valt att arbeta med fasta priser på olika tjänster. Priserna inkluderar all hantering, förpackning och returhantering.
-                </MudText>
-
-                <MudText class="mb-4">
-                    Vi har också några av de bästa frakt- och portoerbjudandena på marknaden. Du väljer själv om vi ska använda ditt kundnummer hos den aktuella speditören eller om du vill dra nytta av våra stordriftsfördelar. 
-                    Vår erfarenhet är att många butiker och organisationer kan spara stora kostnader på detta sätt.
-                </MudText>
-
-                <MudText class="fst-italic mb-4">
-                    Framför allt — det ska vara enkelt, effektivt och lönsamt att använda oss som en framtidsorienterad logistikpartner du kan lita på. Hos oss kallar vi det äkta logistikglädje.
+                <MudText Class="fst-italic mb-6">
+                Vi strävar alltid efter att göra det enkelt, effektivt och lönsamt för dig att samarbeta med oss som din pålitliga logistikpartner. Hos oss kallar vi det äkta 
+                logistikglädje.
                 </MudText>
             </MudPaper>
         </MudPaper>
     </MudContainer>
 
-    <MudPaper Elevation="0" Width="100%" Height="auto" Outlined="false" Class="d-flex flex-column flex-md-row align-items-center justify-content-center pa-6 gap-4" style="background-color: #363732;">
-
-        <MudStack Class="ma-6 text-center align-items-center justify-content-center">
-            <MudText Style="font-size: 2em; color: white;">
-                Vi kan hjälpa dig med alla aspekter av logistik.
-            </MudText>
-
-            <MudButton Variant="Variant.Filled" Size="Size.Medium" Class="products-button" Href="/services">
-                Våra tjänster
-            </MudButton>
-        </MudStack>
-
-        <MudStack Class="d-flex flex-wrap justify-content-center gap-2" Style="width: 100%; max-width: 600px;">
-            <MudButton Variant="Variant.Text" Class="product-buttons" Href="/Rådgivning&Försäljning">Rådgivning & Försäljning</MudButton>
-            <MudButton Variant="Variant.Text" Class="product-buttons" Href="/IT&Tech">IT & Tech</MudButton>
-            <MudButton Variant="Variant.Text" Class="product-buttons" Href="/Webbutik&Prenumeration">Webbutik & Prenumeration</MudButton>
-            <MudButton Variant="Variant.Text" Class="product-buttons" Href="/Varulager">Varulager</MudButton>
-            <MudButton Variant="Variant.Text" Class="product-buttons" Href="/Förpackning">Förpackning av varor</MudButton>
-            <MudButton Variant="Variant.Text" Class="product-buttons" Href="/Lagerhanterings-system">Lagerhanterings-system</MudButton>
-            <MudButton Variant="Variant.Text" Class="product-buttons" Href="/Kundtjänst">Kundtjänst</MudButton>
-            <MudButton Variant="Variant.Text" Class="product-buttons" Href="/Retur">Retur av varor</MudButton>
-            <MudButton Variant="Variant.Text" Class="product-buttons" Href="/Kampanjförpackning">Kampanjförpackning</MudButton>
-            <MudButton Variant="Variant.Text" Class="product-buttons" Href="/Distribution">Distribution</MudButton>
-        </MudStack>
-    </MudPaper>
+    <ServicesPanel />
 </article>
 
 

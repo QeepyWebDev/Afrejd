@@ -1,0 +1,112 @@
+﻿@page "/Ladda-upp-dokument"
+
+@using Afrejd.Web.Data.Interfaces
+@using Afrejd.Web.Data.Services
+@using System.Security.Claims
+@using Afrejd.Web.Components.Layout
+@inject Microsoft.AspNetCore.Http.IHttpContextAccessor httpContextAccessor
+@inject IUserService UserService
+@rendermode InteractiveServer
+@layout UserMenu
+
+<PageTitle>Ladda upp dokument</PageTitle>
+
+<article>
+	<MudContainer Class="mt-5">
+		<h3>Ladda upp dokument</h3>
+		<MudText>
+			För att vi ska kunna hantera ditt ärende, var vänlig ladda upp alla relevanta dokument för ärendet.
+		</MudText>
+
+        @if (!string.IsNullOrEmpty(ErrorMessage))
+        {
+            <div class="alert alert-danger" role="alert">
+                @ErrorMessage
+            </div>
+        }
+
+
+        <div class="card mb-4">
+            <div class="card-header">Ladda upp</div>
+            <div class="card-body ">
+                <div class="dropzone @dropClass">
+                    <label>
+                        Dra och släpp dina filer här
+                        <br />eller klicka här för att välja filer.
+                    </label>
+                    <InputFile OnChange="AddFilesToQueue"
+                               @ondragenter="HandleDragEnter"
+                               @ondragleave="HandleDragLeave"
+                               disabled="@isUploading"
+                               style="width:100%;height:200px;position:relative;top:-36px;margin-bottom:-40px; opacity: 0;"
+                               multiple />
+                </div>
+            </div>
+        </div>
+
+        @if (filesQueue.Count > 0)
+        {
+            <div class="card mb-4">
+                <div class="card-header">Ladda upp</div>
+                <div class="card-body">
+                    <table class="table table-sm">
+                        <thead>
+                            <tr>
+                                <th></th>
+                                <th class="text-center" style="width:50px">%</th>
+                                <th style="width:170px;"></th>
+                                <th>Filnamn</th>
+                                <th class="text-end" style="width:80px;">Storlek (KB)</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var file in filesQueue.OrderByDescending(x => x.FileId))
+                            {
+                                var size = Math.Round((file.Size / 1024.00));
+                                var percentage = Math.Round(file.UploadedPercentage);
+                                <tr>
+                                    <td class="text-center">
+                                        @if (file.HasBeenUploaded)
+                                        {
+                                            <span class="oi oi-circle-check text-success"></span>
+                                        }
+                                        else
+                                        {
+                                            <span class="oi oi-circle-check text-icon-light"></span>
+                                        }
+                                    </td>
+                                    <td class="text-end">@($"{percentage}%")</td>
+                                    <td><progress value="@file.UploadedBytes" max="@file.Size" class="fileProgress"></progress></td>
+                                    <td>@file.FileName</td>
+                                    <td class="text-end">@string.Format("{0:#,0.##}", @size)</td>
+
+                                    <td class="text-end"><button type="button" class="btn btn-sm btn-link" disabled="@isUploading" @onclick="(() => RemoveFromQueue(file.FileId))"><span class="oi oi-trash" aria-hidden="true"></span></button></td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+
+                    <div class="btn-group w-100" role="group" aria-label="Basic mixed styles example">
+                        <button type="button" disabled="@isUploading" class="btn btn-sm btn-success" @onclick="(e => UploadFileQueue(userCompanyName))">Ladda upp uppladdningskön</button>
+                        <button type="button" disabled="@isUploading" class="btn btn-sm btn-info" @onclick="ClearFileQueue">Rensa uppladdningskön</button>
+                    </div>
+
+                </div>
+            </div>
+        }
+	</MudContainer>
+</article>
+
+@code {
+    private string userCompanyName;
+
+    protected override async Task OnInitializedAsync()
+    {
+        var userId = httpContextAccessor.HttpContext.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+        if (userId != null)
+        {
+            userCompanyName = await UserService.GetUserCompany(userId);
+        }
+    }
+}

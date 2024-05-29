@@ -2,14 +2,13 @@
 
 @using Afrejd.Web.Data.Interfaces
 @using Afrejd.Web.Data.Models
+@using Afrejd.Web.Components.Layout
 @inject ICartService CartService
 @inject AuthenticationStateProvider AuthenticationStateProvider
 @inject NavigationManager NavigationManager
 @rendermode InteractiveServer
 
-<head>
-    <link rel="stylesheet" href="Services.razor.css" />
-</head>
+<PageTitle>Distribution</PageTitle>
 
 <article>
     <MudContainer MaxWidth="MaxWidth.ExtraLarge" Class=" py-6">
@@ -41,65 +40,42 @@
 
             <MudPaper Width="75%" Elevation=0 Style="margin:auto;">
                 <MudText Class="mb-15" Style="font-size: 2em;">
-                    Distribution är ofta den största kostnaden i samband med ett utskick. Vårt logistikhus är mycket konkurrenskraftigt på porto och transport för de flesta uppdrag, både hemma och utomlands. 
-                    Vår erfarenhet är att det finns betydande belopp att spara genom att låta en av våra rådgivare optimera och sänka dina transport- och portokostnader.
+                    Distributionskostnader kan ofta vara den största utgiften när det gäller att skicka ut försändelser. 
+                    Vårt logistikföretag har konkurrenskraftiga priser på porto och transport, både nationellt och internationellt. 
+                    Genom att låta en av våra rådgivare optimera och sänka dina transport- och portokostnader kan du spara betydande belopp.
                 </MudText>
 
                 <h3>Spara pengar med dina egna erbjudanden</h3>
                 <MudText Class="mb-6">
-                    Som kund hos Afrejd får du tillgång till ett transportnät som är unikt i vår bransch. Med våra porto- och fraktavtal kan det finnas stora pengar att spara för dig som kund. 
-                    Vår erfarenhet är att de flesta kunder får betydande kampanjbesparingar genom avtal med oss.
+                    När du är kund hos Afrejd får du tillgång till ett unikt transportnät inom vår bransch. 
+                    Genom våra porto- och fraktavtal kan du som kund spara stora pengar. Många av våra kunder upplever betydande besparingar genom att ha avtal med oss.
                 </MudText>
 
                 <h3>Tullklarering av varor</h3>
                 <MudText Class="mb-6">
-                    Vi har lång erfarenhet och bred kompetens inom hantering och tullklarering av export- och importförsändelser för produkter in och ut ur Sverige. 
-                    Det är viktigt att ha kontroll över alla skatter när produkter beställs och skickas till och från utlandet. 
-                    I de allra flesta fall måste produkter som beställts från utlandet tullklareras. Vi erbjuder därför tjänsten Afrejd Hub, som är vårt tullager och ger dig många fördelar och en bättre ekonomisk överblick. 
-                    Vi erbjuder även rådgivning och konsulttjänster vid tullklarering av varor.
+                    Vi har omfattande erfarenhet och kompetens när det gäller tullklarering av export- och importförsändelser i Sverige. 
+                    Att ha kontroll över skatterna vid internationell handel är avgörande. De flesta produkter som importeras och exporteras måste tullklareras, 
+                    och vi erbjuder tjänsten Afrejd Hub för att underlätta processen och ge dig bättre ekonomisk överblick. Vi tillhandahåller också rådgivning och 
+                    konsulttjänster för tullklarering av varor.
                 </MudText>
 
                 <h3>Kort väg ut till EU med Afrejd</h3>
                 <MudText Class="mb-6">
-                    Afrejd har etablerat sig med en separat logistikhus i Karlstad. Detta är ett viktigt steg framåt i Europeiska unionen. 
-                    Med etableringen av logistikhuset i Karlstad gör vi det möjligt för nya och befintliga kunder att skala sin verksamhet i Europa. 
-                    Med det tredje logistikhuset på plats är vägen betydligt kortare för svenska varumärken och onlinebutiker till en ännu större marknad i EU.
+                    Afrejd har etablerat ett separat logistikhus i Stockholm för att underlätta affärer inom Europeiska unionen. 
+                    Detta möjliggör för nya och befintliga kunder att expandera sin verksamhet i Europa. Med det nya logistikhuset blir det betydligt enklare för 
+                    svenska varumärken och onlinebutiker att nå en större marknad i EU.
                 </MudText>
 
                 <MudText Class="mb-4">
-                    Med tullager i både Norge och Sverige flyter varuflödet smidigt in och ut ur EU, och gemensamma datorsystem säkerställer full kontroll över varulager. 
-                    Våra tullexperter har djup kunskap om tillämpliga lagar och regler för import och export, vilket säkerställer full kontroll genom hela värdekedjan. 
-                    Med goda distributionspriser i Norge, Sverige, EU och resten av världen har vägen till den internationella marknaden blivit ännu kortare för svenska aktörer.
+                    Med tullager i både Norge och Sverige och gemensamma datorsystem kan vi säkerställa smidigt varuflöde in och ut ur EU. 
+                    Våra tullexperter har djup kunskap om gällande lagar och regler för import och export, vilket säkerställer fullständig kontroll över hela värdekedjan. 
+                    Med förmånliga distributionspriser inom Norge, Sverige, EU och globalt blir vägen till den internationella marknaden kortare för svenska företag.
                 </MudText>
             </MudPaper>
         </MudPaper>
     </MudContainer>
 
-    <MudPaper Elevation="0" Width="100%" Height="auto" Outlined="false" Class="d-flex flex-column flex-md-row align-items-center justify-content-center pa-6 gap-4" style="background-color: #363732;">
-
-        <MudStack Class="ma-6 text-center align-items-center justify-content-center">
-            <MudText Style="font-size: 2em; color: white;">
-                Vi kan hjälpa dig med alla aspekter av logistik.
-            </MudText>
-
-            <MudButton Variant="Variant.Filled" Size="Size.Medium" Class="products-button" Href="/services">
-                Våra tjänster
-            </MudButton>
-        </MudStack>
-
-        <MudStack Class="d-flex flex-wrap justify-content-center gap-2" Style="width: 100%; max-width: 600px;">
-            <MudButton Variant="Variant.Text" Class="product-buttons" Href="/Rådgivning&Försäljning">Rådgivning & Försäljning</MudButton>
-            <MudButton Variant="Variant.Text" Class="product-buttons" Href="/IT&Tech">IT & Tech</MudButton>
-            <MudButton Variant="Variant.Text" Class="product-buttons" Href="/Webbutik&Prenumeration">Webbutik & Prenumeration</MudButton>
-            <MudButton Variant="Variant.Text" Class="product-buttons" Href="/Varulager">Varulager</MudButton>
-            <MudButton Variant="Variant.Text" Class="product-buttons" Href="/Förpackning">Förpackning av varor</MudButton>
-            <MudButton Variant="Variant.Text" Class="product-buttons" Href="/Lagerhanterings-system">Lagerhanterings-system</MudButton>
-            <MudButton Variant="Variant.Text" Class="product-buttons" Href="/Kundtjänst">Kundtjänst</MudButton>
-            <MudButton Variant="Variant.Text" Class="product-buttons" Href="/Retur">Retur av varor</MudButton>
-            <MudButton Variant="Variant.Text" Class="product-buttons" Href="/Kampanjförpackning">Kampanjförpackning</MudButton>
-            <MudButton Variant="Variant.Text" Class="product-buttons" Href="/Distribution">Distribution</MudButton>
-        </MudStack>
-    </MudPaper>
+    <ServicesPanel />
 </article>
 
 @code {
@@ -131,7 +107,7 @@
         }
         catch (Exception ex)
         {
-            ErrorMessage = $"An error occurred while adding the product to the cart: {ex.Message}";
+            ErrorMessage = $"Ett fel uppstod när produkten skulle läggas till i varukorgen: {ex.Message}";
         }
     }
 }

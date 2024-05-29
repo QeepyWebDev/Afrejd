@@ -1,0 +1,93 @@
+﻿@page "/Goda-lagerpraxis"
+@using Afrejd.Web.Components.Layout
+
+<PageTitle>Goda lagerpraxis - Effektivisering och säkerhet</PageTitle>
+
+<article>
+	<MudContainer Class="my-5">
+		<MudPaper Class="pa-5">
+			<MudImage Fluid="true" Class="rounded-lg" Src="/Images/blog9Large.jpg"></MudImage>
+
+			<h1 class="display-3 mt-3">
+				Goda lagerpraxis - Effektivisering och säkerhet
+			</h1>
+			<hr />
+
+			<h4>
+				Effektiv lagerhantering är en nyckelkomponent för att upprätthålla en smidig logistikverksamhet.<br /><br /> En välorganiserad lagerlayout minskar söktiden och förbättrar
+				effektiviteten. Det är viktigt att implementera ett systematiskt lagersystem där produkter placeras på logiska och lättåtkomliga platser. <br />
+				Regelbundna inventeringar är också viktiga för att hålla koll på lagret och förhindra över- eller underlager. <br />
+				Använd tekniker som cyklisk inventering för att kontinuerligt övervaka lagret utan att behöva stänga verksamheten.<br />
+			</h4>
+
+			<MudText>
+				Automatisering kan kraftigt förbättra effektiviteten i lagret. Automatiserade lagerhanteringssystem (WMS) kan hantera allt från mottagning och lagring till 
+				plockning och packning, vilket minimerar manuella fel. Det är också viktigt att optimera plock- och packprocesserna. Använd metoder som zonplockning, 
+				vågplockning eller batchplockning och se till att använda ergonomiska arbetsstationer för att förbättra arbetsmiljön och minska risken för skador.<br /><br />
+			</MudText>
+
+			<MudText>
+				Säkerhet i lagret är avgörande. Se till att alla anställda är utbildade i säkerhetsprotokoll och att säkerhetsutrustning används korrekt. 
+				Utför regelbundna säkerhetsinspektioner och riskbedömningar. Lagerrotation är också en viktig praxis att implementera. 
+				Använd metoder som FIFO (First In, First Out) för att säkerställa att produkter inte blir föråldrade eller förstörda, vilket är särskilt viktigt för 
+				produkter med utgångsdatum.<br />
+			</MudText>
+
+			<MudText>
+				Maximera användningen av lagerytan genom att använda vertikalt utrymme och rätt lagringsutrustning som pallställ och hyllsystem. 
+				Detta kan hjälpa till att minska kostnaderna och förbättra tillgången till produkter. Real-tidsspårning är en annan viktig komponent. 
+				Använd realtidsspårning för att övervaka lagerflödet och få snabb åtkomst till lagerdata. Detta hjälper till att fatta snabba och informerade beslut.<br /><br />
+			</MudText>
+
+			<MudText>
+				Implementera hållbara lagerpraxis som att använda återvinningsbara förpackningar och energieffektiva belysningssystem. 
+				Detta kan minska din miljöpåverkan och sänka kostnaderna. Slutligen, sträva alltid efter att förbättra dina lagerprocesser. 
+				Använd data och feedback från anställda för att identifiera områden där effektiviteten kan ökas och kostnaderna minskas.<br />
+			</MudText>
+
+			<MudText Class="my-5">
+				<i>
+					Genom att följa dessa goda lagerpraxis kan du säkerställa att ditt lager fungerar smidigt, effektivt och säkert. 
+					Detta kommer inte bara att förbättra din logistikverksamhet utan också bidra till ökad kundnöjdhet.
+				</i>
+			</MudText>
+
+			<MudText Align="Align.Left" Typo="Typo.subtitle2">Författare: Petter Fredriksson</MudText>
+		</MudPaper>
+
+		<div class="d-flex flex-row justify-content-between mb-n3 mt-5">
+			<h3>Liknande artiklar</h3>
+			<a Class="btn btn-dark" Href="/Blogg" style="font-size: 1.5em;">Alla artiklar</a>
+		</div>
+
+		<div class="d-flex justify-content-between flex-column flex-md-row">
+			<a href="/Effektiv-lagerhantering" Class="col ma-5">
+				<MudCard>
+					<MudCardMedia Image="/Images/blog1.jpg" Height="200" />
+					<MudCardContent Class="flex-grow-1">
+						<MudText Typo="Typo.h5">Effektiv lagerhantering - Nyckeln till framgång</MudText>
+					</MudCardContent>
+				</MudCard>
+			</a>
+
+			<a href="/Hållbar-logistik" Class="col ma-5">
+				<MudCard Style="height: 100%">
+					<MudCardMedia Image="/Images/blog2.jpg" Height="200" />
+					<MudCardContent Class="flex-grow-1">
+						<MudText Typo="Typo.h5">Hållbar logistik - En väg mot framtiden</MudText>
+					</MudCardContent>
+				</MudCard>
+			</a>
+
+			<a href="/Digital-transformation" Class="col ma-5">
+				<MudCard>
+					<MudCardMedia Image="/Images/blog3.jpg" Height="200" />
+					<MudCardContent Class="flex-grow-1">
+						<MudText Typo="Typo.h5">Digital transformation inom logistik - En revolution</MudText>
+					</MudCardContent>
+				</MudCard>
+			</a>
+		</div>
+	</MudContainer>
+	<ServicesPanel />
+</article>

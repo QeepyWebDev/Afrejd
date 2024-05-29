@@ -1,0 +1,76 @@
+﻿@page "/Admin-dokument"
+@using System.Security.Claims
+@using Data.Interfaces
+@using Afrejd.Web.Components.Layout
+@using Microsoft.AspNetCore.Authorization
+
+@inject IFilesUploadService FilesUploadService;
+@inject Microsoft.AspNetCore.Http.IHttpContextAccessor httpContextAccessor
+@inject IUserService UserService
+@rendermode InteractiveServer
+@layout AdminMenu
+@attribute [Authorize(Policy = "AdminOnly")]
+
+<PageTitle>Dokument</PageTitle>
+
+<article>
+    <MudContainer>
+        <input class="form-control mr-sm-2 mt-2 mb-n3" aria-label="Search" type="text" id="filesSearchInput" onkeyup="searchFiles()" placeholder="Sök Företag...">
+        <div class="card my-5">
+            <div class="card-header">Uppladdade filer</div>
+            <div class="card-body">
+                <div class="list-group" id="filesList">
+                    @if (FileUrls.Count == 0)
+                    {
+                        <span>Inga filer har laddats upp.</span>
+                    }
+                    else
+                    {
+                        foreach (var url in FileUrls)
+                        {
+                            <a href="@($"{NavigationManager.BaseUri}{url}")" target="_blank" class="list-group-item list-group-item-action">@Path.GetFileName(url)</a>
+                        }
+                    }
+                </div>
+            </div>
+        </div>
+    </MudContainer>
+</article>
+
+<script>
+    function searchFiles() {
+        var input, filter, list, items, a, i, txtValue;
+        input = document.getElementById('filesSearchInput');
+        filter = input.value.toUpperCase();
+        list = document.getElementById("filesList");
+        items = list.getElementsByTagName('a');
+
+        for (i = 0; i < items.length; i++) {
+            a = items[i];
+            txtValue = a.textContent || a.innerText;
+            if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                items[i].style.display = "";
+            } else {
+                items[i].style.display = "none";
+            }
+        }
+    }
+</script>
+
+@code {
+    List<string> FileUrls = new List<string>();
+    private string userCompanyName;
+
+    [Inject] NavigationManager NavigationManager { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        var userId = httpContextAccessor.HttpContext.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+        if (userId != null)
+        {
+            userCompanyName = await UserService.GetUserCompany(userId);
+        }
+
+        FileUrls = await FilesUploadService.GetFileNames(userCompanyName);
+    }
+}

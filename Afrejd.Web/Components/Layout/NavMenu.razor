@@ -15,12 +15,13 @@
         <a class="navbar-brand" href="/">
             <img src="/AFrejd Logo v2.png" alt="Afrejd company logo" style="max-height: 100px; margin-left: 2em;">
         </a>
-        <button class="navbar-toggler ml-auto" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+
+        <button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
             <box-icon name='menu' color='#66c3ff' size="lg"></box-icon>
         </button>
     </nav>
-    <div class="collapse" id="navbarToggleExternalContent">
-        <div class="p-4 d-flex flex-column flex-md-row-reverse">
+    <div class="d-none d-md-block">
+        <div class="p-4 flex-column flex-md-row-reverse">
             <AuthorizeView>
                 <Authorized>
                     <form action="Account/Logout" method="post">
@@ -40,19 +41,74 @@
                     <NavLink class="nav-link" href="Account/Register"><box-icon name='edit-alt' color='#363732' class="align-middle"></box-icon> REGISTRERA DIG</NavLink>
                 </NotAuthorized>
             </AuthorizeView>
-            <NavLink class="nav-link" href="/cart"><box-icon name='cart-alt' color='#363732' class="align-middle"></box-icon> VARUKORG</NavLink>
-            <NavLink class="nav-link" href="/om-oss"><box-icon name='group' color='#363732' class="align-middle"></box-icon> OM OSS</NavLink>
-            <NavLink class="nav-link" href="/services"><box-icon name='briefcase-alt' color='#363732' class="align-middle"></box-icon> TJÄNSTER</NavLink>
+            <NavLink class="nav-link" href="/Varukorg"><box-icon name='cart-alt' color='#363732' class="align-middle"></box-icon> VARUKORG</NavLink>
+            <NavLink class="nav-link" href="/Blogg"><box-icon name='clipboard' color='#363732' class="align-middle"></box-icon> BLOGG</NavLink>
+            <NavLink class="nav-link" href="/Om-oss"><box-icon name='group' color='#363732' class="align-middle"></box-icon> OM OSS</NavLink>
+            <NavLink class="nav-link" href="/Tjänster"><box-icon name='briefcase-alt' color='#363732' class="align-middle"></box-icon> TJÄNSTER</NavLink>
             <NavLink class="nav-link" href="/"><box-icon name='home-alt-2' color='#363732' class="align-middle"></box-icon> HEM</NavLink>
 
             <AuthorizeView Roles="Admin">
                 <Authorized>
-                    <NavLink href="/ViewOrders" class="nav-link"><box-icon name='receipt' color='#363732' class="align-middle"></box-icon> ADMINISTRATION</NavLink>
+                    <NavLink href="/Admin-ärenden" class="nav-link"><box-icon name='receipt' color='#363732' class="align-middle"></box-icon> ADMINISTRATION</NavLink>
+                </Authorized>
+            </AuthorizeView>
+        </div>
+    </div>
+    <div class="collapse" id="navbarToggleExternalContent">
+        <div class="p-4 d-lg-none flex-column">
+            <AuthorizeView>
+                <Authorized>
+                    <form action="Account/Logout" method="post">
+                        <AntiforgeryToken />
+                        <input type="hidden" name="ReturnUrl" value="@currentUrl" />
+                        <button type="submit" class="btn btn-dark">
+                            <box-icon name='log-out' flip='vertical' color='#66C3FF' class="align-middle"></box-icon> Logga Ut
+                        </button>
+                    </form>
+                    <NavLink class="nav-link" href="/Användaruppgifter"><box-icon name='user-circle' color='#363732' class="align-middle"></box-icon> KONTO</NavLink>
+
+                </Authorized>
+                <NotAuthorized>
+                    <NavLink type="button" class="btn btn-dark" href="Account/Login">
+                        <box-icon name='log-in' flip='vertical' color='#66C3FF' class="align-middle"></box-icon> Logga In
+                    </NavLink>
+                    <NavLink class="nav-link" href="Account/Register"><box-icon name='edit-alt' color='#363732' class="align-middle"></box-icon> REGISTRERA DIG</NavLink>
+                </NotAuthorized>
+            </AuthorizeView>
+            <NavLink class="nav-link" href="/Varukorg"><box-icon name='cart-alt' color='#363732' class="align-middle"></box-icon> VARUKORG</NavLink>
+            <NavLink class="nav-link" href="/Blogg"><box-icon name='clipboard' color='#363732' class="align-middle"></box-icon> BLOGG</NavLink>
+            <NavLink class="nav-link" href="/Om-oss"><box-icon name='group' color='#363732' class="align-middle"></box-icon> OM OSS</NavLink>
+            <NavLink class="nav-link" href="/Tjänster"><box-icon name='briefcase-alt' color='#363732' class="align-middle"></box-icon> TJÄNSTER</NavLink>
+            <NavLink class="nav-link" href="/"><box-icon name='home-alt-2' color='#363732' class="align-middle"></box-icon> HEM</NavLink>
+
+            <AuthorizeView Roles="Admin">
+                <Authorized>
+                    <NavLink href="/Admin-ärenden" class="nav-link"><box-icon name='receipt' color='#363732' class="align-middle"></box-icon> ADMINISTRATION</NavLink>
                 </Authorized>
             </AuthorizeView>
         </div>
     </div>
 </div>
+
+<script>
+    // Function to toggle the collapse class based on screen size
+    function toggleCollapseClass() {
+        var screenWidth = window.innerWidth;
+        var menuDiv = document.getElementById("navbarToggleExternalContent");
+
+        if (screenWidth >= 768) {
+            // Add the collapse class for smaller screens
+            menuDiv.classList.remove("collapse");
+        } else {
+            // Remove the collapse class for larger screens
+            menuDiv.classList.add("collapse");
+        }
+    }
+
+    // Call the function on page load and window resize
+    window.onload = toggleCollapseClass;
+    window.onresize = toggleCollapseClass;
+</script>
 
 @code {
     private string? currentUrl;

@@ -3,9 +3,13 @@
 @using Afrejd.Web.Components.Layout
 @using Afrejd.Web.Data.Models
 @using Afrejd.Web.Data.Interfaces
+@using Microsoft.AspNetCore.Authorization
 @inject IProductService ProductService
 @rendermode InteractiveServer
 @layout AdminMenu
+@attribute [Authorize(Policy = "AdminOnly")]
+
+<PageTitle>Redigera tjänst</PageTitle>
 
 <EditForm Model="@product" OnValidSubmit="@UpdateProduct" FormName="editProductForm">
     @if (product != null)

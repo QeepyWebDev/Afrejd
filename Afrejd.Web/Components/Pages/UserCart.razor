@@ -1,4 +1,4 @@
-﻿@page "/Cart"
+﻿@page "/Varukorg"
 
 @using Afrejd.Web.Data.Models
 @using System.Security.Claims
@@ -7,6 +7,8 @@
 @inject Microsoft.AspNetCore.Http.IHttpContextAccessor httpContextAccessor
 @inject NavigationManager navigationManager
 @inject ICartService CartService
+
+<PageTitle>Varukorg</PageTitle>
 
 @if (CartItems == null || CartItems.Count == 0)
 {

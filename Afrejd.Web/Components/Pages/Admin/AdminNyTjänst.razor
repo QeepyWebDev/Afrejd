@@ -1,13 +1,17 @@
-﻿@page "/AdminNewProduct"
+﻿@page "/Admin-ny-tjänst"
 @using System.Collections.Generic
 @using Afrejd.Web.Data.Models
 @using Afrejd.Web.Data.Interfaces
 @using Microsoft.AspNetCore.Antiforgery
 @using Afrejd.Web.Components.Layout
+@using Microsoft.AspNetCore.Authorization
 @inject IProductService ProductService
 @attribute [RequireAntiforgeryToken(required: false)]
 @rendermode InteractiveServer
 @layout AdminMenu
+@attribute [Authorize(Policy = "AdminOnly")]
+
+<PageTitle>Lägg till ny tjänst</PageTitle>
 
 <MudContainer Class="my-5">
     <article class="content px-2">

@@ -1,8 +1,8 @@
 ﻿@page "/"
-
+@using Afrejd.Web.Components.Layout
 @rendermode InteractiveServer
 
-<PageTitle>Home</PageTitle>
+<PageTitle>Afrejd</PageTitle>
 
 <article Class="d-flex flex-column align-items-center justify-content-center" Style="background-color: #363732">
     <MudCarousel Class="mud-width-full" Style="height:800px;" ShowArrows="@arrows" ShowBullets="@bullets" EnableSwipeGesture="@enableSwipeGesture" AutoCycle="@autocycle" TData="object">
@@ -15,8 +15,8 @@
                             </h1>
 
                             <MudText>
-                                Distribution är ofta den största kostnaden i samband med din försändelse. Låt oss hjälpa dig att optimera din distribution på bästa möjliga sätt, vilket sparar både tid och pengar.
-                                Vi hjälper även svenska varumärken som vill flytta vidare till Europa.
+                                Distribution är ofta den största kostnaden när det gäller dina försändelser. Låt oss hjälpa dig att optimera din distributionsprocess på 
+                                bästa möjliga sätt för att spara både tid och pengar. Vi assisterar även svenska varumärken som vill expandera till Europa.
                             </MudText>
 
                         <MudButton Href="/Distribution" Variant="Variant.Filled" Size="Size.Medium" Style="background-color: #363732; color: white; width:fit-content;">
@@ -38,8 +38,8 @@
                         </h1>
 
                         <MudText>
-                            Vissa logistikföretag nöjer sig med att vara den föredragna leverantören av varuförpackning, lagring eller distribution — 
-                            vi vill vara en solid strategisk partner som hjälper till att driva utveckling, tillväxt och lönsamhet för våra kunder.
+                            Medan vissa logistikföretag nöjer sig med att vara den föredragna leverantören för varuförpackning, lagring eller distribution, strävar vi efter 
+                            att vara en stark strategisk partner. Vårt mål är att bidra till utveckling, tillväxt och lönsamhet för våra kunder.
                         </MudText>
 
                         <MudButton Href="/Rådgivning&Försäljning" Variant="Variant.Filled" Size="Size.Medium" Style="background-color: #363732; color: white; width:fit-content;">
@@ -60,8 +60,9 @@
                         </h1>
 
                         <MudText>
-                            Afrejd har lång erfarenhet av onlinebutiker och prenumerationslösningar. 
-                            Låt oss hjälpa dig att uppgradera din befintliga webbutik eller prenumerationslösning, eller bygga en helt ny så att du är utrustad för morgondagens e-handel och prenumerationer.
+                            Afrejd har omfattande erfarenhet av onlinebutiker och prenumerationstjänster. 
+                            Vi kan hjälpa dig att förbättra din nuvarande webbutik eller prenumerationslösning, eller skapa en helt ny, så att du är väl förberedd för 
+                            framtidens e-handel och prenumerationer.
                         </MudText>
 
                         <MudButton Href="/Webbutik&Prenumeration" Variant="Variant.Filled" Size="Size.Medium" Style="background-color: #363732; color: white; width:fit-content;">
@@ -82,8 +83,9 @@
                         </h1>
 
                         <MudText>
-                            Afrejd är ett IT- och logistikhus med egna teknikavdelningar som skräddarsyr e-handelslösningar — givetvis med integrationer med de allra flesta plattformar, 
-                            olika beställningssystem och betalningsleverantörer. Låt oss hjälpa dig med smarta lösningar.
+                            Afrejd är ett IT- och logistikföretag med egna tekniska avdelningar som anpassar e-handelslösningar efter dina behov. 
+                            Vi erbjuder integrationer med de flesta plattformar, olika beställningssystem och betalningsleverantörer. 
+                            Låt oss hjälpa dig med intelligenta lösningar.
                         </MudText>
 
                         <MudButton Href="/IT&Tech" Variant="Variant.Filled" Size="Size.Medium" Style="background-color: #363732; color: white; width:fit-content;">
@@ -104,8 +106,8 @@
                         </h1>
 
                         <MudText>
-                            Afrejd är en av Nordens största privata aktörer inom området för varor och reklamförpackningar för onlinebutiker och detaljhandelskedjor. 
-                            Vi erbjuder toppmodern utrustning och system som hjälper varumärken att driva lönsamhet och tillväxt.
+                            Afrejd är en av Nordens största privata aktörer inom varu- och reklamförpackningar för onlinebutiker och detaljhandelskedjor. 
+                            Vi tillhandahåller toppmodern utrustning och system som hjälper varumärken att öka lönsamheten och främja tillväxt.
                         </MudText>
 
                         <MudButton Href="/Förpackning" Variant="Variant.Filled" Size="Size.Medium" Style="background-color: #363732; color: white; width:fit-content;">
@@ -118,42 +120,17 @@
         </MudCarouselItem>
     </MudCarousel>
 
+    <ServicesPanel/>
+
     <MudContainer Style="width: 100%; height: auto; background-color: #363732;" Class="d-flex flex-column my-5">
         <MudPaper Elevation="0" Style="background-color: #363732; color: white;">
             <h1 class="ma-5">
                 Afrejd — din teknik- och logistikpartner inom e-handel, varuhantering och reklamförpackningar
             </h1>
             <MudText Class="mx-5 mb-5">
-                Vi är något mer än ett konventionellt logistikhus: Afrejd är ett toppmodernt och internationellt teknik- och logistikföretag.
-                Vi hjälper varumärken att skapa lönsamhet och tillväxt, både i Sverige och utomlands, med kontor i Karlstad, Oslo, Arendal, Sandefjord och Polen.
-                Klicka på våra tjänster för att se vårt 360-graders logistikhus i full drift.
+                Vi är mer än ett traditionellt logistikhus; Afrejd är ett toppmodernt och internationellt teknik- och logistikföretag. 
+                Vi stödjer varumärken i att skapa lönsamhet och tillväxt, både i Sverige och internationellt, med kontor i Malmö, Stockholm, Göteborg, Umeå och Tyskland.
             </MudText>
-        </MudPaper>
-
-        <MudPaper Elevation="0" Width="100%" Height="auto" Outlined="false" Class="d-flex flex-column flex-md-row align-items-center justify-content-center pa-6 gap-4" style="background-color: #363732;">
-
-                <MudStack Class="ma-6 text-center align-items-center justify-content-center">
-                    <MudText Style="font-size: 2em; color: white;">
-                    Vi kan logistikyrket och vet vad som krävs för att driva en lönsam och hållbar butik — här kallar vi det <i>Logistiskglädje.</i>
-                    </MudText>
-
-                <MudButton Variant="Variant.Filled" Size="Size.Medium" Class="products-button" Href="/services">
-                        Våra tjänster
-                    </MudButton>
-                </MudStack>
-
-            <MudStack Class="d-flex flex-wrap justify-content-center gap-2 mx-9" Style="width: 100%; max-width: 600px;">
-                <MudButton Variant="Variant.Text" Class="product-buttons" Href="/Rådgivning&Försäljning">Rådgivning & Försäljning</MudButton>
-                <MudButton Variant="Variant.Text" Class="product-buttons" Href="/IT&Tech">IT & Tech</MudButton>
-                <MudButton Variant="Variant.Text" Class="product-buttons" Href="/Webbutik&Prenumeration">Webbutik & Prenumeration</MudButton>
-                <MudButton Variant="Variant.Text" Class="product-buttons" Href="/Varulager">Varulager</MudButton>
-                <MudButton Variant="Variant.Text" Class="product-buttons" Href="/Förpackning">Förpackning av varor</MudButton>
-                <MudButton Variant="Variant.Text" Class="product-buttons" Href="/Lagerhanterings-system">Lagerhanterings-system</MudButton>
-                <MudButton Variant="Variant.Text" Class="product-buttons" Href="/Kundtjänst">Kundtjänst</MudButton>
-                <MudButton Variant="Variant.Text" Class="product-buttons" Href="/Retur">Retur av varor</MudButton>
-                <MudButton Variant="Variant.Text" Class="product-buttons" Href="/Kampanjförpackning">Kampanjförpackning</MudButton>
-                <MudButton Variant="Variant.Text" Class="product-buttons" Href="/Distribution">Distribution</MudButton>
-            </MudStack>
         </MudPaper>
     </MudContainer>
 

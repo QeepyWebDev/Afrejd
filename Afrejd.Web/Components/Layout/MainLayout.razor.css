@@ -64,5 +64,10 @@ html, body {
 }
 
 footer p {
+    font-size: 1.2em;
+}
+
+::deep .btn-dark {
+    background-color: #363732;
     font-size: 1.5em;
 }

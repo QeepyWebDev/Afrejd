@@ -1,8 +1,10 @@
-﻿@page "/services"
+﻿@page "/Tjänster"
 
 @rendermode InteractiveServer
 @inject NavigationManager navigationManager
 @using Afrejd.Web.Data.Models
+
+<PageTitle>Tjänster</PageTitle>
 
 <div class="video-background">
 	<video autoplay loop muted>
@@ -11,8 +13,8 @@
 	</video>
 	<div class="text-content">
 		<h1>Våra tjänster</h1>
-		<p>Upptäck Afrejd — ett teknik- och logistikföretag som hjälper dig att driva lönsamhet, tillväxt och hållbara lösningar. 
-			Vi förenklar och effektiviserar det komplicerade och levererar 360-graders sömlös logistikglädje för våra kunder.</p>
+		<p>Upptäck Afrejd — ett teknik- och logistikföretag som stödjer dig i att uppnå lönsamhet, tillväxt och hållbara lösningar. 
+			Vi förenklar och effektiviserar komplexa processer och levererar heltäckande, smidig logistikglädje för våra kunder.</p>
 	</div>
 </div>
 
@@ -24,8 +26,8 @@
 				<div class="service-content">
 					<h2>Rådgivning & Försäljning</h2>
 					<p style="margin-left: 2em;">
-						Vissa logistikföretag nöjer sig med att vara den föredragna leverantören av varuförpackning, lagring eller distribution —
-						vi vill vara en solid strategisk partner som hjälper till att driva utveckling, tillväxt och lönsamhet för våra kunder.
+						Medan vissa logistikföretag nöjer sig med att vara den föredragna leverantören för varuförpackning, lagring eller distribution, strävar vi efter
+						att vara en stark strategisk partner. Vårt mål är att bidra till utveckling, tillväxt och lönsamhet för våra kunder.
 					</p>
 					<button class="btn">
 						<NavLink href="/Rådgivning&Försäljning" class="nav-link">
@@ -42,8 +44,8 @@
 				<div class="service-content">
 					<h2>Varulager</h2>
 					<p style="margin-left: 2em;">
-						Du kan spara stora kostnader relaterade till lagerutrymme, system, maskiner, personal och transport genom att lägga varorna till oss som din 3PL-partner.
-						Afrejd är ett 360-graders logistikhus — med allt du behöver på ett ställe.
+						Genom att välja oss som din 3PL-partner kan du dra nytta av betydande besparingar på lagerutrymme, system, maskiner, personal och transportkostnader. 
+						Afrejd är ett komplett logistikföretag som erbjuder alla tjänster du behöver på ett och samma ställe.
 					</p>
 					<button class="btn">
 						<NavLink href="/Varulager" class="nav-link">
@@ -60,8 +62,9 @@
 				<div class="service-content">
 					<h2>IT & Tech</h2>
 					<p style="margin-left: 2em;">
-						Afrejd är ett IT- och logistikhus med egna teknikavdelningar som skräddarsyr e-handelslösningar —
-						givetvis med integrationer med de allra flesta plattformar, olika beställningssystem och betalningsleverantörer. Låt oss hjälpa dig med smarta lösningar.
+						Afrejd är ett IT- och logistikföretag med egna tekniska avdelningar som anpassar e-handelslösningar efter dina behov.
+						Vi erbjuder integrationer med de flesta plattformar, olika beställningssystem och betalningsleverantörer.
+						Låt oss hjälpa dig med intelligenta lösningar.
 					</p>
 					<button class="btn">
 						<NavLink href="/IT&Tech" class="nav-link">
@@ -78,8 +81,9 @@
 				<div class="service-content">
 					<h2>Webbutik och prenumeration</h2>
 					<p style="margin-left: 2em;">
-						Afrejd har lång erfarenhet av onlinebutiker och prenumerationslösningar. Låt oss hjälpa dig att uppgradera din befintliga webbutik eller prenumerationslösning,
-						eller bygga en helt ny så att du är utrustad för morgondagens e-handel och prenumerationer.
+						Afrejd har omfattande erfarenhet av onlinebutiker och prenumerationstjänster.
+						Vi kan hjälpa dig att förbättra din nuvarande webbutik eller prenumerationslösning, eller skapa en helt ny, så att du är väl förberedd för
+						framtidens e-handel och prenumerationer.
 					</p>
 					<button class="btn">
 						<NavLink href="/Webbutik&Prenumeration" class="nav-link">
@@ -96,8 +100,8 @@
 				<div class="service-content">
 					<h2>Förpackning av varor</h2>
 					<p style="margin-left: 2em;">
-						Afrejd är en av Nordens största privata aktörer inom området för varor och reklamförpackningar för onlinebutiker och detaljhandelskedjor.
-						Vi erbjuder toppmodern utrustning och system som hjälper varumärken att driva lönsamhet och tillväxt.
+						Afrejd är en av Nordens största privata aktörer inom varu- och reklamförpackningar för onlinebutiker och detaljhandelskedjor.
+						Vi tillhandahåller toppmodern utrustning och system som hjälper varumärken att öka lönsamheten och främja tillväxt.
 					</p>
 					<button class="btn">
 						<NavLink href="/Förpackning" class="nav-link">
@@ -114,8 +118,9 @@
 				<div class="service-content">
 					<h2>Lagerhanterings-system</h2>
 					<p style="margin-left: 2em;">
-						Ett bra lagerhanteringssystem är absolut nödvändigt för att ha full kontroll över den dagliga verksamheten och för att skapa lönsamhet och tillväxt.
-						Vi tror att vi har det bästa systemet i Norden, och kanske Europa, — skräddarsytt för dig med höga logistikkrav.
+						Ett effektivt lagerhanteringssystem är avgörande för att säkerställa smidig drift och främja lönsamhet och tillväxt. 
+						Vi är övertygade om att vi erbjuder det främsta systemet i inte bara Norden, utan möjligen i hela Europa. 
+						Vårt system är skräddarsytt för att uppfylla dina specifika logistikkriterier och behov.
 					</p>
 					<button class="btn">
 						<NavLink href="/Lagerhanterings-system" class="nav-link">
@@ -132,7 +137,9 @@
 				<div class="service-content">
 					<h2>Kundtjänst</h2>
 					<p style="margin-left: 2em;">
-						Att utföra kundservice kräver mycket resurser och system. Låt våra professionella kundchefer göra jobbet och du kan spendera din tid på att skapa ännu bättre lönsamhet och tillväxt.
+						Att tillhandahålla kundservice är en resurskrävande uppgift som kräver välutvecklade system. 
+						Med våra kundserviceexperter kan du överlåta den här uppgiften och istället fokusera din tid på att skapa ännu större lönsamhet och tillväxt 
+						för ditt företag.
 					</p>
 					<button class="btn">
 						<NavLink href="/Kundtjänst" class="nav-link">
@@ -149,8 +156,9 @@
 				<div class="service-content">
 					<h2>Retur av varor</h2>
 					<p style="margin-left: 2em;">
-						Om du ska säkerställa nöjda kunder och god tillväxt i din butik är det viktigt att ha smidiga och flexibla returer.
-						Bra retursystem ökar intäkterna, minskar kostnaderna och skapar nöjda kunder. Vårt lagerhanteringssystem är skräddarsytt för just det.
+						För att uppnå både kundnöjdhet och tillväxt i din butik är det avgörande att hantera returer smidigt och flexibelt. 
+						Ett effektivt retursystem kan öka intäkterna, minska kostnaderna och skapa glada kunder. 
+						Vårt lagerhanteringssystem är utformat specifikt för att hantera denna uppgift på bästa möjliga sätt.
 					</p>
 					<button class="btn">
 						<NavLink href="/Retur" class="nav-link">
@@ -167,7 +175,9 @@
 				<div class="service-content">
 					<h2>Kampanjförpackning</h2>
 					<p style="margin-left: 2em;">
-						Vi har en toppmodern maskinpark anpassad till marknadens behov och krav och hjälper dig med allt från kuvert, broschyrer, vykort, marknadsundersökningar till avancerade DM-kampanjer.
+						Vi erbjuder en avancerad maskinpark som är skräddarsydd för att möta de behov och krav som marknaden ställer. 
+						Vår expertis sträcker sig från produktion av kuvert, broschyrer och vykort till genomförande av marknadsundersökningar och avancerade 
+						direktmarknadsföringskampanjer.
 					</p>
 					<button class="btn">
 						<NavLink href="/Kampanjförpackning" class="nav-link">
@@ -184,8 +194,8 @@
 				<div class="service-content">
 					<h2>Distribution</h2>
 					<p style="margin-left: 2em;">
-						Distribution är ofta den största kostnaden i samband med din försändelse. Låt oss hjälpa dig att optimera din distribution på bästa möjliga sätt,
-						vilket sparar både tid och pengar. Vi hjälper även svenska varumärken som vill flytta vidare till Europa.
+						Distribution är ofta den största kostnaden när det gäller dina försändelser. Låt oss hjälpa dig att optimera din distributionsprocess på
+						bästa möjliga sätt för att spara både tid och pengar. Vi assisterar även svenska varumärken som vill expandera till Europa.
 					</p>
 					<button class="btn">
 						<NavLink href="/Distribution" class="nav-link">

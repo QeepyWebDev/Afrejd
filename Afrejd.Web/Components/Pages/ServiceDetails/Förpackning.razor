@@ -2,10 +2,13 @@
 
 @using Afrejd.Web.Data.Interfaces
 @using Afrejd.Web.Data.Models
+@using Afrejd.Web.Components.Layout
 @inject ICartService CartService
 @inject AuthenticationStateProvider AuthenticationStateProvider
 @inject NavigationManager NavigationManager
 @rendermode InteractiveServer
+
+<PageTitle>Förpackning av varor</PageTitle>
 
 <article>
     <MudContainer MaxWidth="MaxWidth.ExtraLarge" Class=" py-6">
@@ -37,61 +40,39 @@
 
             <MudPaper Width="75%" Elevation=0 Style="margin:auto;">
                 <MudText Class="mb-15" Style="font-size: 2em;">
-                    Vi är en av Nordens största aktörer inom förpackning och utskick för onlinebutiker och detaljhandelskedjor. 
-                    Med tre stora logistikhus i Karlstad, Oslo och Arendal, vår plattform och våra tekniska lösningar kan vi hjälpa svenska varumärken med transporter både inom och utanför Sverige — till en större marknad i EU. 
-                    Vår breda erfarenhet gör oss därför till en bra partner inom förpackning, porto, cross docking och förpackning för att sänka dina kostnader.
+                    Vi är en ledande aktör inom förpackning och leverans för onlinebutiker och detaljhandelskedjor i Norden. 
+                    Med våra tre stora logistikhus i Stockholm, Göteborg och Malmö samt vår teknikplattform kan vi hjälpa svenska varumärken att expandera sina transporter 
+                    både inom och utanför Sverige, vilket ger tillgång till en bredare marknad i EU. Vår omfattande erfarenhet gör oss till en pålitlig partner för 
+                    förpackning, porto, cross-docking och kostnadsoptimering.
                 </MudText>
 
                 <h3>Undvik dyra förseningar</h3>
                 <MudText Class="mb-6">
-                    Våra medarbetare är uppdaterade med alla lagar och förordningar och ser alltid till att förpackningen uppfyller mottagarens krav, oavsett om det är förpackningar för den norska eller utländska marknaden. 
-                    Så här undviker du förseningar och extra kostnader. 
-                    Vi kan också ta emot stora leveranser av varor: direkt från tryckerier, eller från en varutillverkare i Sverige eller utomlands, för eventuell ompackning enligt svenska eller utländska normer och krav.
+                    För att undvika dyra förseningar ser våra medarbetare till att förpackningarna uppfyller mottagarens krav, oavsett om det är för den norska marknaden 
+                    eller internationell leverans. Genom att göra detta undviker du förseningar och extra kostnader. Vi kan även ta emot stora leveranser direkt från 
+                    tryckerier eller varutillverkare för eventuell ompackning enligt svenska eller utländska normer och krav.
                 </MudText>
 
                 <h3>Automation och maskinförpackning</h3>
                 <MudText Class="mb-6">
-                    Vi erbjuder olika typer av mekaniska förpackningsmaskiner för att automatisera så mycket som möjligt. 
-                    Våra avancerade maskiner ger dig alternativ för selektiv och intelligent förpackning, där bilagorna förpackas individuellt på basis av en streckkod på ett brevblad eller faktura.
-                    Miljövänlig plast som ytterförpackning skyddar och profilerar försändelser i posten. Detta har en låg vikt och säkerställer därför låga portopriser. 
-                    Vi putsar bland annat tidskrifter, tidningar, DM-kampanjer och försändelser med prover och gimmickprodukter. Naturligtvis använder vi miljövänliga plastsorter.
+                    Vi erbjuder olika mekaniska förpackningsmaskiner för att automatisera så mycket som möjligt. 
+                    Våra avancerade maskiner ger dig alternativ för selektiv och intelligent förpackning, vilket minimerar både tid och kostnader. 
+                    Miljövänliga förpackningsmaterial som plast skyddar och profilerar försändelser i posten samtidigt som de säkerställer låga portokostnader. 
+                    Vi hanterar en mängd olika försändelser, från tidskrifter till DM-kampanjer, och använder naturligtvis miljövänliga material.
                 </MudText>
 
                 <h3>Manuell varuförpackning</h3>
                 <MudText Class="mb-6">
-                    Inte alla uppdrag kan och bör köras med maskin, varför våra anställda packar allt ur manuella uppgifter utöver maskinhantering. 
-                    Vår manuella förpackningslinje är smidig och snabb, och vi garanterar en problemfri leverans. Beroende på produkt, form och format är manuell förpackning snarare än maskinautomation ofta mer kostnadseffektiv och hållbar. 
-                    Låt dig inte luras av leverantörer som säljer automatisering som mer kostnadseffektiv än manuell förpackning - det är inte alltid fallet.
+                    Inte alla uppgifter kan eller bör automatiseras, därför utför våra medarbetare manuell förpackning för de uppdrag där det är mer lämpligt. 
+                    Vår manuella förpackningslinje är effektiv och garanterar en smidig leverans. I vissa fall är manuell förpackning mer kostnadseffektiv och hållbar än 
+                    automatisering, beroende på produktens egenskaper och krav. Vi förespråkar inte enbart automatisering utan anpassar våra metoder efter dina specifika 
+                    behov och förutsättningar.
                 </MudText>
             </MudPaper>
         </MudPaper>
     </MudContainer>
 
-    <MudPaper Elevation="0" Width="100%" Height="auto" Outlined="false" Class="d-flex flex-column flex-md-row align-items-center justify-content-center pa-6 gap-4" style="background-color: #363732;">
-
-        <MudStack Class="ma-6 text-center align-items-center justify-content-center">
-            <MudText Style="font-size: 2em; color: white;">
-                Vi kan hjälpa dig med alla aspekter av logistik.
-            </MudText>
-
-            <MudButton Variant="Variant.Filled" Size="Size.Medium" Class="products-button" Href="/services">
-                Våra tjänster
-            </MudButton>
-        </MudStack>
-
-        <MudStack Class="d-flex flex-wrap justify-content-center gap-2" Style="width: 100%; max-width: 600px;">
-            <MudButton Variant="Variant.Text" Class="product-buttons" Href="/Rådgivning&Försäljning">Rådgivning & Försäljning</MudButton>
-            <MudButton Variant="Variant.Text" Class="product-buttons" Href="/IT&Tech">IT & Tech</MudButton>
-            <MudButton Variant="Variant.Text" Class="product-buttons" Href="/Webbutik&Prenumeration">Webbutik & Prenumeration</MudButton>
-            <MudButton Variant="Variant.Text" Class="product-buttons" Href="/Varulager">Varulager</MudButton>
-            <MudButton Variant="Variant.Text" Class="product-buttons" Href="/Förpackning">Förpackning av varor</MudButton>
-            <MudButton Variant="Variant.Text" Class="product-buttons" Href="/Lagerhanterings-system">Lagerhanterings-system</MudButton>
-            <MudButton Variant="Variant.Text" Class="product-buttons" Href="/Kundtjänst">Kundtjänst</MudButton>
-            <MudButton Variant="Variant.Text" Class="product-buttons" Href="/Retur">Retur av varor</MudButton>
-            <MudButton Variant="Variant.Text" Class="product-buttons" Href="/Kampanjförpackning">Kampanjförpackning</MudButton>
-            <MudButton Variant="Variant.Text" Class="product-buttons" Href="/Distribution">Distribution</MudButton>
-        </MudStack>
-    </MudPaper>
+    <ServicesPanel />
 </article>
 
 

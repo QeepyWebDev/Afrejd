@@ -74,5 +74,20 @@ namespace Afrejd.Web.Data.Services
                 .Where(o => o.UserId == userId)
                 .ToListAsync();
         }
+
+        public async Task<string> GetUserCompany(string userId)
+        {
+            var customerInfo = await Context.CustomerInfo
+                .FirstOrDefaultAsync(c => c.UserId == userId);
+
+            if (customerInfo != null)
+            {
+                return customerInfo.Company;
+            }
+            else
+            {
+                return null;
+            }
+        }
     }
 }

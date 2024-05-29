@@ -2,10 +2,13 @@
 
 @using Afrejd.Web.Data.Interfaces
 @using Afrejd.Web.Data.Models
+@using Afrejd.Web.Components.Layout
 @inject ICartService CartService
 @inject AuthenticationStateProvider AuthenticationStateProvider
 @inject NavigationManager NavigationManager
 @rendermode InteractiveServer
+
+<PageTitle>IT & Tech</PageTitle>
 
 <article>
     <MudContainer MaxWidth="MaxWidth.ExtraLarge" Class=" py-6">
@@ -36,68 +39,45 @@
             <MudDivider DividerType="DividerType.Middle" Class="my-6" />
 
             <MudPaper Width="75%" Elevation=0 Style="margin:auto;">
+                <h3>Skapa Anpassade IT-Lösningar Med Afrejd</h3>
                 <MudText Class="mb-15" Style="font-size: 2em;">
-                    Med sin egen IT-avdelning har Afrejd en stor fördel när det gäller att kunna skräddarsy IT-lösningar efter varje kunds behov. 
-                    Vi levererar hela värdekedjan — från IT-rådgivning, etablering och drift av en webbutik, integrationer av olika beställnings- och betalningslösningar, till affärssystem för redovisning och lagerhantering.
-                </MudText>
-
-                <h3>Anpassad kundwebb från Afrejd</h3>
-                <MudText Class="mb-6">
-                    Du kan ta ett urval av vad vi erbjuder eller låta oss ta hand om hela värdekedjan. Vi utvecklar och anpassar oss dagligen efter olika kunders önskemål. 
-                    Det enda du som kund behöver göra är att skicka varorna till oss. Vi gör resten. Med Sveriges, och kanske Europas, mäktigaste prenumerationssystem, 
-                    integrerat mot de allra flesta stora e-handelsplattformar, kan vi göra speciella anpassningar till kundens redan befintliga system.
-                    Vi anpassar instrumentpanelen för varje kund, så att du alltid kan se vad du behöver och vill se. 
-                    Allt från order och orderstatus, till lager och finansiella transaktioner, har en tvåvägskommunikation mellan vårt system och kundens system. 
-                    Eftersom vi inte bara tillhandahåller det fysiska runt lagerhållning och logistik, men också IT-lösningar, är det enkelt och effektivt att byta till oss. 
-                    Vi ger dig ett bra tydligt webbgränssnitt som är tillgängligt överallt.
+                    Med vår egen IT-avdelning har Afrejd en betydande fördel när det gäller att erbjuda skräddarsydda IT-lösningar som passar varje kunds unika behov. 
+                    Vi strävar efter att leverera hela värdekedjan av IT-tjänster, från rådgivning och etablering av webbutiker till integration av beställnings- och 
+                    betalningslösningar samt affärssystem för redovisning och lagerhantering.
                 </MudText>
 
                 <MudText Class="mb-6">
-                    Via Afrejd-kundwebben rapporteras alla beställningar, lagerstatus, meddelanden från systemet och mycket mer. 
-                    Varje användare kan ställa in vad som visas i instrumentpanelen, och när och vad som rapporteras. Rapporten kan skickas via e-post, SMS eller direkt i meddelandefönstret på kundwebben.
+                    Vi på Afrejd kan anpassa vår service för att antingen hantera hela IT-processen åt dig eller endast de delar du behöver stöd med. 
+                    Vi är flexibla och lyhörda för våra kunders behov och strävar efter att erbjuda skräddarsydda lösningar som passar just dig. 
+                    Genom att utnyttja avancerade prenumerationssystem och integrera med olika e-handelsplattformar kan vi skapa specialanpassade system som smidigt 
+                    integreras med ditt befintliga IT-ekosystem. Vår kundportal erbjuder en anpassningsbar instrumentpanel där du kan övervaka allt från orderstatus till 
+                    finansiella transaktioner medan våra system samverkar sömlöst med dina egna.
                 </MudText>
 
-                <h3>Kampanjsystem med större flexibilitet för butiker</h3>
                 <MudText Class="mb-6">
-                    Afrejd levererar logistiksystem till både små och stora företag. Större kunder, som multibutikskedjor, behöver ofta skräddarsydda reklamsystem. 
-                    Detta förenklar beställningsprocessen och ger större flexibilitet för användarna internt. På så sätt kan du ta hand om det du är bra på, samtidigt som vi tar hand om det tekniska och optimerar efter dina behov.
+                    Via Afrejd-kundportalen kan du enkelt få tillgång till rapporter om beställningar, lagerstatus och meddelanden från systemet. 
+                    Varje användare kan anpassa sin instrumentpanel och välja vilken information de vill ta emot och när. Rapporter kan skickas via e-post, SMS eller direkt 
+                    till kundens meddelandecenter på webbportalen.
                 </MudText>
 
-                <h3>Sömlös och smidig för att ändra logistiksystem och lager</h3>
+                <h3>Flexibla Kampanjsystem För Alla Behov</h3>
                 <MudText Class="mb-6">
-                    Det är lättare än du tror att flytta lager och byta logistiksystem. Du får full översikt med ett enkelt användargränssnitt, och det finns inte mycket arbete att byta. 
-                    Afrejd har integrationer mot de allra flesta större betalningslösningar. Vi utvecklar systemen för olika marknadsföringsplattformar, onlinebutiker och sociala medier på kundens begäran, och vi levererar hela paketet. 
-                    Som kund går det sömlöst när vi levererar både det fysiska och det tekniska. Skicka varorna till oss så sköter vi resten.
+                    Afrejd erbjuder logistiklösningar till företag av alla storlekar, inklusive skräddarsydda kampanjsystem för stora multibutikskedjor. 
+                    Genom att erbjuda flexibla reklamlösningar förenklar vi beställningsprocessen och ger ökad flexibilitet för användarna internt. 
+                    På så sätt kan du fokusera på din kärnverksamhet medan vi tar hand om den tekniska infrastrukturen och optimerar den utifrån dina specifika behov.
+                </MudText>
+
+                <h3>Sömlös Övergång Till Nytt Logistiksystem</h3>
+                <MudText Class="mb-6">
+                    Att byta lager och logistiksystem behöver inte vara komplicerat. Vi erbjuder en smidig övergång med ett intuitivt användargränssnitt och omfattande 
+                    integrationer med betalningslösningar och andra system. Afrejd utvecklar och anpassar IT-systemen efter dina önskemål och levererar en komplett 
+                    paketlösning för både det fysiska och tekniska behovet. Med oss vid din sida kan du enkelt skicka varorna till oss och låta oss sköta resten.
                 </MudText>
             </MudPaper>
         </MudPaper>
     </MudContainer>
 
-    <MudPaper Elevation="0" Width="100%" Height="auto" Outlined="false" Class="d-flex flex-column flex-md-row align-items-center justify-content-center pa-6 gap-4" style="background-color: #363732;">
-
-        <MudStack Class="ma-6 text-center align-items-center justify-content-center">
-            <MudText Style="font-size: 2em; color: white;">
-                Vi kan hjälpa dig med alla aspekter av logistik.
-            </MudText>
-
-            <MudButton Variant="Variant.Filled" Size="Size.Medium" Class="products-button" Href="/services">
-                Våra tjänster
-            </MudButton>
-        </MudStack>
-
-        <MudStack Class="d-flex flex-wrap justify-content-center gap-2" Style="width: 100%; max-width: 600px;">
-            <MudButton Variant="Variant.Text" Class="product-buttons" Href="/Rådgivning&Försäljning">Rådgivning & Försäljning</MudButton>
-            <MudButton Variant="Variant.Text" Class="product-buttons" Href="/IT&Tech">IT & Tech</MudButton>
-            <MudButton Variant="Variant.Text" Class="product-buttons" Href="/Webbutik&Prenumeration">Webbutik & Prenumeration</MudButton>
-            <MudButton Variant="Variant.Text" Class="product-buttons" Href="/Varulager">Varulager</MudButton>
-            <MudButton Variant="Variant.Text" Class="product-buttons" Href="/Förpackning">Förpackning av varor</MudButton>
-            <MudButton Variant="Variant.Text" Class="product-buttons" Href="/Lagerhanterings-system">Lagerhanterings-system</MudButton>
-            <MudButton Variant="Variant.Text" Class="product-buttons" Href="/Kundtjänst">Kundtjänst</MudButton>
-            <MudButton Variant="Variant.Text" Class="product-buttons" Href="/Retur">Retur av varor</MudButton>
-            <MudButton Variant="Variant.Text" Class="product-buttons" Href="/Kampanjförpackning">Kampanjförpackning</MudButton>
-            <MudButton Variant="Variant.Text" Class="product-buttons" Href="/Distribution">Distribution</MudButton>
-        </MudStack>
-    </MudPaper>
+    <ServicesPanel />
 </article>
 
 

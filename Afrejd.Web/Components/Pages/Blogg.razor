@@ -1,0 +1,115 @@
+﻿@page "/Blogg"
+@using Afrejd.Web.Components.Layout
+
+<PageTitle>Afrejd - Blogg</PageTitle>
+
+<article>
+	<MudContainer Class="my-5 d-flex flex-column">
+		<h1 class="display-1">
+			Afrejd Blogg
+		</h1>
+		<MudText>
+			Här hittar du goda råd inom logistik från Afrejd.
+		</MudText>
+		<hr class="my-3"/>
+
+		<MudImage Fluid="true" Src="/Images/stock21.jpg" Class="rounded-lg"></MudImage>
+
+		<hr class="my-3" />
+
+		<MudPaper>
+			<div class="d-flex justify-content-between flex-column flex-md-row">
+				<a href="/Effektiv-lagerhantering" Class="col ma-5">
+					<MudCard>
+						<MudCardMedia Image="/Images/blog1.jpg" Height="200" />
+						<MudCardContent Class="flex-grow-1">
+							<MudText Typo="Typo.h5">Effektiv lagerhantering - Nyckeln till framgång</MudText>
+						</MudCardContent>
+					</MudCard>
+				</a>
+
+				<a href="/Hållbar-logistik" Class="col ma-5">
+					<MudCard Style="height: 100%">
+						<MudCardMedia Image="/Images/blog2.jpg" Height="200" />
+						<MudCardContent Class="flex-grow-1">
+							<MudText Typo="Typo.h5">Hållbar logistik - En väg mot framtiden</MudText>
+						</MudCardContent>
+					</MudCard>
+				</a>
+
+				<a href="/Digital-transformation" Class="col ma-5">
+					<MudCard>
+						<MudCardMedia Image="/Images/blog3.jpg" Height="200" />
+						<MudCardContent Class="flex-grow-1">
+							<MudText Typo="Typo.h5">Digital transformation inom logistik - En revolution</MudText>
+						</MudCardContent>
+					</MudCard>
+				</a>
+			</div>
+
+			<div class="d-flex justify-content-between flex-column flex-md-row">
+				<a href="/Flexibla-IT-lösningar" Class="col ma-5">
+					<MudCard>
+						<MudCardMedia Image="/Images/blog4.jpg" Height="200" />
+						<MudCardContent>
+							<MudText Typo="Typo.h5">Flexibla IT-lösningar för ditt företag</MudText>
+						</MudCardContent>
+					</MudCard>
+				</a>
+
+				<a href="/Framgångsrika-onlinebutiker" Class="col ma-5">
+					<MudCard>
+						<MudCardMedia Image="/Images/blog5.jpg" Height="200" />
+						<MudCardContent>
+							<MudText Typo="Typo.h5">10 tips för framgångsrika onlinebutiker</MudText>
+						</MudCardContent>
+					</MudCard>
+				</a>
+
+				<a href="/Gör-prenumerationer-enkla" Class="col ma-5">
+					<MudCard>
+						<MudCardMedia Image="/Images/blog6.jpg" Height="200" />
+						<MudCardContent>
+							<MudText Typo="Typo.h5">Gör prenumerationer enkla</MudText>
+						</MudCardContent>
+					</MudCard>
+				</a>
+			</div>
+
+			<div class="d-flex justify-content-between flex-column flex-md-row">
+				<a href="/Vanliga-misstag" Class="col ma-5">
+					<MudCard>
+						<MudCardMedia Image="/Images/blog7.jpg" Height="200" />
+						<MudCardContent>
+							<MudText Typo="Typo.h5">Vanliga misstag när man driver en onlinebutik</MudText>
+						</MudCardContent>
+					</MudCard>
+				</a>
+
+				<a href="/Att-tänka-på" Class="col ma-5">
+					<MudCard Style="height: 100%">
+						<MudCardMedia Image="/Images/blog8.jpg" Height="200" />
+						<MudCardContent>
+							<MudText Typo="Typo.h5">Att tänka på vid val av logistikpartner</MudText>
+						</MudCardContent>
+					</MudCard>
+				</a>
+
+				<a href="/Goda-lagerpraxis" Class="col ma-5">
+					<MudCard>
+						<MudCardMedia Image="/Images/blog9.jpg" Height="200" />
+						<MudCardContent>
+							<MudText Typo="Typo.h5">Goda lagerpraxis - Effektivisering och säkerhet</MudText>
+						</MudCardContent>
+					</MudCard>
+				</a>
+			</div>
+		</MudPaper>
+	</MudContainer>
+
+	<ServicesPanel/>
+</article>
+
+@code {
+
+}

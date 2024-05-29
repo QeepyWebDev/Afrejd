@@ -2,10 +2,13 @@
 
 @using Afrejd.Web.Data.Interfaces
 @using Afrejd.Web.Data.Models
+@using Afrejd.Web.Components.Layout
 @inject ICartService CartService
 @inject AuthenticationStateProvider AuthenticationStateProvider
 @inject NavigationManager NavigationManager
 @rendermode InteractiveServer
+
+<PageTitle>Lagerhanterings-system</PageTitle>
 
 <article>
     <MudContainer MaxWidth="MaxWidth.ExtraLarge" Class=" py-6">
@@ -30,113 +33,78 @@
                     </div>
                 </MudStack>
                 <MudPaper Elevation=0 Class="d-flex justify-content-end">
-                    <MudImage Fluid="true" Class="rounded-xl" Src="/Images/stock14.jpg"></MudImage>
+                    <MudImage Fluid="true" Class="rounded-xl" Src="/Images/stock22.jpg"></MudImage>
                 </MudPaper>
             </MudPaper>
             <MudDivider DividerType="DividerType.Middle" Class="my-6" />
 
             <MudPaper Width="75%" Elevation=0 Style="margin:auto;">
-                <MudText Class="mb-15" Style="font-size: 2em;">
-                    Vi ger dig tillgång till marknadens bästa lagersystem, med våra egna skräddarsydda lösningar anpassade efter dina behov. 
-                    Ett bra WMS (Warehouse Management System eller lagerhanteringssystem) är absolut nödvändigt för att ha full kontroll över lagerets dagliga verksamhet. 
-                    WMS-programvaran ersätter många av de manuella jobb som normalt skulle ha utförts av personal i lagret och är säker, kostnadseffektiv och flexibel.
-                </MudText>
+                <h3>
+                    Att ha kontroll över ditt lager är avgörande för en effektiv verksamhet. Vårt Warehouse Management System (WMS) är utformat för att ge dig den kontrollen 
+                    och effektiviteten du behöver för att driva din verksamhet framåt.
+                </h3>
 
-                <h3>Ett bra lagerhanteringssystem säkerställer full kontroll</h3>
                 <MudText Class="mb-6">
-                    Vi på Afrejd använder den svenska WMS-tjänsten Ongoing Warehouse för att säkerställa dig som kund säkra, pålitliga och effektiva logistiklösningar för ditt företag. 
-                    Vår WMS är speciellt utformad för varuhotell, lagersystem och återförsäljare med höga krav på logistikkänslig verksamhet. 
-                    I de fall där API:er inte längre finns eller äldre integrationer inte fungerar, gör vi mycket för att säkerställa att hela kund- och varucykeln är helt automatiserad. 
-                    Med Ongoing Warehouse kan vi bygga skräddarsydda lösningar för alla våra kunder, där de sparar tid och pengar och får en mycket bättre lageröversikt.
+                    Vi på Afrejd använder det ledande svenska WMS-tjänsten, Ongoing Warehouse, för att tillhandahålla våra kunder med pålitliga och effektiva logistiklösningar. 
+                    Vår WMS är speciellt utformad för att möta behoven hos varuhotell, lagersystem och återförsäljare med höga krav på logistikhantering.
                 </MudText>
 
-                <MudText Class="mb-9">
-                    Kunden ska alltid få notiser vid behov, liksom kontinuerlig tillgång till information och rapporter i kundens egen arbetsyta. 
-                    Med Ongoing Warehouse integrerat med vår egen teknikavdelning kan vi utveckla våra egna dashboards där kunden kan följa flödet av varor och beställningar i realtid genom hela värdekedjan — 
-                    från att slutkunden lägger varan i kundvagnen, slutför beställningen och har varan i handen.
+                <MudText Class="mb-6">
+                    Vi fokuserar på att skapa skräddarsydda lösningar som passar dina specifika behov. Genom att integrera Ongoing Warehouse med vår egen teknikavdelning 
+                    kan vi utveckla anpassade dashboards där du kan följa flödet av varor och beställningar i realtid, från order till leverans.
                 </MudText>
 
-                <h3>Hur fungerar Ongoing Warehouse på Afrejd?</h3>
+                <h3 class="my-5">Hur Fungerar Ongoing Warehouse Hos Afrejd?</h3>
                 <ul style="list-style-type: circle;">
                     <li>
-                        <MudText Class="mb-4">Dina artiklar anländer till vår lastningsramp, och registreras omedelbart i det pågående lagret.</MudText>
+                        <MudText Class="mb-4">Dina varor anländer till vårt lager och registreras i systemet för snabb åtkomst och översikt.</MudText>
                     </li>
                     <li>
-                        <MudText Class="mb-4">För optimal godshantering registreras inköpsorder i systemet av kunden. Vi publicerar vad som faktiskt har mottagits.</MudText>
+                        <MudText Class="mb-4">Inköpsorder registreras i systemet för optimal hantering av varor.</MudText>
                     </li>
                     <li>
-                        <MudText Class="mb-4">Varorna placeras i vårt lager — redan nu är de fullt tillgängliga i det molnbaserade systemet så att du som kund har full överblick.</MudText>
+                        <MudText Class="mb-4">Varorna placeras i vårt lager och är tillgängliga i realtid i det molnbaserade systemet.</MudText>
                     </li>
                     <li>
-                        <MudText Class="mb-4">När dina kunder gör ett köp i din webbutik informeras vi omedelbart om detta - lagerhanteringssystemet är helt integrerat med din webbutik och ger dig lageröversikt i realtid.</MudText>
+                        <MudText Class="mb-4">När dina kunder gör ett köp integreras orderinformationen direkt med systemet för omedelbar bearbetning.</MudText>
                     </li>
                     <li>
-                        <MudText Class="mb-4">Vi vidtar åtgärder plocka, packa och förbereda dina varor för upphämtning av speditör — du har en fullständig översikt över status för upphämtning i Ongoing Warehouse.</MudText>
+                        <MudText Class="mb-4">Vi hanterar plockning, packning och förberedelse för leverans med fullständig översikt över status.</MudText>
                     </li>
                     <li>
-                        <MudText Class="mb-4">Följaktligen kan försändelsen spåras hela vägen, och mottagaren meddelas om sändningens status.</MudText>
+                        <MudText Class="mb-4">Följ sändningens status från lager till mottagarens dörrsteg.</MudText>
                     </li>
                     <li>
-                        <MudText Class="mb-4">Skulle din kund ångra köpet registrerar vi en returorder, förbereder en upphämtning och avbryter beställningen.</MudText>
-                    </li>
-                    <li>
-                        <MudText Class="mb-9">Så snart som paketet har returnerats, objektet kontrolleras och sätts tillbaka i omlopp för vidare försäljning.</MudText>
+                        <MudText Class="mb-4">Vi hanterar returer och återintegrerar varor för vidare försäljning.</MudText>
                     </li>
                 </ul>
 
-                <h3>Vilka är fördelarna med en bra WMS?</h3>
+                <h3>Fördelarna Med Vårt WMS</h3>
                 <ul style="list-style-type: circle;">
                     <li>
-                        <MudText Class="mb-4">Lägre kostnader för godshantering</MudText>
+                        <MudText Class="mb-4">Effektivare hantering av varor och lägre kostnader.</MudText>
                     </li>
                     <li>
-                        <MudText Class="mb-4">Fullständig inventeringsöversikt</MudText>
+                        <MudText Class="mb-4">Fullständig översikt över lagret och inventering.</MudText>
                     </li>
                     <li>
-                        <MudText Class="mb-4">Ökad produktivitet och kundservice</MudText>
+                        <MudText Class="mb-4">Ökad produktivitet och förbättrad kundservice.</MudText>
                     </li>
                     <li>
-                        <MudText Class="mb-4">Bättre utnyttjande av lagerutrymme, lager och automatiserad utrustning</MudText>
+                        <MudText Class="mb-4">Bättre utnyttjande av lagerutrymme och automatiserad utrustning.</MudText>
                     </li>
                     <li>
-                        <MudText Class="mb-4">Färre reklamationer och returer</MudText>
+                        <MudText Class="mb-4">Minskad risk för fel och färre reklamationer.</MudText>
                     </li>
                     <li>
-                        <MudText Class="mb-4">Minskad felplockning och mänskligt misslyckande</MudText>
-                    </li>
-                    <li>
-                        <MudText Class="mb-4">100% implementering i din befintliga webbutik</MudText>
+                        <MudText Class="mb-4">100% implementering i din befintliga webbutik för en smidig övergång.</MudText>
                     </li>
                 </ul>
             </MudPaper>
         </MudPaper>
     </MudContainer>
 
-    <MudPaper Elevation="0" Width="100%" Height="auto" Outlined="false" Class="d-flex flex-column flex-md-row align-items-center justify-content-center pa-6 gap-4" style="background-color: #363732;">
-
-        <MudStack Class="ma-6 text-center align-items-center justify-content-center">
-            <MudText Style="font-size: 2em; color: white;">
-                Vi kan hjälpa dig med alla aspekter av logistik.
-            </MudText>
-
-            <MudButton Variant="Variant.Filled" Size="Size.Medium" Class="products-button" Href="/services">
-                Våra tjänster
-            </MudButton>
-        </MudStack>
-
-        <MudStack Class="d-flex flex-wrap justify-content-center gap-2" Style="width: 100%; max-width: 600px;">
-            <MudButton Variant="Variant.Text" Class="product-buttons" Href="/Rådgivning&Försäljning">Rådgivning & Försäljning</MudButton>
-            <MudButton Variant="Variant.Text" Class="product-buttons" Href="/IT&Tech">IT & Tech</MudButton>
-            <MudButton Variant="Variant.Text" Class="product-buttons" Href="/Webbutik&Prenumeration">Webbutik & Prenumeration</MudButton>
-            <MudButton Variant="Variant.Text" Class="product-buttons" Href="/Varulager">Varulager</MudButton>
-            <MudButton Variant="Variant.Text" Class="product-buttons" Href="/Förpackning">Förpackning av varor</MudButton>
-            <MudButton Variant="Variant.Text" Class="product-buttons" Href="/Lagerhanterings-system">Lagerhanterings-system</MudButton>
-            <MudButton Variant="Variant.Text" Class="product-buttons" Href="/Kundtjänst">Kundtjänst</MudButton>
-            <MudButton Variant="Variant.Text" Class="product-buttons" Href="/Retur">Retur av varor</MudButton>
-            <MudButton Variant="Variant.Text" Class="product-buttons" Href="/Kampanjförpackning">Kampanjförpackning</MudButton>
-            <MudButton Variant="Variant.Text" Class="product-buttons" Href="/Distribution">Distribution</MudButton>
-        </MudStack>
-    </MudPaper>
+    <ServicesPanel />
 </article>
 
 

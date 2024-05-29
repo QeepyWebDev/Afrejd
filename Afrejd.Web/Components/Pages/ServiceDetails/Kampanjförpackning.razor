@@ -2,10 +2,13 @@
 
 @using Afrejd.Web.Data.Interfaces
 @using Afrejd.Web.Data.Models
+@using Afrejd.Web.Components.Layout
 @inject ICartService CartService
 @inject AuthenticationStateProvider AuthenticationStateProvider
 @inject NavigationManager NavigationManager
 @rendermode InteractiveServer
+
+<PageTitle>Kampanjförpackning</PageTitle>
 
 <article>
     <MudContainer MaxWidth="MaxWidth.ExtraLarge" Class=" py-6">
@@ -38,80 +41,48 @@
 
             <MudPaper Width="75%" Elevation=0 Style="margin:auto;">
                 <MudText Class="mb-15" Style="font-size: 2em;">
-                    Vårt breda utbud av tjänster inom digitaltryck, adressering, omslagning, reklamförpackningar, varuhosting, reklamlogistik och distribution gör det möjligt för oss att tillhandahålla 
-                    skräddarsydda, säkra och effektiva kampanj- och logistiklösningar för ditt företag.
+                    Vårt omfattande utbud av tjänster sträcker sig från digitaltryck och adressering till omslagning, reklamförpackningar, varuhosting, reklamlogistik och 
+                    distribution, vilket möjliggör skräddarsydda, säkra och effektiva kampanj- och logistiklösningar för ditt företag.
                 </MudText>
 
                 <MudText Class="mb-6">
-                    Vi packar om, distribuerar, monterar flerelementkampanjer och mellanlagrar materialet — allt efter dina behov. 
-                    På Afrejd kan du producera det mesta av det. Vi har en toppmodern maskinpark med automatiserade processer som är anpassade till marknadens behov och krav. 
-                    Vi anpassar oss efter din beställning, så att du får den mest kostnadseffektiva lösningen, vilket sparar tid och pengar.
+                    Vi erbjuder en rad tjänster inklusive ompackning, distribution, montering av flerelementkampanjer och mellanlagring, alla anpassade efter dina specifika 
+                    behov. Vår toppmoderna maskinpark med automatiserade processer säkerställer effektivitet och kostnadseffektivitet, vilket sparar både tid och pengar.
                 </MudText>
 
                 <h3>Utskrift och omslagning</h3>
                 <MudText Class="mb-6">
-                    Vi har en toppmodern maskinpark och en stor avdelning inom digitaltryck, omslagning och efterbehandling som är anpassad till marknadens behov och krav. 
-                    Flexibilitet och maskiner anpassade till marknaden är nyckelord hos oss. Vi anpassar oss efter din beställning så att du får den mest optimala och kostnadseffektiva lösningen.
+                    Vi har en avdelning specialiserad på digitaltryck, omslagning och efterbehandling med maskiner anpassade till marknadens behov. 
+                    Vi anpassar oss efter din beställning för att ge dig den mest optimala och kostnadseffektiva lösningen.
                 </MudText>
 
                 <h3>Anpassning på ett enkelt sätt</h3>
                 <MudText Class="mb-6">
-                    Det mesta av adresseringen på brevblad, fakturor, kampanjer eller liknande görs med lasertryck. 
-                    Lasertryck kännetecknas av mycket god utskriftskvalitet och möjligheten till omfattande individualisering av information. 
-                    Om pris och hastighet är viktiga för din nästa leverans är våra bläckstråleskrivare lösningen. Bläckstråleutskrift används för adressering av kuvert, broschyrer, vykort, plastförpackningar - och mycket mer. 
-                    Vår utskriftskvalitet är mycket bra och du kan välja mellan olika typsnitt.
+                    Vi använder lasertryck för adressering av olika material som brevblad, fakturor och kampanjer för att ge hög utskriftskvalitet och möjligheter till 
+                    individualisering av information. Vår bläckstråleteknik används för snabba och prisvärda utskrifter av kuvert, broschyrer, vykort och plastförpackningar.
                 </MudText>
 
                 <h3>Digitaltryck ger stora möjligheter</h3>
                 <MudText Class="mb-6">
-                    Behöver du trycksaker, adressetiketter med logotyp och enskilda meddelanden, eller en komplett kampanj med snabb leverans och låg cirkulation? Då är digitaltryck det bästa valet. 
-                    Här har du oändliga möjligheter till individualisering till en låg kostnad, både vad gäller text, bilder och pris. 
-                    Vi levererar allt från marknadsundersökningar, etiketter, fakturor/avbokningsformulär och broschyrer, till mer avancerade DM-kampanjer. 
-                    Vi kan även leverera digitalt tryckta kuvert med personliga meddelanden, där vi kan automatisera och matcha innehållet i kuvertet med modern teknik.
+                    Vi erbjuder digitaltryck för en mängd olika produkter inklusive marknadsundersökningar, etiketter, fakturor, broschyrer och avancerade DM-kampanjer. 
+                    Digitaltryck ger dig möjlighet till individualisering till låg kostnad och snabb leverans.
                 </MudText>
 
                 <h3>Flexibla omslutningslösningar</h3>
                 <MudText Class="mb-6">
-                    Naturligtvis kör våra maskiner i både svart och färg, och vi kan omsluta allt från C6 till C4. 
-                    I kombination med avancerad programvara för sammanslagning av variabler i bokstäverna ger detta stora möjligheter för våra kunder. 
-                    Ofta vet kunden vad man ska ha, men vi kan också hjälpa till att hitta den bästa och mest lönsamma lösningen för omslutningar.
+                    Med maskiner som kan hantera både svart och färg kan vi omsluta allt från C6 till C4. Vår avancerade programvara möjliggör sammanslagning av variabler i 
+                    bokstäverna och ger stora möjligheter för våra kunder att hitta den bästa och mest lönsamma lösningen för omslutningar.
                 </MudText>
 
                 <MudText Class="mb-6">
-                    Våra medarbetare har lång erfarenhet av adressering, lasertryck, digitaltryck och kuvert — samt allmänna varor och reklamförpackningar. 
-                    Kontakta oss gärna tidigt i processen så att vi kan hjälpa dig att optimera ditt arbete. 
-                    Vi arbetar kontinuerligt med hela värdekedjan: från rådgivning, tryckning, förpackning, lagring och logistik till färdig leverans, och är väl medvetna om de krav och regler som gäller. 
-                    Ofta kan en liten justering resultera i betydande ekonomiska besparingar för ditt företag.
+                    Vi har lång erfarenhet inom adressering, lasertryck, digitaltryck och kuvert samt allmänna varor och reklamförpackningar. 
+                    Kontakta oss tidigt i processen så att vi kan optimera ditt arbete och hjälpa dig att uppnå betydande ekonomiska besparingar för ditt företag.
                 </MudText>
             </MudPaper>
         </MudPaper>
     </MudContainer>
 
-    <MudPaper Elevation="0" Width="100%" Height="auto" Outlined="false" Class="d-flex flex-column flex-md-row align-items-center justify-content-center pa-6 gap-4" style="background-color: #363732;">
-
-        <MudStack Class="ma-6 text-center align-items-center justify-content-center">
-            <MudText Style="font-size: 2em; color: white;">
-                Vi kan hjälpa dig med alla aspekter av logistik.
-            </MudText>
-
-            <MudButton Variant="Variant.Filled" Size="Size.Medium" Class="products-button" Href="/services">
-                Våra tjänster
-            </MudButton>
-        </MudStack>
-
-        <MudStack Class="d-flex flex-wrap justify-content-center gap-2" Style="width: 100%; max-width: 600px;">
-            <MudButton Variant="Variant.Text" Class="product-buttons" Href="/Rådgivning&Försäljning">Rådgivning & Försäljning</MudButton>
-            <MudButton Variant="Variant.Text" Class="product-buttons" Href="/IT&Tech">IT & Tech</MudButton>
-            <MudButton Variant="Variant.Text" Class="product-buttons" Href="/Webbutik&Prenumeration">Webbutik & Prenumeration</MudButton>
-            <MudButton Variant="Variant.Text" Class="product-buttons" Href="/Varulager">Varulager</MudButton>
-            <MudButton Variant="Variant.Text" Class="product-buttons" Href="/Förpackning">Förpackning av varor</MudButton>
-            <MudButton Variant="Variant.Text" Class="product-buttons" Href="/Lagerhanterings-system">Lagerhanterings-system</MudButton>
-            <MudButton Variant="Variant.Text" Class="product-buttons" Href="/Kundtjänst">Kundtjänst</MudButton>
-            <MudButton Variant="Variant.Text" Class="product-buttons" Href="/Retur">Retur av varor</MudButton>
-            <MudButton Variant="Variant.Text" Class="product-buttons" Href="/Kampanjförpackning">Kampanjförpackning</MudButton>
-            <MudButton Variant="Variant.Text" Class="product-buttons" Href="/Distribution">Distribution</MudButton>
-        </MudStack>
-    </MudPaper>
+    <ServicesPanel />
 </article>
 
 

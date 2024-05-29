@@ -9,5 +9,6 @@ namespace Afrejd.Web.Data.Interfaces
         Task<CustomerInfo> GetUserInfo(string userId);
         Task<string> GetCurrentUserId();
         Task<List<Order>> GetUserOrders(string userId);
+        Task<string> GetUserCompany(string userId);
     }
 }

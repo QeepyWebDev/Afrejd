@@ -23,3 +23,8 @@
 .btn-dark {
     background-color: #363732;
 }
+
+::deep .nav-link {
+    font-size: 1.3em;
+}
+

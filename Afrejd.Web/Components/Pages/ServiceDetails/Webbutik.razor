@@ -2,10 +2,13 @@
 
 @using Afrejd.Web.Data.Interfaces
 @using Afrejd.Web.Data.Models
+@using Afrejd.Web.Components.Layout
 @inject ICartService CartService
 @inject AuthenticationStateProvider AuthenticationStateProvider
 @inject NavigationManager NavigationManager
 @rendermode InteractiveServer
+
+<PageTitle>Webbutik & Prenumeration</PageTitle>
 
 <article>
     <MudContainer MaxWidth="MaxWidth.ExtraLarge" Class=" py-6">
@@ -38,100 +41,59 @@
 
             <MudPaper Width="75%" Elevation=0 Style="margin:auto;">
                 <MudText Class="mb-15" Style="font-size: 2em;">
-                    Med Afrejd kan du som e-handelsbutik få allt du behöver på ett ställe. Afrejd Gruppen är ett av få företag i Sverige som kan hjälpa dig med en 360-graders värdekedja i din webbutik — 
-                    vi erbjuder strategi, rådgivning, lager, orderhantering, pick and pack, logistik, integrationer, IT-lösningar, operativ support, frakt, returhantering, tullnav och kundservice.
+                    Med Afrejd får din e-handelsbutik tillgång till en komplett lösning på ett och samma ställe. Afrejd Gruppen erbjuder en 360-graders värdekedja för din 
+                    webbutik, inklusive strategi, rådgivning, lagerhantering, orderbehandling, logistik, integrationer, IT-lösningar, kundsupport och mycket mer.
                 </MudText>
 
                 <MudText Class="mb-6">
-                    Afrejd specialiserar sig på tredjepartslogistik för onlinebutiker och prenumerationskunder inom B2C- och D2C-segmentet i Norden. 
-                    Framtidens affärsmodell är online-detaljhandel och prenumeration. Afrejd har lång erfarenhet från e-handels- och prenumerationsbranschen och erbjuder lösningar och plattformar som mycket få andra leverantörer kan.
+                    Afrejd är specialiserade på tredjepartslogistik för onlinebutiker och prenumerationskunder inom både B2C- och D2C-segmentet i Norden. Med en gedigen 
+                    erfarenhet inom e-handel och prenumerationstjänster erbjuder Afrejd lösningar och plattformar som få andra leverantörer kan matcha.
                 </MudText>
 
-                <h3>Bygga helt ny webbutik?</h3>
+                <h3>Behöver du Bygga en Ny Webbutik?</h3>
                 <MudText Class="mb-6">
-                    Afrejd kan hjälpa dig att bygga en ny webbutik, med allt från back-end-programmering till UX-design, samt profil och identitet. 
-                    Våra program kan integreras med de allra flesta onlinebutiker och inköpssystem i Sverige. Normalt integreras detta utan extra kostnad för våra kunder. 
-                    Afrejd har en stark IT- och teknikavdelning i Norge, och ett separat utvecklingsteam i Polen, som kan ge full drift och support.
-                </MudText>
-
-                <MudText Class="mb-6">
-                    Vi kan också hjälpa dig med en ansiktslyftning av dagens online-detaljhandelslösning, så att din webbutik är utrustad för dagens och morgondagens e-handel. 
-                    Vi erbjuder även rådgivning kring affärssystem och olika betalningslösningar.
-                </MudText>
-
-                <h3>Skala din webbutik i eller utanför Sverige</h3>
-                <MudText Class="mb-6">
-                    Vi är en tredjepartslogistikpartner med erfarenhet av att hjälpa svenska e-handelsbutiker expandera till Europa — till en större marknad med nya skalningsmöjligheter. 
-                    När försäljningen ökar kan vi enkelt skala verksamheten för att möta din tillväxt, utan att påverka ledtiderna i samband med orderhantering.
+                    Afrejd kan hjälpa dig att bygga en helt ny webbutik, från back-end-programmering till UX-design och varumärkesprofilering. Våra system kan integreras med 
+                    de flesta onlinebutiker och inköpssystem i Sverige utan extra kostnad för våra kunder. Med starka IT- och teknikteam i Norge och Polen kan vi erbjuda 
+                    fullständig drift och support.
                 </MudText>
 
                 <MudText Class="mb-6">
-                    Oavsett om din webbutik behöver växa, oavsett om det är i Sverige eller internationellt, har Afrejd tjänster och lösningar som hjälper dig att skala effektivt. 
-                    Vi har pallförvaring, plockhyllor och effektiv lagerhantering, välja vad som är mest lämpligt baserat på typen av varor. Vi har fast anställda med etablerade rutiner och tillgång till nya årsarbeten vid behov.
+                    Vi kan även hjälpa till med att förnya och optimera din befintliga e-handelslösning för att möta dagens och framtidens behov. Vår expertis sträcker sig 
+                    även till affärssystem och olika betalningslösningar för en smidigare och mer effektiv verksamhet.
+                </MudText>
+
+                <h3>Skala din Verksamhet Inom eller Utanför Sverige</h3>
+                <MudText Class="mb-6">
+                    Vi är din partner när det gäller att expandera din webbutik, både inom Sverige och internationellt. Afrejd har erfarenhet av att hjälpa svenska 
+                    e-handelsföretag att växa på den europeiska marknaden, vilket innebär att vi kan anpassa och skalera din verksamhet utan att påverka ledtiderna för 
+                    orderhantering.
                 </MudText>
 
                 <MudText Class="mb-6">
-                    Vi lägger hög prioritet på säkerhet med säkerhet 24 timmar om dygnet, 365 dagar om året. 
-                    Vi har tre stora handelshotell och logistikhus med strategiska lägen i Karlstad, Oslo och Arendal, där vi effektiviserar dina varor och levererar till hela Europa.
+                    Oavsett om din webbutik behöver växa inom Sverige eller internationellt, har Afrejd de tjänster och lösningar som krävs för att effektivt hantera din 
+                    tillväxt. Vi erbjuder allt från pallförvaring till plockhyllor och skräddarsydda lagerlösningar, allt baserat på dina behov. Med hög säkerhet och 
+                    strategiskt placerade lagerlokaler i Malmö, Stockholm och Göteborg kan vi effektivt distribuera dina varor över hela Europa.
                 </MudText>
 
-                <h3>Prenumeration är framtidens affärsmodell‍</h3>
+                <h3>Prenumeration är Framtiden för E-handel</h3>
                 <MudText Class="mb-6">
-                    Visste du att vi svenskar i genomsnitt har 18 olika prenumerationer? Nu prenumererar man på allt från TV-kanaler och streamingtjänster, mat och kläder, parkdräkter och böcker, till bilar och cyklar. 
-                    Detta är en trend som inte kommer att sluta här, eftersom prenumeration är en framåtblickande och hållbar affärsmodell.
+                    Framtiden för e-handel ligger i prenumerationstjänster. Afrejd är specialister på prenumerationstjänster och utveckling av prenumerationslösningar och 
+                    system. Med ett dedikerat handelshotell för förpackning av alla typer av prenumerationsprodukter erbjuder vi inte bara smidiga leveranser utan också 
+                    viktig försäljningsstatistik och kundsupport för att maximera din försäljning och kundtillfredsställelse.
                 </MudText>
 
+                <h3>Vad innebär ett Prenumerationssystem?</h3>
                 <MudText Class="mb-6">
-                    Afrejd specialiserar sig på abonnemangslogistik och utveckling av prenumerationslösningar och system. Vi har ett skräddarsytt handelshotell för förpackning av alla typer av prenumerationsprodukter, vare sig det är B2B eller B2C. 
-                    Förutom att säkerställa att alla leveranser går smidigt får våra prenumerationskunder också de nödvändiga siffrorna på nyförsäljning, prenumerationsförsäljning och avlämningsstatistik. 
-                    Det är viktig information att hålla reda på i försäljnings- och marknadsföringsprocessen för ditt företag. Oavsett om kunder slutar eller säger upp sin prenumeration kan vårt callcenter hjälpa till med win-back-lösningar för att vinna tillbaka kunden.
-                </MudText>
-
-                <h3>Vad är ett prenumerationssystem?</h3>
-                <MudText Class="mb-6">
-                    Ett prenumerationssystem är ett upprepande ordersystem. Det kan vara lika ordning, eller lika med variation. 
-                    Vårt prenumerationssystem är extremt flexibelt och stöder de flesta av de online-detaljhandelslösningar som finns tillgängliga idag. 
-                    Många av våra kunder är inom hälsokost och kosmetika, men det behöver inte nödvändigtvis vara en traditionell prenumerationsprodukt. Det kan vara så att du har en huvudprodukt, men med ytterligare tillbehör som ett abonnemang.
-                </MudText>
-
-                <MudText Class="mb-6">
-                    Låt oss säga att du säljer simbassänger, till exempel. Kanske vill din kund prenumerera på städutrustning? Eller att varje kvartal eller sex månader behöver du ett filter för ventilationssystemet hemma - det kan också vara ett abonnemang. 
-                    Då tar systemet hand om när du ska ha skickat ett SMS eller e-post, och när du ska ha produkten.
-                </MudText>
-
-                <MudText Class="mb-6">
-                    Kanske är det variation från kund till kund. Någon som säljer rakhyvlar kommer att kunna ha några kunder som rakar sig varje dag, medan andra gör det en gång i veckan. 
-                    Dessa kommer att ha olika behov när de ska få nya rakblad levererade. Vårt abonnemangssystem underlättar varje enskild kunds behov.
+                    Ett prenumerationssystem är ett upprepande ordersystem som kan vara likformigt eller varierande. Vårt flexibla prenumerationssystem stödjer de flesta 
+                    online-detaljhandelslösningar på marknaden idag. Det kan omfatta allt från hälsokost till kosmetika och erbjuder enkel hantering av olika leveransbehov 
+                    baserat på kundens preferenser. Med vårt prenumerationssystem kan du skräddarsy erbjudanden och leveransscheman för att passa varje kunds unika behov och 
+                    preferenser.
                 </MudText>
             </MudPaper>
         </MudPaper>
     </MudContainer>
 
-    <MudPaper Elevation="0" Width="100%" Height="auto" Outlined="false" Class="d-flex flex-column flex-md-row align-items-center justify-content-center pa-6 gap-4" style="background-color: #363732;">
-
-        <MudStack Class="ma-6 text-center align-items-center justify-content-center">
-            <MudText Style="font-size: 2em; color: white;">
-                Vi kan hjälpa dig med alla aspekter av logistik.
-            </MudText>
-
-            <MudButton Variant="Variant.Filled" Size="Size.Medium" Class="products-button" Href="/services">
-                Våra tjänster
-            </MudButton>
-        </MudStack>
-
-        <MudStack Class="d-flex flex-wrap justify-content-center gap-2" Style="width: 100%; max-width: 600px;">
-            <MudButton Variant="Variant.Text" Class="product-buttons" Href="/Rådgivning&Försäljning">Rådgivning & Försäljning</MudButton>
-            <MudButton Variant="Variant.Text" Class="product-buttons" Href="/IT&Tech">IT & Tech</MudButton>
-            <MudButton Variant="Variant.Text" Class="product-buttons" Href="/Webbutik&Prenumeration">Webbutik & Prenumeration</MudButton>
-            <MudButton Variant="Variant.Text" Class="product-buttons" Href="/Varulager">Varulager</MudButton>
-            <MudButton Variant="Variant.Text" Class="product-buttons" Href="/Förpackning">Förpackning av varor</MudButton>
-            <MudButton Variant="Variant.Text" Class="product-buttons" Href="/Lagerhanterings-system">Lagerhanterings-system</MudButton>
-            <MudButton Variant="Variant.Text" Class="product-buttons" Href="/Kundtjänst">Kundtjänst</MudButton>
-            <MudButton Variant="Variant.Text" Class="product-buttons" Href="/Retur">Retur av varor</MudButton>
-            <MudButton Variant="Variant.Text" Class="product-buttons" Href="/Kampanjförpackning">Kampanjförpackning</MudButton>
-            <MudButton Variant="Variant.Text" Class="product-buttons" Href="/Distribution">Distribution</MudButton>
-        </MudStack>
-    </MudPaper>
+    <ServicesPanel />
 </article>
 
 

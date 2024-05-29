@@ -2,10 +2,13 @@
 
 @using Afrejd.Web.Data.Interfaces
 @using Afrejd.Web.Data.Models
+@using Afrejd.Web.Components.Layout
 @inject ICartService CartService
 @inject AuthenticationStateProvider AuthenticationStateProvider
 @inject NavigationManager NavigationManager
 @rendermode InteractiveServer
+
+<PageTitle>Retur av varor</PageTitle>
 
 <article>
     <MudContainer MaxWidth="MaxWidth.ExtraLarge" Class=" py-6">
@@ -37,46 +40,27 @@
             <MudDivider DividerType="DividerType.Middle" Class="my-6" />
 
             <MudPaper Width="75%" Elevation=0 Style="margin:auto;">
+                <h3>Skapa En Smidig E-Handelsupplevelse Med Effektiva Returer</h3>
+
                 <MudText Class="mb-15" Style="font-size: 2em;">
-                    För att nå tillväxt inom e-handeln är det viktigt att ha en enkel och flexibel returlösning. Oftast är det kunderna som skickar tillbaka varorna som också är lojala, återkommande och säkra kunder. 
-                    Bra returhantering ger dina kunder en sömlös och positiv köpupplevelse.
+                    Att möjliggöra enkel och smidig returhantering är en viktig faktor för att driva tillväxt inom e-handeln. Ofta är det kunder som känner sig trygga med 
+                    att returnera varor som också är mer benägna att bli återkommande och lojala kunder. Genom att erbjuda en positiv och sömlös köpupplevelse kan du bygga 
+                    starka relationer med dina kunder och uppmuntra till fortsatt försäljning.
                 </MudText>
 
                 <h3>Effektivt varuflöde och sömlösa returer</h3>
                 <MudText Class="mb-6">
-                    Vi tar hand om allt när dina varor anländer till vår lastramp och lastas in i vår handelshotell. När en beställning görs får vi ett meddelande och initierar orderbehandling och reklamförpackningar. 
-                    Försändelser kan följaktligen spåras hela vägen och mottagaren meddelas att varorna är på väg. Skulle kunden ångra köpet registrerar vi omedelbart en returorder, förbereder en upphämtning och avbryter beställningen. 
-                    Så snart paketet returneras till lagret inspekteras föremålet och sätts tillbaka i omlopp för återköp. Ditt lager uppdateras också automatiskt så att du har en fullständig översikt.
+                    Vi på Afrejd tar hand om hela returprocessen för dig. När dina varor anländer till vårt lager, hanterar vi inlastningen och lagrar dem i vårt handelshotell.
+                    Vid varje beställning tar vi emot meddelanden och initierar omedelbart orderbehandling och förberedelse för reklamförpackningar. 
+                    Genom vårt system kan försändelser spåras i realtid och mottagaren meddelas om leveransen. Om en kund ångrar sitt köp registrerar vi snabbt en returorder, 
+                    förbereder för upphämtning och avbryter beställningen. När varorna återlämnas till vårt lager inspekteras de och sätts tillbaka i omlopp för framtida 
+                    försäljning. Genom vårt automatiserade lagersystem uppdateras din lagerstatus kontinuerligt så att du alltid har fullständig översikt.
                 </MudText>
             </MudPaper>
         </MudPaper>
     </MudContainer>
 
-    <MudPaper Elevation="0" Width="100%" Height="auto" Outlined="false" Class="d-flex flex-column flex-md-row align-items-center justify-content-center pa-6 gap-4" style="background-color: #363732;">
-
-        <MudStack Class="ma-6 text-center align-items-center justify-content-center">
-            <MudText Style="font-size: 2em; color: white;">
-                Vi kan hjälpa dig med alla aspekter av logistik.
-            </MudText>
-
-            <MudButton Variant="Variant.Filled" Size="Size.Medium" Class="products-button" Href="/services">
-                Våra tjänster
-            </MudButton>
-        </MudStack>
-
-        <MudStack Class="d-flex flex-wrap justify-content-center gap-2" Style="width: 100%; max-width: 600px;">
-            <MudButton Variant="Variant.Text" Class="product-buttons" Href="/Rådgivning&Försäljning">Rådgivning & Försäljning</MudButton>
-            <MudButton Variant="Variant.Text" Class="product-buttons" Href="/IT&Tech">IT & Tech</MudButton>
-            <MudButton Variant="Variant.Text" Class="product-buttons" Href="/Webbutik&Prenumeration">Webbutik & Prenumeration</MudButton>
-            <MudButton Variant="Variant.Text" Class="product-buttons" Href="/Varulager">Varulager</MudButton>
-            <MudButton Variant="Variant.Text" Class="product-buttons" Href="/Förpackning">Förpackning av varor</MudButton>
-            <MudButton Variant="Variant.Text" Class="product-buttons" Href="/Lagerhanterings-system">Lagerhanterings-system</MudButton>
-            <MudButton Variant="Variant.Text" Class="product-buttons" Href="/Kundtjänst">Kundtjänst</MudButton>
-            <MudButton Variant="Variant.Text" Class="product-buttons" Href="/Retur">Retur av varor</MudButton>
-            <MudButton Variant="Variant.Text" Class="product-buttons" Href="/Kampanjförpackning">Kampanjförpackning</MudButton>
-            <MudButton Variant="Variant.Text" Class="product-buttons" Href="/Distribution">Distribution</MudButton>
-        </MudStack>
-    </MudPaper>
+    <ServicesPanel />
 </article>
 
 

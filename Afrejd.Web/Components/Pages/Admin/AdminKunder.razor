@@ -1,13 +1,17 @@
-﻿@page "/Clients"
+﻿@page "/Admin-kunder"
 
 @using Afrejd.Web.Components.Layout
 @using Afrejd.Web.Data
 @using Afrejd.Web.Data.Interfaces
 @using Afrejd.Web.Data.Models
 @using System.Collections.Generic
+@using Microsoft.AspNetCore.Authorization
 @inject IUserService UserService
 @rendermode InteractiveServer
 @layout AdminMenu
+@attribute [Authorize(Policy = "AdminOnly")]
+
+<PageTitle>Kunder</PageTitle>
 
 <MudContainer Class="my-5">
     <input class="form-control mr-sm-2" type="text" value="@searchString" aria-label="Search" @oninput="SearchCustomers" placeholder="Sök namn eller företag...">
