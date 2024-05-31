@@ -104,6 +104,23 @@ else
         }
 
         customerInfo = await UserService.GetUserInfo(userId);
+
+        if (customerInfo == null)
+        {
+            customerInfo = new CustomerInfo
+                {
+                    FirstName = string.Empty,
+                    LastName = string.Empty,
+                    Address = string.Empty,
+                    City = string.Empty,
+                    Region = string.Empty,
+                    PostalCode = 0,
+                    Country = string.Empty,
+                    Phone = 0,
+                    Company = string.Empty,
+                    OrganizationNumber = string.Empty
+                };
+        }
     }
 
     private async Task PlaceOrder()

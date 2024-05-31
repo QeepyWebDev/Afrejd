@@ -14,57 +14,63 @@
 <MudContainer Class="my-5">
     <h3>Användaruppgifter</h3>
 
-    <form @onsubmit="HandleUserInfo">
-        <div class="form-group">
 
-            <label for="name">Förnamn:</label>
-            <input type="text" class="form-control" id="name" @bind="customerInfo.FirstName">
-            <br />
+        <MudContainer Class="my-5">
+            <h3>Användaruppgifter</h3>
 
-            <label for="name">Efternamn:</label>
-            <input type="text" class="form-control" id="name" @bind="customerInfo.LastName">
-            <br />
+            <form @onsubmit="HandleUserInfo">
+                <div class="form-group">
 
-            <label for="shippingAdress">Gata:</label>
-            <input type="text" class="form-control" id="shippingAdress" @bind="customerInfo.Address">
-            <br />
+                    <label for="name">Förnamn:</label>
+                    <input type="text" class="form-control" id="name" @bind="customerInfo.FirstName">
+                    <br />
 
-            <label for="city">Stad:</label>
-            <input type="text" class="form-control" id="city" @bind="customerInfo.City">
-            <br />
+                    <label for="name">Efternamn:</label>
+                    <input type="text" class="form-control" id="name" @bind="customerInfo.LastName">
+                    <br />
 
-            <label for="region">Län:</label>
-            <input type="text" class="form-control" id="region" @bind="customerInfo.Region">
-            <br />
+                    <label for="shippingAdress">Gata:</label>
+                    <input type="text" class="form-control" id="shippingAdress" @bind="customerInfo.Address">
+                    <br />
 
-            <label for="postalCode">Postnummer:</label>
-            <input type="text" class="form-control" id="postalCode" @bind="customerInfo.PostalCode">
-            <br />
+                    <label for="city">Stad:</label>
+                    <input type="text" class="form-control" id="city" @bind="customerInfo.City">
+                    <br />
 
-            <label for="country">Land:</label>
-            <select class="form-control" id="country" @bind="customerInfo.Country">
-                <option value="Sweden">Sverige</option>
-                <option value="Norway">Norge</option>
-                <option value="Denmark">Danmark</option>
-                <option value="Finland">Finland</option>
-            </select>
-            <br />
+                    <label for="region">Län:</label>
+                    <input type="text" class="form-control" id="region" @bind="customerInfo.Region">
+                    <br />
 
-            <label for="phoneNumber">Telefonnummer:</label>
-            <input type="text" class="form-control" id="phoneNumber" @bind="customerInfo.Phone">
-            <br />
+                    <label for="postalCode">Postnummer:</label>
+                    <input type="text" class="form-control" id="postalCode" @bind="customerInfo.PostalCode">
+                    <br />
 
-            <label for="company">Företag:</label>
-            <input type="text" class="form-control" id="company" @bind="customerInfo.Company">
-            <br />
+                    <label for="country">Land:</label>
+                    <select class="form-control" id="country" @bind="customerInfo.Country">
+                        <option value="Sweden">Sverige</option>
+                        <option value="Norway">Norge</option>
+                        <option value="Denmark">Danmark</option>
+                        <option value="Finland">Finland</option>
+                    </select>
+                    <br />
 
-            <label for="company">Organisationsnummer:</label>
-            <input type="text" class="form-control" id="company" @bind="customerInfo.OrganizationNumber">
-            <br />
-        </div>
+                    <label for="phoneNumber">Telefonnummer:</label>
+                    <input type="text" class="form-control" id="phoneNumber" @bind="customerInfo.Phone">
+                    <br />
 
-        <button type="submit" class="btn btn-primary">Spara</button>
-    </form>
+                    <label for="company">Företag:</label>
+                    <input type="text" class="form-control" id="company" @bind="customerInfo.Company">
+                    <br />
+
+                    <label for="company">Organisationsnummer:</label>
+                    <input type="text" class="form-control" id="company" @bind="customerInfo.OrganizationNumber">
+                    <br />
+                </div>
+
+                <button type="submit" class="btn btn-primary">Spara</button>
+            </form>
+        </MudContainer>
+
 </MudContainer>
 
 @code {
@@ -75,6 +81,23 @@
     {
         userId = httpContextAccessor.HttpContext.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
         customerInfo = await UserService.GetUserInfo(userId);
+
+        if (customerInfo == null)
+        {
+            customerInfo = new CustomerInfo
+                {
+                    FirstName = string.Empty,
+                    LastName = string.Empty,
+                    Address = string.Empty,
+                    City = string.Empty,
+                    Region = string.Empty,
+                    PostalCode = 0,
+                    Country = string.Empty,
+                    Phone = 0,
+                    Company = string.Empty,
+                    OrganizationNumber = string.Empty
+                };
+        }
     }
 
     private async Task HandleUserInfo()
