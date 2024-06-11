@@ -152,7 +152,7 @@
 
     private async Task ShowConfirmationDialog(Order order)
     {
-        bool confirmed = await JsRuntime.InvokeAsync<bool>("confirm", $"Är du säker på att du vill radera ordern med ordernummer {order.Id}?");
+        bool confirmed = await JsRuntime.InvokeAsync<bool>("confirm", $"Är du säker på att du vill radera ärendet med ärendenummer {order.Ordernumber}?");
         if (confirmed)
         {
             await DeleteOrder(order);
